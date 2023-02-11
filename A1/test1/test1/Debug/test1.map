@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\solution2co.asm Fri Feb 10 22:49:15 2023
+AVRASM ver. 2.2.8  C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\assignment1.asm Sat Feb 11 00:11:41 2023
 
 
 EQU  SIGNATURE_000 0000001e
@@ -1359,11 +1359,21 @@ EQU  URXC3addr    0000006c
 EQU  UDRE3addr    0000006e
 EQU  UTXC3addr    00000070
 EQU  INT_VECTORS_SIZE 00000072
-EQU  input        000000d2
-DEF  counter      r16
-CSEG loop         00000004
-CSEG incc         0000000d
-CSEG continue     00000008
-CSEG isOdd        00000010
-CSEG setOutput    00000014
-CSEG end          00000013
+CSEG add16        00000000
+EQU  maininput    00000001
+DEF  carryReg     r0
+DEF  regincc      r20
+CSEG addZH        00000012
+CSEG continue1    00000006
+CSEG continue2    0000000a
+CSEG continue3    0000000e
+CSEG end1         00000018
+CSEG addR1        00000015
+CSEG add_prity    00000021
+DEF  numone       r21
+CSEG main         00000022
+CSEG increment    00000027
+CSEG continue     00000028
+CSEG exitLOOP     0000002d
+CSEG odd          00000032
+CSEG end2         00000037

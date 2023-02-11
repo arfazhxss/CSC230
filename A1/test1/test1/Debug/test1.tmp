@@ -7,7 +7,7 @@
   <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
   <DIR></DIR>
  </INCLUDE_PATH>
- <SOURCE_FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\solution2co.asm</SOURCE_FILE>
+ <SOURCE_FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\assignment1.asm</SOURCE_FILE>
  <INCLUDED_FILES>
   <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m2560def.inc</FILE>
  </INCLUDED_FILES>
@@ -22,11 +22,19 @@
   <FILE>test1.lss</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <loop><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\solution2co.asm</FILE><LINE>19</LINE></loop>
-  <incc><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\solution2co.asm</FILE><LINE>32</LINE></incc>
-  <continue><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\solution2co.asm</FILE><LINE>26</LINE></continue>
-  <isOdd><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\solution2co.asm</FILE><LINE>36</LINE></isOdd>
-  <setOutput><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\solution2co.asm</FILE><LINE>42</LINE></setOutput>
-  <end><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\solution2co.asm</FILE><LINE>40</LINE></end>
+  <add16><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\assignment1.asm</FILE><LINE>8</LINE></add16>
+  <addZH><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\assignment1.asm</FILE><LINE>45</LINE></addZH>
+  <continue1><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\assignment1.asm</FILE><LINE>30</LINE></continue1>
+  <continue2><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\assignment1.asm</FILE><LINE>35</LINE></continue2>
+  <continue3><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\assignment1.asm</FILE><LINE>40</LINE></continue3>
+  <end1><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\assignment1.asm</FILE><LINE>53</LINE></end1>
+  <addR1><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\assignment1.asm</FILE><LINE>49</LINE></addR1>
+  <add_prity><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\assignment1.asm</FILE><LINE>75</LINE></add_prity>
+  <main><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\assignment1.asm</FILE><LINE>83</LINE></main>
+  <increment><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\assignment1.asm</FILE><LINE>90</LINE></increment>
+  <continue><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\assignment1.asm</FILE><LINE>93</LINE></continue>
+  <exitLOOP><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\assignment1.asm</FILE><LINE>99</LINE></exitLOOP>
+  <odd><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\assignment1.asm</FILE><LINE>105</LINE></odd>
+  <end2><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\assignment1.asm</FILE><LINE>111</LINE></end2>
  </LABELS>
 </ASSEMBLER_INFO>
