@@ -7,7 +7,7 @@
   <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
   <DIR></DIR>
  </INCLUDE_PATH>
- <SOURCE_FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\testfile2.asm</SOURCE_FILE>
+ <SOURCE_FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\solution2co.asm</SOURCE_FILE>
  <INCLUDED_FILES>
   <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m2560def.inc</FILE>
  </INCLUDED_FILES>
@@ -22,11 +22,11 @@
   <FILE>test1.lss</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <addZH><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\testfile2.asm</FILE><LINE>38</LINE></addZH>
-  <continue1><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\testfile2.asm</FILE><LINE>26</LINE></continue1>
-  <continue2><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\testfile2.asm</FILE><LINE>30</LINE></continue2>
-  <continue3><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\testfile2.asm</FILE><LINE>34</LINE></continue3>
-  <end><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\testfile2.asm</FILE><LINE>44</LINE></end>
-  <addR1><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\testfile2.asm</FILE><LINE>41</LINE></addR1>
+  <loop><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\solution2co.asm</FILE><LINE>19</LINE></loop>
+  <incc><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\solution2co.asm</FILE><LINE>32</LINE></incc>
+  <continue><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\solution2co.asm</FILE><LINE>26</LINE></continue>
+  <isOdd><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\solution2co.asm</FILE><LINE>36</LINE></isOdd>
+  <setOutput><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\solution2co.asm</FILE><LINE>42</LINE></setOutput>
+  <end><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\solution2co.asm</FILE><LINE>40</LINE></end>
  </LABELS>
 </ASSEMBLER_INFO>

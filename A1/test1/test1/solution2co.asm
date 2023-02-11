@@ -2,7 +2,7 @@
  * solution2co.asm
  *
  *  Created: 2/5/2023 3:15:44 AM
- *   Author: arfaz
+ *   Author: someone else
  */ 
 
 .equ input = 0b11010010

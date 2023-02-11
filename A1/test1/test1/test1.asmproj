@@ -15,7 +15,7 @@
     <Name>test1</Name>
     <RootNamespace>test1</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
-    <EntryFile>$(MSBuildProjectDirectory)\testfile2.asm</EntryFile>
+    <EntryFile>$(MSBuildProjectDirectory)\solution2co.asm</EntryFile>
     <KeepTimersRunning>true</KeepTimersRunning>
     <OverrideVtor>false</OverrideVtor>
     <CacheFlash>true</CacheFlash>
@@ -96,6 +96,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="main.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="solution2.asm">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="solution2co.asm">

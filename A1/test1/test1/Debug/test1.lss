@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\testfile2.asm Mon Feb 06 22:45:05 2023
+AVRASM ver. 2.2.8  C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\solution2co.asm Fri Feb 10 22:49:15 2023
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m2560def.inc'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m2560def.inc'
@@ -1842,56 +1842,51 @@ AVRASM ver. 2.2.8  C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\testf
                                  
                                  ; ***** END OF FILE ******************************************************
                                  
-                                  * AsmFile1.asm
+                                  * solution2co.asm
                                   *
-                                  *  Created: 2/4/2023 8:18:55 PM
-                                  *   Author: arfaz
+                                  *  Created: 2/5/2023 3:15:44 AM
+                                  *   Author: someone else
                                   */ 
                                  
-                                 	 .equ input1 = 0b11111111
-                                 	 .equ input2 = 0b11111111
-                                 	 .equ input3 = 0b11111111
-                                 	 .equ input4 = 0b11111111
-                                 	 .equ maininput = 0b00000001
-                                 	 .def carryReg = R0
-                                 	 .def regincc = R20
+                                 .equ input = 0b11010010
+000000 eda2                      LDI XL, input
+                                 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                                  
-000000 efaf                      	 LDI XL, input1
-000001 efbf                      	 LDI XH, input2
-000002 efcf                      	 LDI YL, input3
-000003 efdf                      	 LDI YH, input4
-000004 e041                      	 LDI regincc, maininput
+                                 	 .def counter = r16
                                  
-000005 0fea                      	 ADD ZL, XL
-000006 0fec                      	 ADD ZL, YL
-000007 f070                      	 BRCS addZH
-000008 940c 000a                 	 JMP continue1
-                                  continue1:
-00000a 0ffb                      	 ADD ZH, XH
-00000b f010                      	 BRCS continue2
-00000c 940c 0012                 	 JMP continue3
-                                  continue2:
-00000e 2e04                      	 MOV carryReg, regincc
-00000f 0ffd                      	 ADD ZH, YH
-000010 940c 001c                 	 JMP end
-                                  continue3:
-000012 0ffd                      	 ADD ZH, YH
-000013 f028                      	 BRCS addR1
-000014 940c 001c                 	 JMP end
-                                  addZH:
-000016 0ff4                      	ADD ZH, regincc
-000017 940c 000a                 	JMP continue1
-                                  addR1:
-000019 2e04                      	MOV carryReg, regincc
-00001a 940c 001c                 	JMP end
-                                  end:
-00001c 27aa                       	 CLR XL
-00001d 27bb                      	 CLR XH
-00001e 27cc                      	 CLR YL
-00001f 27dd                      	 CLR YH
-000020 27ee                      	 CLR ZL
-000021 27ff                      	 CLR ZH
-000022 2400                      	 CLR R0
+                                 	 ; At First
+000001 77af                      	 ANDI XL, 0b01111111
+000002 2fea                      	 MOV ZL, XL
+000003 2700                      	 CLR counter
+                                 
+                                 loop:
+                                 	 ; Mask All but bit 0
+000004 2fba                      	 MOV XH, XL
+000005 70b1                      	 ANDI XH, 1
+000006 30b1                      	 CPI XH, 1
+000007 f029                      	 BREQ incc
+                                 
+                                 continue:
+000008 95a6                      	LSR XL
+000009 30a0                      	CPI XL, 0
+00000a f029                      	BREQ isOdd
+00000b 940c 0004                 	JMP loop
+                                 
+                                 incc:
+00000d 9503                      	INC counter
+00000e 940c 0008                 	JMP continue
+                                 
+                                 isOdd:
+000010 7001                      	 ANDI counter, 1
+000011 3001                      	 CPI counter, 1
+000012 f009                      	 BREQ setOutput
+000013 9508                      end: ret
+                                 
+                                 setOutput:
+000014 2711                      	CLR r17
+000015 e810                      	ldi r17, 0b10000000
+000016 0fe1                      	ADD ZL, r17
+000017 940c 0013                 	JMP end
 
 
 RESOURCE USE INFORMATION
@@ -1909,40 +1904,40 @@ counted separately from r26..r31 here.
 .dseg memory usage only counts static data declared with .byte
 
 "ATmega2560" register use summary:
-x  :   0 y  :   0 z  :   0 r0 :   3 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
+x  :   0 y  :   0 z  :   0 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:   0 r17:   0 r18:   0 r19:   0 r20:   5 
-r21:   0 r22:   0 r23:   0 r24:   0 r25:   0 r26:   3 r27:   3 r28:   3 
-r29:   4 r30:   3 r31:   5 
-Registers used: 8 out of 35 (22.9%)
+r13:   0 r14:   0 r15:   0 r16:   4 r17:   3 r18:   0 r19:   0 r20:   0 
+r21:   0 r22:   0 r23:   0 r24:   0 r25:   0 r26:   6 r27:   3 r28:   0 
+r29:   0 r30:   2 r31:   0 
+Registers used: 5 out of 35 (14.3%)
 
 "ATmega2560" instruction use summary:
-.lds  :   0 .sts  :   0 adc   :   0 add   :   6 adiw  :   0 and   :   0 
-andi  :   0 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
-brcc  :   0 brcs  :   3 break :   0 breq  :   0 brge  :   0 brhc  :   0 
+.lds  :   0 .sts  :   0 adc   :   0 add   :   1 adiw  :   0 and   :   0 
+andi  :   3 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
+brcc  :   0 brcs  :   0 break :   0 breq  :   3 brge  :   0 brhc  :   0 
 brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
 brne  :   0 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
 brvs  :   0 bset  :   0 bst   :   0 call  :   0 cbi   :   0 cbr   :   0 
-clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   8 cls   :   0 
+clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   2 cls   :   0 
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   0 cpc   :   0 
-cpi   :   0 cpse  :   0 dec   :   0 eicall:   0 eijmp :   0 elpm  :   0 
+cpi   :   3 cpse  :   0 dec   :   0 eicall:   0 eijmp :   0 elpm  :   0 
 eor   :   0 fmul  :   0 fmuls :   0 fmulsu:   0 icall :   0 ijmp  :   0 
-in    :   0 inc   :   0 jmp   :   6 ld    :   0 ldd   :   0 ldi   :   5 
-lds   :   0 lpm   :   0 lsl   :   0 lsr   :   0 mov   :   2 movw  :   0 
+in    :   0 inc   :   1 jmp   :   3 ld    :   0 ldd   :   0 ldi   :   2 
+lds   :   0 lpm   :   0 lsl   :   0 lsr   :   1 mov   :   2 movw  :   0 
 mul   :   0 muls  :   0 mulsu :   0 neg   :   0 nop   :   0 or    :   0 
-ori   :   0 out   :   0 pop   :   0 push  :   0 rcall :   0 ret   :   0 
+ori   :   0 out   :   0 pop   :   0 push  :   0 rcall :   0 ret   :   1 
 reti  :   0 rjmp  :   0 rol   :   0 ror   :   0 sbc   :   0 sbci  :   0 
 sbi   :   0 sbic  :   0 sbis  :   0 sbiw  :   0 sbr   :   0 sbrc  :   0 
 sbrs  :   0 sec   :   0 seh   :   0 sei   :   0 sen   :   0 ser   :   0 
 ses   :   0 set   :   0 sev   :   0 sez   :   0 sleep :   0 spm   :   0 
 st    :   0 std   :   0 sts   :   0 sub   :   0 subi  :   0 swap  :   0 
 tst   :   0 wdr   :   0 
-Instructions used: 6 out of 116 (5.2%)
+Instructions used: 11 out of 116 (9.5%)
 
 "ATmega2560" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x000048     72      0     72  262144   0.0%
+[.cseg] 0x000000 0x000032     50      0     50  262144   0.0%
 [.dseg] 0x000200 0x000200      0      0      0    8192   0.0%
 [.eseg] 0x000000 0x000000      0      0      0    4096   0.0%
 
