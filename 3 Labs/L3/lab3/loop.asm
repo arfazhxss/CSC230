@@ -11,9 +11,9 @@
  .org 0 ; begin assembling at address 0
 
  ; Define symbolic names for resources used
- ldi r24, 0x00
- ldi r25, 0x400
- adiw 
+ ;ldi r24, 0x00
+ ;ldi r25, 0x400
+ adiw r25:r24, 0x400
  .def count = r17 ; r17 holds counter value
 	ldi count, 0; initialize count to 0 - note ...
 

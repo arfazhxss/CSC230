@@ -1,18 +1,18 @@
 <ASSEMBLER_INFO>
  <VERSION>2.2.8</VERSION>
  <DEVICE>"ATmega2560"</DEVICE>
- <WORKING_DIR>H:\230\202301\lab3\lab3\lab3\Debug</WORKING_DIR>
+ <WORKING_DIR>C:\Users\arfaz\OneDrive\Documents\CSC230\3 Labs\L3\lab3\Debug</WORKING_DIR>
  <INCLUDE_PATH>
   <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc</DIR>
   <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
   <DIR></DIR>
  </INCLUDE_PATH>
- <SOURCE_FILE>H:\230\202301\lab3\lab3\lab3\loop.asm</SOURCE_FILE>
+ <SOURCE_FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\3 Labs\L3\lab3\lab3.asm</SOURCE_FILE>
  <INCLUDED_FILES>
   <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m2560def.inc</FILE>
  </INCLUDED_FILES>
  <OBJECT_FILES>
-  <FILE>H:\230\202301\lab3\lab3\lab3\Debug\lab3.obj</FILE>
+  <FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\3 Labs\L3\lab3\Debug\lab3.obj</FILE>
  </OBJECT_FILES>
  <HEX_FILES>
   <FILE>lab3.hex</FILE>
@@ -22,7 +22,6 @@
   <FILE>lab3.lss</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <loop><FILE>H:\230\202301\lab3\lab3\lab3\loop.asm</FILE><LINE>23</LINE></loop>
-  <done><FILE>H:\230\202301\lab3\lab3\lab3\loop.asm</FILE><LINE>29</LINE></done>
+  <done><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\3 Labs\L3\lab3\lab3.asm</FILE><LINE>12</LINE></done>
  </LABELS>
 </ASSEMBLER_INFO>
