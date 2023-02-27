@@ -47,7 +47,7 @@
 ; ---- BY MODIFY THE rjmp INSTRUCTION BELOW. --------
 ; -----------------------------------------------------
 
-	rjmp test_part_a
+	rjmp test_part_b
 	; Test code
 
 
@@ -196,14 +196,92 @@ end:
 ; ****************************************************
 
 set_leds:
-	ret
+	clr R20
+	.equ clearBit = 0b00000000
+	.equ fullBit = 0b11111111
+	.equ fullByte = 0b10000000
+	.def countBit = R20
+	ldi XL, fullbit ; PORTB
+	ldi XH, fullBit ; PORTL
+	ldi YL, fullByte
+	andi r16, 0b00111111
+	lsl r16
+	lsl r16
+
+	continue001:
+		cpi countBit, 0b10
+		breq continueBtoL
+	
+	continuePortB:
+		inc countBit
+		lsl r16
+		brcs addPortB
+		lsr XL
+		lsr XL
+		jmp continue001
+
+	addPortB:
+		lsr XL
+		lsr XL
+		add XL, YL
+		jmp continue001
+	
+	continueBtoL:
+		lsr XL
+		lsr XL
+		lsr XL
+		lsr XL
+
+	continue002:
+		cpi countBit, 0b110
+		breq setPort
+
+	continuePortL:
+		inc countBit
+		lsr XH
+		lsr XH
+		lsl r16
+		brcs addPortL
+		jmp continue002
+
+	addPortL:
+		add XH, YL
+		jmp continue002
+
+	setPort:
+		ldi R20, 0xFF
+		sts DDRL, R20
+		out DDRB, R20
+		sts PORTL, XH
+		out PORTB, XL
+		jmp clearA
+
+	clearA:
+		clr r16
+		clr r20
+		clr r26
+		clr r27
+		clr r28
+		ret
 
 
 slow_leds:
+	clr r16
+	add r16, r17
+	rcall set_leds
+	rcall delay_long
+	clr r16
+	rcall set_leds
 	ret
 
 
 fast_leds:
+	clr r16
+	add r16, r17
+	rcall set_leds
+	rcall delay_short
+	clr r16
+	rcall set_leds
 	ret
 
 

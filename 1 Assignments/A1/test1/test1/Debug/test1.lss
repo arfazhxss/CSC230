@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\assignment1.asm Sat Feb 11 00:11:41 2023
+AVRASM ver. 2.2.8  C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A1\test1\test1\assignment1.asm Sat Feb 25 23:05:40 2023
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m2560def.inc'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m2560def.inc'
@@ -1923,6 +1923,8 @@ AVRASM ver. 2.2.8  C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\assig
                                  .def numone = R21
 000021 77af                      ANDI XL, 0b01111111
                                  
+                                 ; main loop that checks each bit and branches out when there's a 1
+                                 ; is checked with LogicalShifted loops of XL (r26), checked through YL (R28)
                                  main:
 000022 2fca                      	MOV YL, XL
 000023 70c1                      	ANDI YL, 0b00000001
@@ -1930,21 +1932,27 @@ AVRASM ver. 2.2.8  C:\Users\arfaz\OneDrive\Documents\CSC230\A1\test1\test1\assig
 000025 f009                      	BREQ increment
 000026 c001                      	RJMP continue
                                  
+                                 ; increments numone (# of ones) if 1 is found
                                  increment:
 000027 9553                      	INC numone
                                  
+                                 ; continues the main-loop adding 1 if found, or not if-not-found
                                  continue:
 000028 95a6                      	LSR XL
 000029 30a0                      	CPI XL, 0b00000000
 00002a f011                      	BREQ exitLOOP
 00002b 940c 0022                 	JMP main
                                  
+                                 ; exits loop if LogicalShiftedLoops give us a 0b-0000-0000
+                                 ; checking if the number of ones is odd, or not
                                  exitLOOP:
 00002d 7051                      	ANDI numone, 0b00000001
 00002e 3051                      	CPI numone, 0b00000001
 00002f f011                      	BREQ odd
 000030 940c 0037                 	JMP end2
                                  
+                                 ; if odd, adds a 1 to 7th bit of R30
+                                 ; else, continues to clear all memories
                                  odd:
 000032 2755                      	CLR numone
 000033 e850                      	ldi numone, 0b10000000

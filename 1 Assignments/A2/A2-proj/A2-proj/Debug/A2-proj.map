@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\arfaz\OneDrive\Documents\CSC230\3 Labs\L3\lab3\lab3.asm Sat Feb 25 21:26:48 2023
+AVRASM ver. 2.2.8  C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm Sun Feb 26 04:40:17 2023
 
 
 EQU  SIGNATURE_000 0000001e
@@ -1359,4 +1359,50 @@ EQU  URXC3addr    0000006c
 EQU  UDRE3addr    0000006e
 EQU  UTXC3addr    00000070
 EQU  INT_VECTORS_SIZE 00000072
-CSEG done         00000009
+CSEG test_part_b  00000013
+CSEG test_part_a  00000001
+CSEG set_leds     00000063
+CSEG delay_long   000000a8
+CSEG delay_short  000000af
+CSEG end          00000062
+CSEG slow_leds    00000097
+CSEG fast_leds    0000009e
+CSEG test_part_c  0000002e
+CSEG leds_with_speed 000000a5
+CSEG test_part_c_loop 00000037
+CSEG test_part_d  0000003d
+CSEG encode_letter 000000a6
+CSEG test_part_e  0000005e
+CSEG WORD02       00000674
+CSEG display_message 000000a7
+EQU  clearBit     00000000
+EQU  fullBit      000000ff
+EQU  fullByte     00000080
+DEF  countBit     r20
+CSEG continue001  0000006a
+CSEG continueBtoL 00000078
+CSEG continuePortB 0000006c
+CSEG addPortB     00000073
+CSEG continue002  0000007c
+CSEG setPort      00000088
+CSEG continuePortL 0000007e
+CSEG addPortL     00000085
+CSEG clearA       00000091
+CSEG delay_long_loop 000000aa
+CSEG delay        000000b6
+CSEG delay_short_loop 000000b1
+CSEG delay_busywait 000000b8
+CSEG delay_busywait_loop1 000000bc
+CSEG delay_busywait_exit 000000c5
+CSEG delay_busywait_loop2 000000bf
+CSEG delay_busywait_loop3 000000c2
+CSEG PATTERNS     00000600
+CSEG WORD00       0000066c
+CSEG WORD01       00000672
+CSEG WORD03       00000677
+CSEG WORD04       0000067a
+CSEG WORD05       0000067c
+CSEG WORD06       00000680
+CSEG WORD07       00000683
+CSEG WORD08       00000685
+CSEG WORD09       00000688
