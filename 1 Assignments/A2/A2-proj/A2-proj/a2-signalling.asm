@@ -335,7 +335,7 @@ encode_letter:
 		LPM R20, Z			; 8 additions after each loop, unless exception
 		ADIW ZH:ZL, 8
 		cpi R20, 0b00101101
-		rjmp endEncode
+		breq endEncode
 		cp R20, R18
 		breq found			; exception
 		cpi R20, 0x00
