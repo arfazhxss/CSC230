@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm Sun Mar 05 14:23:24 2023
+AVRASM ver. 2.2.8  C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm Sun Mar 05 14:33:31 2023
 
 
 EQU  SIGNATURE_000 0000001e
@@ -1362,8 +1362,8 @@ EQU  INT_VECTORS_SIZE 00000072
 CSEG test_part_d  00000041
 CSEG test_part_a  00000005
 CSEG set_leds     00000067
-CSEG delay_long   000000de
-CSEG delay_short  000000e5
+CSEG delay_long   000000e0
+CSEG delay_short  000000e7
 CSEG end          00000066
 CSEG test_part_b  00000017
 CSEG slow_leds    0000009b
@@ -1374,7 +1374,7 @@ CSEG test_part_c_loop 0000003b
 CSEG encode_letter 000000b4
 CSEG test_part_e  00000062
 CSEG WORD02       00000674
-CSEG display_message 000000dd
+CSEG display_message 000000df
 EQU  clearBit     00000000
 EQU  fullBit      000000ff
 EQU  fullByte     00000080
@@ -1390,21 +1390,21 @@ CSEG addPortL     00000089
 CSEG clearA       00000095
 SET  PARAM_OFFSET 00000004
 CSEG PATTERNS     00000600
-CSEG loop         000000bf
-CSEG found        000000c6
-CSEG endEncode    000000dc
-CSEG foundLoop    000000c8
-CSEG turnOnLED    000000d0
-CSEG LedSpeed     000000d6
-CSEG fasted       000000da
-CSEG delay_long_loop 000000e0
-CSEG delay        000000ec
-CSEG delay_short_loop 000000e7
-CSEG delay_busywait 000000ee
-CSEG delay_busywait_loop1 000000f2
-CSEG delay_busywait_exit 000000fb
-CSEG delay_busywait_loop2 000000f5
-CSEG delay_busywait_loop3 000000f8
+CSEG loop         000000be
+CSEG endEncode    000000de
+CSEG found        000000c7
+CSEG foundLoop    000000ca
+CSEG turnOnLED    000000d2
+CSEG LedSpeed     000000d8
+CSEG fasted       000000dc
+CSEG delay_long_loop 000000e2
+CSEG delay        000000ee
+CSEG delay_short_loop 000000e9
+CSEG delay_busywait 000000f0
+CSEG delay_busywait_loop1 000000f4
+CSEG delay_busywait_exit 000000fd
+CSEG delay_busywait_loop2 000000f7
+CSEG delay_busywait_loop3 000000fa
 CSEG WORD00       0000066c
 CSEG WORD01       00000672
 CSEG WORD03       00000677

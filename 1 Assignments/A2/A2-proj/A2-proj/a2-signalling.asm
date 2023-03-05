@@ -319,7 +319,6 @@ leds_with_speed:
 encode_letter:
 	.set PARAM_OFFSET = 4
 	clr r25
-	ldi r25, 0b00111111
 	clr r18
 	clr r19 ; counter
 	ldi r19, 6
@@ -335,12 +334,15 @@ encode_letter:
 	loop:
 		LPM R20, Z			; 8 additions after each loop, unless exception
 		ADIW ZH:ZL, 8
+		cpi R20, 0b00101101
+		rjmp endEncode
 		cp R20, R18
 		breq found			; exception
 		cpi R20, 0x00
 		breq endEncode
 		rjmp loop
 	found:
+		ldi r25, 0b00111111
 		SBIW ZH:ZL, 7
 		rjmp foundLoop
 	foundLoop:

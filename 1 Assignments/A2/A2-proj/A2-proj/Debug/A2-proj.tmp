@@ -25,8 +25,8 @@
   <test_part_d><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>142</LINE></test_part_d>
   <test_part_a><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>60</LINE></test_part_a>
   <set_leds><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>205</LINE></set_leds>
-  <delay_long><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>396</LINE></delay_long>
-  <delay_short><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>410</LINE></delay_short>
+  <delay_long><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>398</LINE></delay_long>
+  <delay_short><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>412</LINE></delay_short>
   <end><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>193</LINE></end>
   <test_part_b><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>87</LINE></test_part_b>
   <slow_leds><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>275</LINE></slow_leds>
@@ -36,8 +36,8 @@
   <test_part_c_loop><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>132</LINE></test_part_c_loop>
   <encode_letter><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>319</LINE></encode_letter>
   <test_part_e><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>187</LINE></test_part_e>
-  <WORD02><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>501</LINE></WORD02>
-  <display_message><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>380</LINE></display_message>
+  <WORD02><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>503</LINE></WORD02>
+  <display_message><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>382</LINE></display_message>
   <continue001><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>218</LINE></continue001>
   <continueBtoL><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>236</LINE></continueBtoL>
   <continuePortB><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>222</LINE></continuePortB>
@@ -47,30 +47,30 @@
   <continuePortL><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>246</LINE></continuePortL>
   <addPortL><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>254</LINE></addPortL>
   <clearA><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>266</LINE></clearA>
-  <PATTERNS><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>468</LINE></PATTERNS>
-  <loop><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>335</LINE></loop>
-  <found><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>343</LINE></found>
-  <endEncode><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>374</LINE></endEncode>
-  <foundLoop><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>346</LINE></foundLoop>
-  <turnOnLED><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>356</LINE></turnOnLED>
-  <LedSpeed><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>364</LINE></LedSpeed>
-  <fasted><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>370</LINE></fasted>
-  <delay_long_loop><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>400</LINE></delay_long_loop>
-  <delay><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>425</LINE></delay>
-  <delay_short_loop><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>414</LINE></delay_short_loop>
-  <delay_busywait><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>436</LINE></delay_busywait>
-  <delay_busywait_loop1><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>442</LINE></delay_busywait_loop1>
-  <delay_busywait_exit><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>457</LINE></delay_busywait_exit>
-  <delay_busywait_loop2><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>447</LINE></delay_busywait_loop2>
-  <delay_busywait_loop3><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>452</LINE></delay_busywait_loop3>
-  <WORD00><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>499</LINE></WORD00>
-  <WORD01><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>500</LINE></WORD01>
-  <WORD03><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>502</LINE></WORD03>
-  <WORD04><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>503</LINE></WORD04>
-  <WORD05><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>504</LINE></WORD05>
-  <WORD06><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>505</LINE></WORD06>
-  <WORD07><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>506</LINE></WORD07>
-  <WORD08><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>507</LINE></WORD08>
-  <WORD09><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>508</LINE></WORD09>
+  <PATTERNS><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>470</LINE></PATTERNS>
+  <loop><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>334</LINE></loop>
+  <endEncode><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>376</LINE></endEncode>
+  <found><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>344</LINE></found>
+  <foundLoop><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>348</LINE></foundLoop>
+  <turnOnLED><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>358</LINE></turnOnLED>
+  <LedSpeed><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>366</LINE></LedSpeed>
+  <fasted><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>372</LINE></fasted>
+  <delay_long_loop><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>402</LINE></delay_long_loop>
+  <delay><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>427</LINE></delay>
+  <delay_short_loop><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>416</LINE></delay_short_loop>
+  <delay_busywait><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>438</LINE></delay_busywait>
+  <delay_busywait_loop1><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>444</LINE></delay_busywait_loop1>
+  <delay_busywait_exit><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>459</LINE></delay_busywait_exit>
+  <delay_busywait_loop2><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>449</LINE></delay_busywait_loop2>
+  <delay_busywait_loop3><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>454</LINE></delay_busywait_loop3>
+  <WORD00><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>501</LINE></WORD00>
+  <WORD01><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>502</LINE></WORD01>
+  <WORD03><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>504</LINE></WORD03>
+  <WORD04><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>505</LINE></WORD04>
+  <WORD05><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>506</LINE></WORD05>
+  <WORD06><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>507</LINE></WORD06>
+  <WORD07><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>508</LINE></WORD07>
+  <WORD08><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>509</LINE></WORD08>
+  <WORD09><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>510</LINE></WORD09>
  </LABELS>
 </ASSEMBLER_INFO>

@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm Sun Mar 05 14:23:24 2023
+AVRASM ver. 2.2.8  C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm Sun Mar 05 14:33:31 2023
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m2560def.inc'
 C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm(25): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m2560def.inc'
@@ -1948,23 +1948,23 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-sig
                                  test_part_a:
 000005 e201                      	ldi r16, 0b00100001
 000006 d060                      	rcall set_leds
-000007 d0d6                      	rcall delay_long
+000007 d0d8                      	rcall delay_long
                                  
 000008 2700                      	clr r16
 000009 d05d                      	rcall set_leds
-00000a d0d3                      	rcall delay_long
+00000a d0d5                      	rcall delay_long
                                  
 00000b e308                      	ldi r16, 0b00111000
 00000c d05a                      	rcall set_leds
-00000d d0d7                      	rcall delay_short
+00000d d0d9                      	rcall delay_short
                                  
 00000e 2700                      	clr r16
 00000f d057                      	rcall set_leds
-000010 d0cd                      	rcall delay_long
+000010 d0cf                      	rcall delay_long
                                  
 000011 e201                      	ldi r16, 0b00100001
 000012 d054                      	rcall set_leds
-000013 d0ca                      	rcall delay_long
+000013 d0cc                      	rcall delay_long
                                  
 000014 2700                      	clr r16
 000015 d051                      	rcall set_leds
@@ -1982,8 +1982,8 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-sig
 00001d e115                      	ldi r17, 0b00010101
 00001e d07c                      	rcall slow_leds
                                  
-00001f d0be                      	rcall delay_long
-000020 d0bd                      	rcall delay_long
+00001f d0c0                      	rcall delay_long
+000020 d0bf                      	rcall delay_long
                                  
 000021 e21a                      	ldi r17, 0b00101010
 000022 d07f                      	rcall fast_leds
@@ -2036,7 +2036,7 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-sig
 000046 d062                      	rcall leds_with_speed
 000047 919f                      	pop r25
                                  
-000048 d095                      	rcall delay_long
+000048 d097                      	rcall delay_long
                                  
 000049 e451                      	ldi r21, 'A'
 00004a 935f                      	push r21
@@ -2046,7 +2046,7 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-sig
 00004e d05a                      	rcall leds_with_speed
 00004f 919f                      	pop r25
                                  
-000050 d08d                      	rcall delay_long
+000050 d08f                      	rcall delay_long
                                  
                                  
 000051 e45d                      	ldi r21, 'M'
@@ -2057,7 +2057,7 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-sig
 000056 d052                      	rcall leds_with_speed
 000057 919f                      	pop r25
                                  
-000058 d085                      	rcall delay_long
+000058 d087                      	rcall delay_long
                                  
 000059 e458                      	ldi r21, 'H'
 00005a 935f                      	push r21
@@ -2067,7 +2067,7 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-sig
 00005e d04a                      	rcall leds_with_speed
 00005f 919f                      	pop r25
                                  
-000060 d07d                      	rcall delay_long
+000060 d07f                      	rcall delay_long
                                  
 000061 c004                      	rjmp end
                                  
@@ -2075,7 +2075,7 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-sig
                                  test_part_e:
 000062 e09c                      	ldi r25, HIGH(WORD02 << 1)
 000063 ee88                      	ldi r24, LOW(WORD02 << 1)
-000064 d078                      	rcall display_message
+000064 d07a                      	rcall display_message
 000065 c000                      	rjmp end
                                  
                                  end:
@@ -2164,7 +2164,7 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-sig
 00009b 2700                      	clr r16
 00009c 0f01                      	add r16, r17
 00009d dfc9                      	rcall set_leds
-00009e d03f                      	rcall delay_long
+00009e d041                      	rcall delay_long
 00009f 2700                      	clr r16
 0000a0 dfc6                      	rcall set_leds
 0000a1 9508                      	ret
@@ -2174,7 +2174,7 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-sig
 0000a2 2700                      	clr r16
 0000a3 0f01                      	add r16, r17
 0000a4 dfc2                      	rcall set_leds
-0000a5 d03f                      	rcall delay_short
+0000a5 d041                      	rcall delay_short
 0000a6 2700                      	clr r16
 0000a7 dfbf                      	rcall set_leds
 0000a8 9508                      	ret
@@ -2207,66 +2207,68 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-sig
                                  encode_letter:
                                  	.set PARAM_OFFSET = 4
 0000b4 2799                      	clr r25
-0000b5 e39f                      	ldi r25, 0b00111111
-0000b6 2722                      	clr r18
-0000b7 2733                      	clr r19 ; counter
-0000b8 e036                      	ldi r19, 6
-0000b9 2744                      	clr r20
+0000b5 2722                      	clr r18
+0000b6 2733                      	clr r19 ; counter
+0000b7 e036                      	ldi r19, 6
+0000b8 2744                      	clr r20
                                  	
-0000ba b7de                      	in YH, SPH
-0000bb b7cd                      	in YL, SPL
-0000bc 812c                      	ldd r18, Y + PARAM_OFFSET + 0
+0000b9 b7de                      	in YH, SPH
+0000ba b7cd                      	in YL, SPL
+0000bb 812c                      	ldd r18, Y + PARAM_OFFSET + 0
                                  
-0000bd e0fc                      	ldi ZH, high (PATTERNS*2)
-0000be e0e0                      	ldi ZL, low (PATTERNS*2)
+0000bc e0fc                      	ldi ZH, high (PATTERNS*2)
+0000bd e0e0                      	ldi ZL, low (PATTERNS*2)
                                  	
                                  	loop:
-0000bf 9144                      		LPM R20, Z
-0000c0 9638                      		ADIW ZH:ZL, 8
-0000c1 1742                      		cp R20, R18
-0000c2 f019                      		breq found
-0000c3 3040                      		cpi R20, 0x00
-0000c4 f0b9                      		breq endEncode
-0000c5 cff9                      		rjmp loop
+0000be 9144                      		LPM R20, Z			; 8 additions after each loop, unless exception
+0000bf 9638                      		ADIW ZH:ZL, 8
+0000c0 324d                      		cpi R20, 0b00101101
+0000c1 c01c                      		rjmp endEncode
+0000c2 1742                      		cp R20, R18
+0000c3 f019                      		breq found			; exception
+0000c4 3040                      		cpi R20, 0x00
+0000c5 f0c1                      		breq endEncode
+0000c6 cff7                      		rjmp loop
                                  	found:
-0000c6 9737                      		SBIW ZH:ZL, 7
-0000c7 c000                      		rjmp foundLoop
+0000c7 e39f                      		ldi r25, 0b00111111
+0000c8 9737                      		SBIW ZH:ZL, 7
+0000c9 c000                      		rjmp foundLoop
                                  	foundLoop:
-0000c8 9145                      		LPM R20, Z+
-0000c9 364f                      		cpi R20, 0b01101111
-0000ca f029                      		breq turnOnLED
-0000cb 0f99                      		LSL R25
-0000cc 953a                      		dec R19
-0000cd 3030                      		cpi R19, 0
-0000ce f039                      		breq LedSpeed
-0000cf cff8                      		rjmp foundLoop
+0000ca 9145                      		LPM R20, Z+
+0000cb 364f                      		cpi R20, 0b01101111
+0000cc f029                      		breq turnOnLED
+0000cd 0f99                      		LSL R25
+0000ce 953a                      		dec R19
+0000cf 3030                      		cpi R19, 0
+0000d0 f039                      		breq LedSpeed
+0000d1 cff8                      		rjmp foundLoop
                                  
                                  		turnOnLED:
-0000d0 0f99                      			LSL R25
-0000d1 9593                      			INC R25
-0000d2 953a                      			dec R19
-0000d3 3030                      			cpi R19, 0
-0000d4 f009                      			breq LedSpeed
-0000d5 cff2                      			rjmp foundLoop
+0000d2 0f99                      			LSL R25
+0000d3 9593                      			INC R25
+0000d4 953a                      			dec R19
+0000d5 3030                      			cpi R19, 0
+0000d6 f009                      			breq LedSpeed
+0000d7 cff2                      			rjmp foundLoop
                                  		
                                  		LedSpeed:
-0000d6 9144                      			LPM R20, Z
-0000d7 3042                      			cpi R20, 2
-0000d8 f009                      			breq fasted
-0000d9 c002                      			rjmp endEncode
+0000d8 9144                      			LPM R20, Z
+0000d9 3042                      			cpi R20, 2
+0000da f009                      			breq fasted
+0000db c002                      			rjmp endEncode
                                  
                                  			fasted:
-0000da 739f                      				andi R25, 0b00111111
-0000db c000                      				rjmp endEncode
+0000dc 739f                      				andi R25, 0b00111111
+0000dd c000                      				rjmp endEncode
                                  
                                  	endEncode: 
-0000dc 9508                      		ret
+0000de 9508                      		ret
                                  
                                  	;ret
                                  
                                  
                                  display_message:
-0000dd 9508                      	ret
+0000df 9508                      	ret
                                  
                                  
                                  ; ****************************************************
@@ -2282,37 +2284,37 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-sig
                                  
                                  ; about one second
                                  delay_long:
-0000de 930f                      	push r16
+0000e0 930f                      	push r16
                                  
-0000df e00e                      	ldi r16, 14
+0000e1 e00e                      	ldi r16, 14
                                  delay_long_loop:
-0000e0 d00b                      	rcall delay
-0000e1 950a                      	dec r16
-0000e2 f7e9                      	brne delay_long_loop
+0000e2 d00b                      	rcall delay
+0000e3 950a                      	dec r16
+0000e4 f7e9                      	brne delay_long_loop
                                  
-0000e3 910f                      	pop r16
-0000e4 9508                      	ret
+0000e5 910f                      	pop r16
+0000e6 9508                      	ret
                                  
                                  
                                  ; about 0.25 of a second
                                  delay_short:
-0000e5 930f                      	push r16
+0000e7 930f                      	push r16
                                  
-0000e6 e004                      	ldi r16, 4
+0000e8 e004                      	ldi r16, 4
                                  delay_short_loop:
-0000e7 d004                      	rcall delay
-0000e8 950a                      	dec r16
-0000e9 f7e9                      	brne delay_short_loop
+0000e9 d004                      	rcall delay
+0000ea 950a                      	dec r16
+0000eb f7e9                      	brne delay_short_loop
                                  
-0000ea 910f                      	pop r16
-0000eb 9508                      	ret
+0000ec 910f                      	pop r16
+0000ed 9508                      	ret
                                  
                                  ; When wanting about a 1/5th of a second delay, all other
                                  ; code must call this function
                                  ;
                                  delay:
-0000ec d001                      	rcall delay_busywait
-0000ed 9508                      	ret
+0000ee d001                      	rcall delay_busywait
+0000ef 9508                      	ret
                                  
                                  
                                  ; This function is ONLY called from "delay", and
@@ -2322,31 +2324,31 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-sig
                                  ; running on a mega2560 processor.
                                  ;
                                  delay_busywait:
-0000ee 930f                      	push r16
-0000ef 931f                      	push r17
-0000f0 932f                      	push r18
+0000f0 930f                      	push r16
+0000f1 931f                      	push r17
+0000f2 932f                      	push r18
                                  
-0000f1 e008                      	ldi r16, 0x08
+0000f3 e008                      	ldi r16, 0x08
                                  delay_busywait_loop1:
-0000f2 950a                      	dec r16
-0000f3 f039                      	breq delay_busywait_exit
+0000f4 950a                      	dec r16
+0000f5 f039                      	breq delay_busywait_exit
                                  
-0000f4 ef1f                      	ldi r17, 0xff
+0000f6 ef1f                      	ldi r17, 0xff
                                  delay_busywait_loop2:
-0000f5 951a                      	dec r17
-0000f6 f3d9                      	breq delay_busywait_loop1
+0000f7 951a                      	dec r17
+0000f8 f3d9                      	breq delay_busywait_loop1
                                  
-0000f7 ef2f                      	ldi r18, 0xff
+0000f9 ef2f                      	ldi r18, 0xff
                                  delay_busywait_loop3:
-0000f8 952a                      	dec r18
-0000f9 f3d9                      	breq delay_busywait_loop2
-0000fa cffd                      	rjmp delay_busywait_loop3
+0000fa 952a                      	dec r18
+0000fb f3d9                      	breq delay_busywait_loop2
+0000fc cffd                      	rjmp delay_busywait_loop3
                                  
                                  delay_busywait_exit:
-0000fb 912f                      	pop r18
-0000fc 911f                      	pop r17
-0000fd 910f                      	pop r16
-0000fe 9508                      	ret
+0000fd 912f                      	pop r18
+0000fe 911f                      	pop r17
+0000ff 910f                      	pop r16
+000100 9508                      	ret
                                  
                                  
                                  ; Some tables
@@ -2519,7 +2521,7 @@ counted separately from r26..r31 here.
 "ATmega2560" register use summary:
 x  :   0 y  :   2 z  :   3 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:  36 r17:  21 r18:   7 r19:  10 r20:  21 
+r13:   0 r14:   0 r15:   0 r16:  36 r17:  21 r18:   7 r19:  10 r20:  22 
 r21:  12 r22:   0 r23:   2 r24:   3 r25:  15 r26:  12 r27:   6 r28:   6 
 r29:   2 r30:   3 r31:   3 
 Registers used: 17 out of 35 (48.6%)
@@ -2533,13 +2535,13 @@ brne  :   3 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0
 brvs  :   0 bset  :   0 bst   :   0 call  :   0 cbi   :   0 cbr   :   0 
 clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :  19 cls   :   0 
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   1 cpc   :   0 
-cpi   :   8 cpse  :   0 dec   :   7 eicall:   0 eijmp :   0 elpm  :   0 
+cpi   :   9 cpse  :   0 dec   :   7 eicall:   0 eijmp :   0 elpm  :   0 
 eor   :   0 fmul  :   0 fmuls :   0 fmulsu:   0 icall :   0 ijmp  :   0 
 in    :   4 inc   :   3 jmp   :   5 ld    :   0 ldd   :   2 ldi   :  40 
 lds   :   0 lpm   :   5 lsl   :   6 lsr   :  11 mov   :   0 movw  :   0 
 mul   :   0 muls  :   0 mulsu :   0 neg   :   0 nop   :   0 or    :   0 
 ori   :   0 out   :   4 pop   :  16 push  :  16 rcall :  51 ret   :  10 
-reti  :   0 rjmp  :  14 rol   :   0 ror   :   0 sbc   :   0 sbci  :   0 
+reti  :   0 rjmp  :  15 rol   :   0 ror   :   0 sbc   :   0 sbci  :   0 
 sbi   :   0 sbic  :   0 sbis  :   0 sbiw  :   1 sbr   :   0 sbrc  :   0 
 sbrs  :   0 sec   :   0 seh   :   0 sei   :   0 sen   :   0 ser   :   0 
 ses   :   0 set   :   0 sev   :   0 sez   :   0 sleep :   0 spm   :   0 
@@ -2550,7 +2552,7 @@ Instructions used: 27 out of 116 (23.3%)
 "ATmega2560" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x000d14    510    276    786  262144   0.3%
+[.cseg] 0x000000 0x000d14    514    276    790  262144   0.3%
 [.dseg] 0x000200 0x000200      0      0      0    8192   0.0%
 [.eseg] 0x000000 0x000000      0      0      0    4096   0.0%
 
