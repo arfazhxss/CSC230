@@ -3,8 +3,8 @@
 ; CSC 230: Spring 2023
 ; Instructor: Ahmad Abdullah
 ;
-; Student name:
-; Student ID:
+; Student name: Arfaz Hossain
+; Student ID: V00984826
 ; Date of completed work:
 ;
 ; *******************************
@@ -33,7 +33,10 @@
 	; initializion code will need to appear in this
     ; section
 
-
+	ldi R23, high(0x21ff)
+	ldi R24, low(0x21ff)
+	out SPH, R23
+	out SPL, R24
 
 ; ***************************************************
 ; **** END OF FIRST "STUDENT CODE" SECTION **********
@@ -47,7 +50,10 @@
 ; ---- BY MODIFY THE rjmp INSTRUCTION BELOW. --------
 ; -----------------------------------------------------
 
-	rjmp test_part_b
+	;rjmp test_part_a
+	;rjmp test_part_b
+	;rjmp test_part_c
+	rjmp test_part_d
 	; Test code
 
 
@@ -115,13 +121,14 @@ test_part_c:
 	push r16
 	rcall leds_with_speed
 	pop r16
-
+	
 	ldi r16, 0b11011100
 	push r16
 	rcall leds_with_speed
 	pop r16
 
 	ldi r20, 0b00100000
+	
 test_part_c_loop:
 	push r20
 	rcall leds_with_speed
@@ -286,8 +293,20 @@ fast_leds:
 
 
 leds_with_speed:
-	ret
+	.set PARAM_OFFSET = 4
+	clr r17
+	in YH, SPH
+	in YL, SPL
+	ldd r17, Y + PARAM_OFFSET + 0
 
+	ldi R19, 0b11000000
+	and R19, R17
+	cpi R19, 0b11000000
+	breq slow_leds
+	rcall fast_leds
+
+	clr R19
+	ret
 
 ; Note -- this function will only ever be tested
 ; with upper-case letters, but it is a good idea
@@ -298,7 +317,64 @@ leds_with_speed:
 ; for any legal letter.
 
 encode_letter:
-	ret
+	.set PARAM_OFFSET = 4
+	clr r25
+	ldi r25, 0b00111111
+	clr r18
+	clr r19 ; counter
+	ldi r19, 6
+	clr r20
+	
+	in YH, SPH
+	in YL, SPL
+	ldd r18, Y + PARAM_OFFSET + 0
+
+	ldi ZH, high (PATTERNS*2)
+	ldi ZL, low (PATTERNS*2)
+	
+	loop:
+		LPM R20, Z			; 8 additions after each loop, unless exception
+		ADIW ZH:ZL, 8
+		cp R20, R18
+		breq found			; exception
+		cpi R20, 0x00
+		breq endEncode
+		rjmp loop
+	found:
+		SBIW ZH:ZL, 7
+		rjmp foundLoop
+	foundLoop:
+		LPM R20, Z+
+		cpi R20, 0b01101111
+		breq turnOnLED
+		LSL R25
+		dec R19
+		cpi R19, 0
+		breq LedSpeed
+		rjmp foundLoop
+
+		turnOnLED:
+			LSL R25
+			INC R25
+			dec R19
+			cpi R19, 0
+			breq LedSpeed
+			rjmp foundLoop
+		
+		LedSpeed:
+			LPM R20, Z
+			cpi R20, 2
+			breq fasted
+			rjmp endEncode
+
+			fasted:
+				andi R25, 0b00111111
+				rjmp endEncode
+
+	endEncode: 
+		ret
+
+	;ret
 
 
 display_message:
