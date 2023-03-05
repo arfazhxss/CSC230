@@ -22,7 +22,6 @@
   <FILE>A2-proj.lss</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <test_part_d><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>142</LINE></test_part_d>
   <test_part_a><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>60</LINE></test_part_a>
   <set_leds><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>205</LINE></set_leds>
   <delay_long><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>398</LINE></delay_long>
@@ -34,6 +33,7 @@
   <test_part_c><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>119</LINE></test_part_c>
   <leds_with_speed><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>295</LINE></leds_with_speed>
   <test_part_c_loop><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>132</LINE></test_part_c_loop>
+  <test_part_d><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>142</LINE></test_part_d>
   <encode_letter><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>319</LINE></encode_letter>
   <test_part_e><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>187</LINE></test_part_e>
   <WORD02><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm</FILE><LINE>503</LINE></WORD02>

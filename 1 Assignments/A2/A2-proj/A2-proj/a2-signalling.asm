@@ -53,7 +53,7 @@
 	;rjmp test_part_a
 	;rjmp test_part_b
 	;rjmp test_part_c
-	rjmp test_part_d
+	;rjmp test_part_d
 	; Test code
 
 

@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm Sun Mar 05 14:35:09 2023
+AVRASM ver. 2.2.8  C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm Sun Mar 05 15:29:29 2023
 
 
 EQU  SIGNATURE_000 0000001e
@@ -1359,7 +1359,6 @@ EQU  URXC3addr    0000006c
 EQU  UDRE3addr    0000006e
 EQU  UTXC3addr    00000070
 EQU  INT_VECTORS_SIZE 00000072
-CSEG test_part_d  00000041
 CSEG test_part_a  00000005
 CSEG set_leds     00000067
 CSEG delay_long   000000e0
@@ -1371,6 +1370,7 @@ CSEG fast_leds    000000a2
 CSEG test_part_c  00000032
 CSEG leds_with_speed 000000a9
 CSEG test_part_c_loop 0000003b
+CSEG test_part_d  00000041
 CSEG encode_letter 000000b4
 CSEG test_part_e  00000062
 CSEG WORD02       00000674
