@@ -54,6 +54,7 @@
 	;rjmp test_part_b
 	;rjmp test_part_c
 	;rjmp test_part_d
+	rjmp test_part_e
 	; Test code
 
 
@@ -140,6 +141,7 @@ test_part_c_loop:
 
 
 test_part_d:
+
 	ldi r21, 'E'
 	push r21
 	rcall encode_letter
@@ -172,6 +174,16 @@ test_part_d:
 	rcall delay_long
 
 	ldi r21, 'H'
+	push r21
+	rcall encode_letter
+	pop r21
+	push r25
+	rcall leds_with_speed
+	pop r25
+
+	rcall delay_long
+
+	ldi r21, '-'
 	push r21
 	rcall encode_letter
 	pop r21
@@ -334,8 +346,8 @@ encode_letter:
 	loop:
 		LPM R20, Z			; 8 additions after each loop, unless exception
 		ADIW ZH:ZL, 8
-		cpi R20, 0b00101101
-		breq endEncode
+		;cpi R20, 0b00101101
+		;breq endEncode
 		cp R20, R18
 		breq found			; exception
 		cpi R20, 0x00
@@ -374,13 +386,34 @@ encode_letter:
 				rjmp endEncode
 
 	endEncode: 
+		clr r18
+		clr r19
+		clr r20
+		clr ZH
+		clr ZL
+		clr YH
+		clr YL
 		ret
-
-	;ret
 
 
 display_message:
-	ret
+	CLR ZH
+	CLR ZL
+	MOV ZH, R25
+	MOV ZL, R24
+	CLR R25
+	CLR R24
+	
+	display_message_loop:
+		LPM R21, Z
+		cpi R21, 0
+		breq end_display
+		rcall encode_letter
+		pop r21
+		push R25
+		rcall leds_with_speed
+		pop R25
+	end_display: ret
 
 
 ; ****************************************************
