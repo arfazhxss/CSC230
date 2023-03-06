@@ -50,11 +50,11 @@
 ; ---- BY MODIFY THE rjmp INSTRUCTION BELOW. --------
 ; -----------------------------------------------------
 
-	;rjmp test_part_a
+	rjmp test_part_a
 	;rjmp test_part_b
 	;rjmp test_part_c
 	;rjmp test_part_d
-	rjmp test_part_e
+	;rjmp test_part_e
 	; Test code
 
 
@@ -205,11 +205,6 @@ test_part_e:
 end:
     rjmp end
 
-
-
-
-
-
 ; ****************************************************
 ; **** BEGINNING OF SECOND "STUDENT CODE" SECTION ****
 ; ****************************************************
@@ -288,7 +283,7 @@ slow_leds:
 	clr r16
 	add r16, r17
 	rcall set_leds
-	;rcall delay_long
+	rcall delay_long
 	clr r16
 	rcall set_leds
 	ret
@@ -298,7 +293,7 @@ fast_leds:
 	clr r16
 	add r16, r17
 	rcall set_leds
-	;rcall delay_short
+	rcall delay_short
 	clr r16
 	rcall set_leds
 	ret
@@ -339,21 +334,8 @@ encode_letter:
 	in YH, SPH
 	in YL, SPL
 	
-	;ldd r18, Y+0
-	;ldd r18, Y+1
-	;ldd r18, Y+2
-	;ldd r18, Y+3
-	ldd r18, Y+4
-	;ldd r18, Y+5
-	;ldd r18, Y+6
-	;ldd r18, Y+7
-	;ldd r18, Y+8
-	;ldd r18, Y+9
-	;ldd r18, Y+10
-	;ldd r18, Y+11
-	;ldd r18, Y+12
-	;ldd r18, Y+13
-	;ldd r18, Y + PARAM_OFFSET + 4
+	;ldd r18, Y+4
+	ldd r18, Y + PARAM_OFFSET + 4
 
 	ldi ZH, high (PATTERNS*2)
 	ldi ZL, low (PATTERNS*2)
@@ -431,9 +413,18 @@ display_message:
 		push R25
 		rcall leds_with_speed
 		pop R25
+		pop R25
 		;rcall delay_long
 		rjmp display_message_loop
-	end_display: ret
+	end_display: 
+		CLR R21
+		CLR R22
+		CLR R23
+		CLR R26
+		CLR R27
+		CLR R30
+		CLR R31
+		ret
 
 
 ; ****************************************************
