@@ -50,11 +50,11 @@
 ; ---- BY MODIFY THE rjmp INSTRUCTION BELOW. --------
 ; -----------------------------------------------------
 
-	rjmp test_part_a
+	;rjmp test_part_a
 	;rjmp test_part_b
 	;rjmp test_part_c
 	;rjmp test_part_d
-	;rjmp test_part_e
+	rjmp test_part_e
 	; Test code
 
 
@@ -304,6 +304,7 @@ leds_with_speed:
 	clr r17
 	in YH, SPH
 	in YL, SPL
+
 	ldd r17, Y + PARAM_OFFSET + 0
 
 	ldi R19, 0b11000000
@@ -333,9 +334,7 @@ encode_letter:
 	
 	in YH, SPH
 	in YL, SPL
-	
-	;ldd r18, Y+4
-	ldd r18, Y + PARAM_OFFSET + 4
+	ldd r18, Y + PARAM_OFFSET + 0
 
 	ldi ZH, high (PATTERNS*2)
 	ldi ZL, low (PATTERNS*2)
@@ -411,20 +410,26 @@ display_message:
 		MOV ZL, XL
 		MOV ZH, XH
 		push R25
-		rcall leds_with_speed
+		call leds_with_speed
 		pop R25
-		pop R25
-		;rcall delay_long
+		rcall delay_long
 		rjmp display_message_loop
 	end_display: 
+		CLR R17
 		CLR R21
 		CLR R22
 		CLR R23
+		CLR R25
 		CLR R26
 		CLR R27
+		CLR R29
 		CLR R30
 		CLR R31
-		ret
+		pop r31
+		pop r30
+		pop r31
+		pop r30
+		ijmp
 
 
 ; ****************************************************
