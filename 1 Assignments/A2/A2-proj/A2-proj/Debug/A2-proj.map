@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm Sun Mar 05 22:58:57 2023
+AVRASM ver. 2.2.8  C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm Sun Mar 05 23:23:52 2023
 
 
 EQU  SIGNATURE_000 0000001e
@@ -1373,7 +1373,7 @@ CSEG leds_with_speed 000000a9
 CSEG test_part_c_loop 0000003b
 CSEG test_part_d  00000041
 CSEG encode_letter 000000b4
-CSEG WORD02       00000674
+CSEG WORD00       0000066c
 CSEG display_message 000000e2
 EQU  clearBit     00000000
 EQU  fullBit      000000ff
@@ -1407,8 +1407,8 @@ CSEG delay_busywait_loop1 0000011b
 CSEG delay_busywait_exit 00000124
 CSEG delay_busywait_loop2 0000011e
 CSEG delay_busywait_loop3 00000121
-CSEG WORD00       0000066c
 CSEG WORD01       00000672
+CSEG WORD02       00000674
 CSEG WORD03       00000677
 CSEG WORD04       0000067a
 CSEG WORD05       0000067c

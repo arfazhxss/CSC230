@@ -197,8 +197,8 @@ test_part_d:
 
 
 test_part_e:
-	ldi r25, HIGH(WORD02 << 1)
-	ldi r24, LOW(WORD02 << 1)
+	ldi r25, HIGH(WORD00 << 1)
+	ldi r24, LOW(WORD00 << 1)
 	rcall display_message
 	rjmp end
 
