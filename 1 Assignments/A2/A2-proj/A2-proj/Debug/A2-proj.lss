@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm Sun Mar 05 16:01:24 2023
+AVRASM ver. 2.2.8  C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm Sun Mar 05 16:03:02 2023
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m2560def.inc'
 C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm(25): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m2560def.inc'
@@ -1949,23 +1949,23 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-sig
                                  test_part_a:
 000005 e201                      	ldi r16, 0b00100001
 000006 d068                      	rcall set_leds
-000007 d0f3                      	rcall delay_long
+000007 d0f6                      	rcall delay_long
                                  
 000008 2700                      	clr r16
 000009 d065                      	rcall set_leds
-00000a d0f0                      	rcall delay_long
+00000a d0f3                      	rcall delay_long
                                  
 00000b e308                      	ldi r16, 0b00111000
 00000c d062                      	rcall set_leds
-00000d d0f4                      	rcall delay_short
+00000d d0f7                      	rcall delay_short
                                  
 00000e 2700                      	clr r16
 00000f d05f                      	rcall set_leds
-000010 d0ea                      	rcall delay_long
+000010 d0ed                      	rcall delay_long
                                  
 000011 e201                      	ldi r16, 0b00100001
 000012 d05c                      	rcall set_leds
-000013 d0e7                      	rcall delay_long
+000013 d0ea                      	rcall delay_long
                                  
 000014 2700                      	clr r16
 000015 d059                      	rcall set_leds
@@ -1983,8 +1983,8 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-sig
 00001d e115                      	ldi r17, 0b00010101
 00001e d084                      	rcall slow_leds
                                  
-00001f d0db                      	rcall delay_long
-000020 d0da                      	rcall delay_long
+00001f d0de                      	rcall delay_long
+000020 d0dd                      	rcall delay_long
                                  
 000021 e21a                      	ldi r17, 0b00101010
 000022 d087                      	rcall fast_leds
@@ -2038,7 +2038,7 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-sig
 000046 d06a                      	rcall leds_with_speed
 000047 919f                      	pop r25
                                  
-000048 d0b2                      	rcall delay_long
+000048 d0b5                      	rcall delay_long
                                  
 000049 e451                      	ldi r21, 'A'
 00004a 935f                      	push r21
@@ -2048,7 +2048,7 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-sig
 00004e d062                      	rcall leds_with_speed
 00004f 919f                      	pop r25
                                  
-000050 d0aa                      	rcall delay_long
+000050 d0ad                      	rcall delay_long
                                  
                                  
 000051 e45d                      	ldi r21, 'M'
@@ -2059,7 +2059,7 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-sig
 000056 d05a                      	rcall leds_with_speed
 000057 919f                      	pop r25
                                  
-000058 d0a2                      	rcall delay_long
+000058 d0a5                      	rcall delay_long
                                  
 000059 e458                      	ldi r21, 'H'
 00005a 935f                      	push r21
@@ -2069,7 +2069,7 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-sig
 00005e d052                      	rcall leds_with_speed
 00005f 919f                      	pop r25
                                  
-000060 d09a                      	rcall delay_long
+000060 d09d                      	rcall delay_long
                                  
 000061 e25d                      	ldi r21, '-'
 000062 935f                      	push r21
@@ -2079,7 +2079,7 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-sig
 000066 d04a                      	rcall leds_with_speed
 000067 919f                      	pop r25
                                  
-000068 d092                      	rcall delay_long
+000068 d095                      	rcall delay_long
                                  
 000069 c004                      	rjmp end
                                  
@@ -2176,7 +2176,7 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-sig
 0000a3 2700                      	clr r16
 0000a4 0f01                      	add r16, r17
 0000a5 dfc9                      	rcall set_leds
-0000a6 d054                      	rcall delay_long
+0000a6 d057                      	rcall delay_long
 0000a7 2700                      	clr r16
 0000a8 dfc6                      	rcall set_leds
 0000a9 9508                      	ret
@@ -2186,7 +2186,7 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-sig
 0000aa 2700                      	clr r16
 0000ab 0f01                      	add r16, r17
 0000ac dfc2                      	rcall set_leds
-0000ad d054                      	rcall delay_short
+0000ad d057                      	rcall delay_short
 0000ae 2700                      	clr r16
 0000af dfbf                      	rcall set_leds
 0000b0 9508                      	ret
@@ -2289,19 +2289,22 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-sig
 0000ed 27ee                      	CLR ZL
 0000ee 2ff9                      	MOV ZH, R25
 0000ef 2fe8                      	MOV ZL, R24
-0000f0 2799                      	CLR R25
-0000f1 2788                      	CLR R24
+0000f0 2777                      	CLR R23
+0000f1 2799                      	CLR R25
+0000f2 2788                      	CLR R24
                                  	
                                  	display_message_loop:
-0000f2 9154                      		LPM R21, Z
-0000f3 3050                      		cpi R21, 0
-0000f4 f029                      		breq end_display
-0000f5 dfc6                      		rcall encode_letter
-0000f6 915f                      		pop r21
-0000f7 939f                      		push R25
-0000f8 dfb8                      		rcall leds_with_speed
-0000f9 919f                      		pop R25
-0000fa 9508                      	end_display: ret
+0000f3 9154                      		LPM R21, Z
+0000f4 3050                      		cpi R21, 0
+0000f5 f039                      		breq end_display
+0000f6 dfc5                      		rcall encode_letter
+0000f7 915f                      		pop r21
+0000f8 939f                      		push R25
+0000f9 dfb7                      		rcall leds_with_speed
+0000fa 919f                      		pop R25
+0000fb d002                      		rcall delay_long
+0000fc cff6                      		rjmp display_message_loop
+0000fd 9508                      	end_display: ret
                                  
                                  
                                  ; ****************************************************
@@ -2317,37 +2320,37 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-sig
                                  
                                  ; about one second
                                  delay_long:
-0000fb 930f                      	push r16
+0000fe 930f                      	push r16
                                  
-0000fc e00e                      	ldi r16, 14
+0000ff e00e                      	ldi r16, 14
                                  delay_long_loop:
-0000fd d00b                      	rcall delay
-0000fe 950a                      	dec r16
-0000ff f7e9                      	brne delay_long_loop
+000100 d00b                      	rcall delay
+000101 950a                      	dec r16
+000102 f7e9                      	brne delay_long_loop
                                  
-000100 910f                      	pop r16
-000101 9508                      	ret
+000103 910f                      	pop r16
+000104 9508                      	ret
                                  
                                  
                                  ; about 0.25 of a second
                                  delay_short:
-000102 930f                      	push r16
+000105 930f                      	push r16
                                  
-000103 e004                      	ldi r16, 4
+000106 e004                      	ldi r16, 4
                                  delay_short_loop:
-000104 d004                      	rcall delay
-000105 950a                      	dec r16
-000106 f7e9                      	brne delay_short_loop
+000107 d004                      	rcall delay
+000108 950a                      	dec r16
+000109 f7e9                      	brne delay_short_loop
                                  
-000107 910f                      	pop r16
-000108 9508                      	ret
+00010a 910f                      	pop r16
+00010b 9508                      	ret
                                  
                                  ; When wanting about a 1/5th of a second delay, all other
                                  ; code must call this function
                                  ;
                                  delay:
-000109 d001                      	rcall delay_busywait
-00010a 9508                      	ret
+00010c d001                      	rcall delay_busywait
+00010d 9508                      	ret
                                  
                                  
                                  ; This function is ONLY called from "delay", and
@@ -2357,31 +2360,31 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-sig
                                  ; running on a mega2560 processor.
                                  ;
                                  delay_busywait:
-00010b 930f                      	push r16
-00010c 931f                      	push r17
-00010d 932f                      	push r18
+00010e 930f                      	push r16
+00010f 931f                      	push r17
+000110 932f                      	push r18
                                  
-00010e e008                      	ldi r16, 0x08
+000111 e008                      	ldi r16, 0x08
                                  delay_busywait_loop1:
-00010f 950a                      	dec r16
-000110 f039                      	breq delay_busywait_exit
+000112 950a                      	dec r16
+000113 f039                      	breq delay_busywait_exit
                                  
-000111 ef1f                      	ldi r17, 0xff
+000114 ef1f                      	ldi r17, 0xff
                                  delay_busywait_loop2:
-000112 951a                      	dec r17
-000113 f3d9                      	breq delay_busywait_loop1
+000115 951a                      	dec r17
+000116 f3d9                      	breq delay_busywait_loop1
                                  
-000114 ef2f                      	ldi r18, 0xff
+000117 ef2f                      	ldi r18, 0xff
                                  delay_busywait_loop3:
-000115 952a                      	dec r18
-000116 f3d9                      	breq delay_busywait_loop2
-000117 cffd                      	rjmp delay_busywait_loop3
+000118 952a                      	dec r18
+000119 f3d9                      	breq delay_busywait_loop2
+00011a cffd                      	rjmp delay_busywait_loop3
                                  
                                  delay_busywait_exit:
-000118 912f                      	pop r18
-000119 911f                      	pop r17
-00011a 910f                      	pop r16
-00011b 9508                      	ret
+00011b 912f                      	pop r18
+00011c 911f                      	pop r17
+00011d 910f                      	pop r16
+00011e 9508                      	ret
                                  
                                  
                                  ; Some tables
@@ -2555,7 +2558,7 @@ counted separately from r26..r31 here.
 x  :   0 y  :   2 z  :   4 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
 r13:   0 r14:   0 r15:   0 r16:  36 r17:  21 r18:   8 r19:  11 r20:  22 
-r21:  18 r22:   0 r23:   2 r24:   5 r25:  21 r26:  12 r27:   6 r28:   7 
+r21:  18 r22:   0 r23:   3 r24:   5 r25:  21 r26:  12 r27:   6 r28:   7 
 r29:   3 r30:   6 r31:   6 
 Registers used: 17 out of 35 (48.6%)
 
@@ -2566,15 +2569,15 @@ brcc  :   0 brcs  :   2 break :   0 breq  :  13 brge  :   0 brhc  :   0
 brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
 brne  :   3 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
 brvs  :   0 bset  :   0 bst   :   0 call  :   0 cbi   :   0 cbr   :   0 
-clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :  30 cls   :   0 
+clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :  31 cls   :   0 
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   1 cpc   :   0 
 cpi   :   9 cpse  :   0 dec   :   7 eicall:   0 eijmp :   0 elpm  :   0 
 eor   :   0 fmul  :   0 fmuls :   0 fmulsu:   0 icall :   0 ijmp  :   0 
 in    :   4 inc   :   3 jmp   :   5 ld    :   0 ldd   :   2 ldi   :  41 
 lds   :   0 lpm   :   7 lsl   :   6 lsr   :  11 mov   :   2 movw  :   0 
 mul   :   0 muls  :   0 mulsu :   0 neg   :   0 nop   :   0 or    :   0 
-ori   :   0 out   :   4 pop   :  20 push  :  19 rcall :  56 ret   :  10 
-reti  :   0 rjmp  :  14 rol   :   0 ror   :   0 sbc   :   0 sbci  :   0 
+ori   :   0 out   :   4 pop   :  20 push  :  19 rcall :  57 ret   :  10 
+reti  :   0 rjmp  :  15 rol   :   0 ror   :   0 sbc   :   0 sbci  :   0 
 sbi   :   0 sbic  :   0 sbis  :   0 sbiw  :   1 sbr   :   0 sbrc  :   0 
 sbrs  :   0 sec   :   0 seh   :   0 sei   :   0 sen   :   0 ser   :   0 
 ses   :   0 set   :   0 sev   :   0 sez   :   0 sleep :   0 spm   :   0 
@@ -2585,7 +2588,7 @@ Instructions used: 28 out of 116 (24.1%)
 "ATmega2560" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x000d14    568    276    844  262144   0.3%
+[.cseg] 0x000000 0x000d14    574    276    850  262144   0.3%
 [.dseg] 0x000200 0x000200      0      0      0    8192   0.0%
 [.eseg] 0x000000 0x000000      0      0      0    4096   0.0%
 

@@ -401,6 +401,7 @@ display_message:
 	CLR ZL
 	MOV ZH, R25
 	MOV ZL, R24
+	CLR R23
 	CLR R25
 	CLR R24
 	
@@ -413,6 +414,8 @@ display_message:
 		push R25
 		rcall leds_with_speed
 		pop R25
+		rcall delay_long
+		rjmp display_message_loop
 	end_display: ret
 
 

@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm Sun Mar 05 16:01:24 2023
+AVRASM ver. 2.2.8  C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm Sun Mar 05 16:03:02 2023
 
 
 EQU  SIGNATURE_000 0000001e
@@ -1362,8 +1362,8 @@ EQU  INT_VECTORS_SIZE 00000072
 CSEG test_part_e  0000006a
 CSEG test_part_a  00000005
 CSEG set_leds     0000006f
-CSEG delay_long   000000fb
-CSEG delay_short  00000102
+CSEG delay_long   000000fe
+CSEG delay_short  00000105
 CSEG end          0000006e
 CSEG test_part_b  00000017
 CSEG slow_leds    000000a3
@@ -1397,16 +1397,16 @@ CSEG foundLoop    000000d0
 CSEG turnOnLED    000000d8
 CSEG LedSpeed     000000de
 CSEG fasted       000000e2
-CSEG display_message_loop 000000f2
-CSEG end_display  000000fa
-CSEG delay_long_loop 000000fd
-CSEG delay        00000109
-CSEG delay_short_loop 00000104
-CSEG delay_busywait 0000010b
-CSEG delay_busywait_loop1 0000010f
-CSEG delay_busywait_exit 00000118
-CSEG delay_busywait_loop2 00000112
-CSEG delay_busywait_loop3 00000115
+CSEG display_message_loop 000000f3
+CSEG end_display  000000fd
+CSEG delay_long_loop 00000100
+CSEG delay        0000010c
+CSEG delay_short_loop 00000107
+CSEG delay_busywait 0000010e
+CSEG delay_busywait_loop1 00000112
+CSEG delay_busywait_exit 0000011b
+CSEG delay_busywait_loop2 00000115
+CSEG delay_busywait_loop3 00000118
 CSEG WORD00       0000066c
 CSEG WORD01       00000672
 CSEG WORD03       00000677
