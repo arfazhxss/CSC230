@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm Sun Mar 05 23:23:52 2023
+AVRASM ver. 2.2.8  C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm Sun Mar 05 23:27:24 2023
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m2560def.inc'
 C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-signalling.asm(25): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m2560def.inc'
@@ -1942,134 +1942,134 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-sig
                                  	;rjmp test_part_b
                                  	;rjmp test_part_c
                                  	;rjmp test_part_d
-000004 c05d                      	rjmp test_part_e
+                                 	;rjmp test_part_e
                                  	; Test code
                                  
                                  
                                  test_part_a:
-000005 e201                      	ldi r16, 0b00100001
-000006 d060                      	rcall set_leds
-000007 d0ff                      	rcall delay_long
+000004 e201                      	ldi r16, 0b00100001
+000005 d060                      	rcall set_leds
+000006 d0ff                      	rcall delay_long
                                  
-000008 2700                      	clr r16
-000009 d05d                      	rcall set_leds
-00000a d0fc                      	rcall delay_long
+000007 2700                      	clr r16
+000008 d05d                      	rcall set_leds
+000009 d0fc                      	rcall delay_long
                                  
-00000b e308                      	ldi r16, 0b00111000
-00000c d05a                      	rcall set_leds
-00000d d100                      	rcall delay_short
+00000a e308                      	ldi r16, 0b00111000
+00000b d05a                      	rcall set_leds
+00000c d100                      	rcall delay_short
                                  
-00000e 2700                      	clr r16
-00000f d057                      	rcall set_leds
-000010 d0f6                      	rcall delay_long
+00000d 2700                      	clr r16
+00000e d057                      	rcall set_leds
+00000f d0f6                      	rcall delay_long
                                  
-000011 e201                      	ldi r16, 0b00100001
-000012 d054                      	rcall set_leds
-000013 d0f3                      	rcall delay_long
+000010 e201                      	ldi r16, 0b00100001
+000011 d054                      	rcall set_leds
+000012 d0f3                      	rcall delay_long
                                  
-000014 2700                      	clr r16
-000015 d051                      	rcall set_leds
+000013 2700                      	clr r16
+000014 d051                      	rcall set_leds
                                  
-000016 c04f                      	rjmp end
+000015 c04f                      	rjmp end
                                  
                                  
                                  test_part_b:
-000017 e21a                      	ldi r17, 0b00101010
-000018 d082                      	rcall slow_leds
-000019 e115                      	ldi r17, 0b00010101
-00001a d080                      	rcall slow_leds
-00001b e21a                      	ldi r17, 0b00101010
-00001c d07e                      	rcall slow_leds
-00001d e115                      	ldi r17, 0b00010101
-00001e d07c                      	rcall slow_leds
+000016 e21a                      	ldi r17, 0b00101010
+000017 d082                      	rcall slow_leds
+000018 e115                      	ldi r17, 0b00010101
+000019 d080                      	rcall slow_leds
+00001a e21a                      	ldi r17, 0b00101010
+00001b d07e                      	rcall slow_leds
+00001c e115                      	ldi r17, 0b00010101
+00001d d07c                      	rcall slow_leds
                                  
-00001f d0e7                      	rcall delay_long
-000020 d0e6                      	rcall delay_long
+00001e d0e7                      	rcall delay_long
+00001f d0e6                      	rcall delay_long
                                  
-000021 e21a                      	ldi r17, 0b00101010
-000022 d07f                      	rcall fast_leds
-000023 e115                      	ldi r17, 0b00010101
-000024 d07d                      	rcall fast_leds
-000025 e21a                      	ldi r17, 0b00101010
-000026 d07b                      	rcall fast_leds
-000027 e115                      	ldi r17, 0b00010101
-000028 d079                      	rcall fast_leds
-000029 e21a                      	ldi r17, 0b00101010
-00002a d077                      	rcall fast_leds
-00002b e115                      	ldi r17, 0b00010101
-00002c d075                      	rcall fast_leds
-00002d e21a                      	ldi r17, 0b00101010
-00002e d073                      	rcall fast_leds
-00002f e115                      	ldi r17, 0b00010101
-000030 d071                      	rcall fast_leds
+000020 e21a                      	ldi r17, 0b00101010
+000021 d07f                      	rcall fast_leds
+000022 e115                      	ldi r17, 0b00010101
+000023 d07d                      	rcall fast_leds
+000024 e21a                      	ldi r17, 0b00101010
+000025 d07b                      	rcall fast_leds
+000026 e115                      	ldi r17, 0b00010101
+000027 d079                      	rcall fast_leds
+000028 e21a                      	ldi r17, 0b00101010
+000029 d077                      	rcall fast_leds
+00002a e115                      	ldi r17, 0b00010101
+00002b d075                      	rcall fast_leds
+00002c e21a                      	ldi r17, 0b00101010
+00002d d073                      	rcall fast_leds
+00002e e115                      	ldi r17, 0b00010101
+00002f d071                      	rcall fast_leds
                                  
-000031 c034                      	rjmp end
+000030 c034                      	rjmp end
                                  
                                  test_part_c:
-000032 ef08                      	ldi r16, 0b11111000
-000033 930f                      	push r16
-000034 d074                      	rcall leds_with_speed
-000035 910f                      	pop r16
+000031 ef08                      	ldi r16, 0b11111000
+000032 930f                      	push r16
+000033 d074                      	rcall leds_with_speed
+000034 910f                      	pop r16
                                  	
-000036 ed0c                      	ldi r16, 0b11011100
-000037 930f                      	push r16
-000038 d070                      	rcall leds_with_speed
-000039 910f                      	pop r16
+000035 ed0c                      	ldi r16, 0b11011100
+000036 930f                      	push r16
+000037 d070                      	rcall leds_with_speed
+000038 910f                      	pop r16
                                  
-00003a e240                      	ldi r20, 0b00100000
+000039 e240                      	ldi r20, 0b00100000
                                  	
                                  test_part_c_loop:
-00003b 934f                      	push r20
-00003c d06c                      	rcall leds_with_speed
-00003d 914f                      	pop r20
-00003e 9546                      	lsr r20
-00003f f7d9                      	brne test_part_c_loop
+00003a 934f                      	push r20
+00003b d06c                      	rcall leds_with_speed
+00003c 914f                      	pop r20
+00003d 9546                      	lsr r20
+00003e f7d9                      	brne test_part_c_loop
                                  
-000040 c025                      	rjmp end
+00003f c025                      	rjmp end
                                  
                                  
                                  test_part_d:
                                  
-000041 e455                      	ldi r21, 'E'
-000042 935f                      	push r21
-000043 d070                      	rcall encode_letter
-000044 915f                      	pop r21
-000045 939f                      	push r25
-000046 d062                      	rcall leds_with_speed
-000047 919f                      	pop r25
+000040 e455                      	ldi r21, 'E'
+000041 935f                      	push r21
+000042 d070                      	rcall encode_letter
+000043 915f                      	pop r21
+000044 939f                      	push r25
+000045 d062                      	rcall leds_with_speed
+000046 919f                      	pop r25
                                  
-000048 d0be                      	rcall delay_long
+000047 d0be                      	rcall delay_long
                                  
-000049 e451                      	ldi r21, 'A'
-00004a 935f                      	push r21
-00004b d068                      	rcall encode_letter
-00004c 915f                      	pop r21
-00004d 939f                      	push r25
-00004e d05a                      	rcall leds_with_speed
-00004f 919f                      	pop r25
+000048 e451                      	ldi r21, 'A'
+000049 935f                      	push r21
+00004a d068                      	rcall encode_letter
+00004b 915f                      	pop r21
+00004c 939f                      	push r25
+00004d d05a                      	rcall leds_with_speed
+00004e 919f                      	pop r25
                                  
-000050 d0b6                      	rcall delay_long
+00004f d0b6                      	rcall delay_long
                                  
                                  
-000051 e45d                      	ldi r21, 'M'
-000052 935f                      	push r21
-000053 d060                      	rcall encode_letter
-000054 915f                      	pop r21
-000055 939f                      	push r25
-000056 d052                      	rcall leds_with_speed
-000057 919f                      	pop r25
+000050 e45d                      	ldi r21, 'M'
+000051 935f                      	push r21
+000052 d060                      	rcall encode_letter
+000053 915f                      	pop r21
+000054 939f                      	push r25
+000055 d052                      	rcall leds_with_speed
+000056 919f                      	pop r25
                                  
-000058 d0ae                      	rcall delay_long
+000057 d0ae                      	rcall delay_long
                                  
-000059 e458                      	ldi r21, 'H'
-00005a 935f                      	push r21
-00005b d058                      	rcall encode_letter
-00005c 915f                      	pop r21
-00005d 939f                      	push r25
-00005e d04a                      	rcall leds_with_speed
-00005f 919f                      	pop r25
+000058 e458                      	ldi r21, 'H'
+000059 935f                      	push r21
+00005a d058                      	rcall encode_letter
+00005b 915f                      	pop r21
+00005c 939f                      	push r25
+00005d d04a                      	rcall leds_with_speed
+00005e 919f                      	pop r25
                                  
-000060 d0a6                      	rcall delay_long
+00005f d0a6                      	rcall delay_long
                                  
                                  	;ldi r21, '-'
                                  	;push r21
@@ -2081,128 +2081,128 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-sig
                                  
                                  	;rcall delay_long
                                  
-000061 c004                      	rjmp end
+000060 c004                      	rjmp end
                                  
                                  
                                  test_part_e:
-000062 e09c                      	ldi r25, HIGH(WORD00 << 1)
-000063 ed88                      	ldi r24, LOW(WORD00 << 1)
-000064 d07d                      	rcall display_message
-000065 c000                      	rjmp end
+000061 e09c                      	ldi r25, HIGH(WORD00 << 1)
+000062 ed88                      	ldi r24, LOW(WORD00 << 1)
+000063 d07d                      	rcall display_message
+000064 c000                      	rjmp end
                                  
                                  end:
-000066 cfff                          rjmp end
+000065 cfff                          rjmp end
                                  
                                  ; ****************************************************
                                  ; **** BEGINNING OF SECOND "STUDENT CODE" SECTION ****
                                  ; ****************************************************
                                  
                                  set_leds:
-000067 2744                      	clr R20
+000066 2744                      	clr R20
                                  	.equ clearBit = 0b00000000
                                  	.equ fullBit = 0b11111111
                                  	.equ fullByte = 0b10000000
                                  	.def countBit = R20
-000068 efaf                      	ldi XL, fullbit ; PORTB
-000069 efbf                      	ldi XH, fullBit ; PORTL
-00006a e8c0                      	ldi YL, fullByte
-00006b 730f                      	andi r16, 0b00111111
+000067 efaf                      	ldi XL, fullbit ; PORTB
+000068 efbf                      	ldi XH, fullBit ; PORTL
+000069 e8c0                      	ldi YL, fullByte
+00006a 730f                      	andi r16, 0b00111111
+00006b 0f00                      	lsl r16
 00006c 0f00                      	lsl r16
-00006d 0f00                      	lsl r16
                                  
                                  	continue001:
-00006e 3042                      		cpi countBit, 0b10
-00006f f061                      		breq continueBtoL
+00006d 3042                      		cpi countBit, 0b10
+00006e f061                      		breq continueBtoL
                                  	
                                  	continuePortB:
-000070 9543                      		inc countBit
-000071 0f00                      		lsl r16
-000072 f020                      		brcs addPortB
+00006f 9543                      		inc countBit
+000070 0f00                      		lsl r16
+000071 f020                      		brcs addPortB
+000072 95a6                      		lsr XL
 000073 95a6                      		lsr XL
-000074 95a6                      		lsr XL
-000075 940c 006e                 		jmp continue001
+000074 940c 006d                 		jmp continue001
                                  
                                  	addPortB:
+000076 95a6                      		lsr XL
 000077 95a6                      		lsr XL
-000078 95a6                      		lsr XL
-000079 0fac                      		add XL, YL
-00007a 940c 006e                 		jmp continue001
+000078 0fac                      		add XL, YL
+000079 940c 006d                 		jmp continue001
                                  	
                                  	continueBtoL:
+00007b 95a6                      		lsr XL
 00007c 95a6                      		lsr XL
 00007d 95a6                      		lsr XL
 00007e 95a6                      		lsr XL
-00007f 95a6                      		lsr XL
                                  
                                  	continue002:
-000080 3046                      		cpi countBit, 0b110
-000081 f051                      		breq setPort
+00007f 3046                      		cpi countBit, 0b110
+000080 f051                      		breq setPort
                                  
                                  	continuePortL:
-000082 9543                      		inc countBit
+000081 9543                      		inc countBit
+000082 95b6                      		lsr XH
 000083 95b6                      		lsr XH
-000084 95b6                      		lsr XH
-000085 0f00                      		lsl r16
-000086 f010                      		brcs addPortL
-000087 940c 0080                 		jmp continue002
+000084 0f00                      		lsl r16
+000085 f010                      		brcs addPortL
+000086 940c 007f                 		jmp continue002
                                  
                                  	addPortL:
-000089 0fbc                      		add XH, YL
-00008a 940c 0080                 		jmp continue002
+000088 0fbc                      		add XH, YL
+000089 940c 007f                 		jmp continue002
                                  
                                  	setPort:
-00008c ef4f                      		ldi R20, 0xFF
-00008d 9340 010a                 		sts DDRL, R20
-00008f b944                      		out DDRB, R20
-000090 93b0 010b                 		sts PORTL, XH
-000092 b9a5                      		out PORTB, XL
-000093 940c 0095                 		jmp clearA
+00008b ef4f                      		ldi R20, 0xFF
+00008c 9340 010a                 		sts DDRL, R20
+00008e b944                      		out DDRB, R20
+00008f 93b0 010b                 		sts PORTL, XH
+000091 b9a5                      		out PORTB, XL
+000092 940c 0094                 		jmp clearA
                                  
                                  	clearA:
-000095 2700                      		clr r16
-000096 2744                      		clr r20
-000097 27aa                      		clr r26
-000098 27bb                      		clr r27
-000099 27cc                      		clr r28
-00009a 9508                      		ret
+000094 2700                      		clr r16
+000095 2744                      		clr r20
+000096 27aa                      		clr r26
+000097 27bb                      		clr r27
+000098 27cc                      		clr r28
+000099 9508                      		ret
                                  
                                  
                                  slow_leds:
-00009b 2700                      	clr r16
-00009c 0f01                      	add r16, r17
-00009d dfc9                      	rcall set_leds
-00009e d068                      	rcall delay_long
-00009f 2700                      	clr r16
-0000a0 dfc6                      	rcall set_leds
-0000a1 9508                      	ret
+00009a 2700                      	clr r16
+00009b 0f01                      	add r16, r17
+00009c dfc9                      	rcall set_leds
+00009d d068                      	rcall delay_long
+00009e 2700                      	clr r16
+00009f dfc6                      	rcall set_leds
+0000a0 9508                      	ret
                                  
                                  
                                  fast_leds:
-0000a2 2700                      	clr r16
-0000a3 0f01                      	add r16, r17
-0000a4 dfc2                      	rcall set_leds
-0000a5 d068                      	rcall delay_short
-0000a6 2700                      	clr r16
-0000a7 dfbf                      	rcall set_leds
-0000a8 9508                      	ret
+0000a1 2700                      	clr r16
+0000a2 0f01                      	add r16, r17
+0000a3 dfc2                      	rcall set_leds
+0000a4 d068                      	rcall delay_short
+0000a5 2700                      	clr r16
+0000a6 dfbf                      	rcall set_leds
+0000a7 9508                      	ret
                                  
                                  
                                  leds_with_speed:
                                  	.set PARAM_OFFSET = 4
-0000a9 2711                      	clr r17
-0000aa b7de                      	in YH, SPH
-0000ab b7cd                      	in YL, SPL
+0000a8 2711                      	clr r17
+0000a9 b7de                      	in YH, SPH
+0000aa b7cd                      	in YL, SPL
                                  
-0000ac 811c                      	ldd r17, Y + PARAM_OFFSET + 0
+0000ab 811c                      	ldd r17, Y + PARAM_OFFSET + 0
                                  
-0000ad ec30                      	ldi R19, 0b11000000
-0000ae 2331                      	and R19, R17
-0000af 3c30                      	cpi R19, 0b11000000
-0000b0 f351                      	breq slow_leds
-0000b1 dff0                      	rcall fast_leds
+0000ac ec30                      	ldi R19, 0b11000000
+0000ad 2331                      	and R19, R17
+0000ae 3c30                      	cpi R19, 0b11000000
+0000af f351                      	breq slow_leds
+0000b0 dff0                      	rcall fast_leds
                                  
-0000b2 2733                      	clr R19
-0000b3 9508                      	ret
+0000b1 2733                      	clr R19
+0000b2 9508                      	ret
                                  
                                  ; Note -- this function will only ever be tested
                                  ; with upper-case letters, but it is a good idea
@@ -2214,110 +2214,110 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-sig
                                  
                                  encode_letter:
                                  	.set PARAM_OFFSET = 4
-0000b4 2799                      	clr r25
-0000b5 2722                      	clr r18
-0000b6 2733                      	clr r19 ; counter
-0000b7 e036                      	ldi r19, 6
-0000b8 2744                      	clr r20
+0000b3 2799                      	clr r25
+0000b4 2722                      	clr r18
+0000b5 2733                      	clr r19 ; counter
+0000b6 e036                      	ldi r19, 6
+0000b7 2744                      	clr r20
                                  	
-0000b9 b7de                      	in YH, SPH
-0000ba b7cd                      	in YL, SPL
-0000bb 812c                      	ldd r18, Y + PARAM_OFFSET + 0
+0000b8 b7de                      	in YH, SPH
+0000b9 b7cd                      	in YL, SPL
+0000ba 812c                      	ldd r18, Y + PARAM_OFFSET + 0
                                  
-0000bc e0fc                      	ldi ZH, high (PATTERNS*2)
-0000bd e0e0                      	ldi ZL, low (PATTERNS*2)
+0000bb e0fc                      	ldi ZH, high (PATTERNS*2)
+0000bc e0e0                      	ldi ZL, low (PATTERNS*2)
                                  	
                                  	loop:
-0000be 9144                      		LPM R20, Z			; 8 additions after each loop, unless exception
-0000bf 9638                      		ADIW ZH:ZL, 8
+0000bd 9144                      		LPM R20, Z			; 8 additions after each loop, unless exception
+0000be 9638                      		ADIW ZH:ZL, 8
                                  		;cpi R20, 0b00101101
                                  		;breq endEncode
-0000c0 1742                      		cp R20, R18
-0000c1 f019                      		breq found			; exception
-0000c2 3040                      		cpi R20, 0x00
-0000c3 f0c1                      		breq endEncode
-0000c4 cff9                      		rjmp loop
+0000bf 1742                      		cp R20, R18
+0000c0 f019                      		breq found			; exception
+0000c1 3040                      		cpi R20, 0x00
+0000c2 f0c1                      		breq endEncode
+0000c3 cff9                      		rjmp loop
                                  	found:
-0000c5 e39f                      		ldi r25, 0b00111111
-0000c6 9737                      		SBIW ZH:ZL, 7
-0000c7 c000                      		rjmp foundLoop
+0000c4 e39f                      		ldi r25, 0b00111111
+0000c5 9737                      		SBIW ZH:ZL, 7
+0000c6 c000                      		rjmp foundLoop
                                  	foundLoop:
-0000c8 9145                      		LPM R20, Z+
-0000c9 364f                      		cpi R20, 0b01101111
-0000ca f029                      		breq turnOnLED
-0000cb 0f99                      		LSL R25
-0000cc 953a                      		dec R19
-0000cd 3030                      		cpi R19, 0
-0000ce f039                      		breq LedSpeed
-0000cf cff8                      		rjmp foundLoop
+0000c7 9145                      		LPM R20, Z+
+0000c8 364f                      		cpi R20, 0b01101111
+0000c9 f029                      		breq turnOnLED
+0000ca 0f99                      		LSL R25
+0000cb 953a                      		dec R19
+0000cc 3030                      		cpi R19, 0
+0000cd f039                      		breq LedSpeed
+0000ce cff8                      		rjmp foundLoop
                                  
                                  		turnOnLED:
-0000d0 0f99                      			LSL R25
-0000d1 9593                      			INC R25
-0000d2 953a                      			dec R19
-0000d3 3030                      			cpi R19, 0
-0000d4 f009                      			breq LedSpeed
-0000d5 cff2                      			rjmp foundLoop
+0000cf 0f99                      			LSL R25
+0000d0 9593                      			INC R25
+0000d1 953a                      			dec R19
+0000d2 3030                      			cpi R19, 0
+0000d3 f009                      			breq LedSpeed
+0000d4 cff2                      			rjmp foundLoop
                                  		
                                  		LedSpeed:
-0000d6 9144                      			LPM R20, Z
-0000d7 3042                      			cpi R20, 2
-0000d8 f009                      			breq fasted
-0000d9 c002                      			rjmp endEncode
+0000d5 9144                      			LPM R20, Z
+0000d6 3042                      			cpi R20, 2
+0000d7 f009                      			breq fasted
+0000d8 c002                      			rjmp endEncode
                                  
                                  			fasted:
-0000da 739f                      				andi R25, 0b00111111
-0000db c000                      				rjmp endEncode
+0000d9 739f                      				andi R25, 0b00111111
+0000da c000                      				rjmp endEncode
                                  
                                  	endEncode: 
-0000dc 2722                      		clr r18
-0000dd 2733                      		clr r19
-0000de 2744                      		clr r20
-0000df 27dd                      		clr YH
-0000e0 27cc                      		clr YL
-0000e1 9508                      		ret
+0000db 2722                      		clr r18
+0000dc 2733                      		clr r19
+0000dd 2744                      		clr r20
+0000de 27dd                      		clr YH
+0000df 27cc                      		clr YL
+0000e0 9508                      		ret
                                  
                                  
                                  display_message:
-0000e2 27ff                      	CLR ZH
-0000e3 27ee                      	CLR ZL
-0000e4 2ff9                      	MOV ZH, R25
-0000e5 2fe8                      	MOV ZL, R24
-0000e6 2799                      	CLR R25
-0000e7 2788                      	CLR R24
+0000e1 27ff                      	CLR ZH
+0000e2 27ee                      	CLR ZL
+0000e3 2ff9                      	MOV ZH, R25
+0000e4 2fe8                      	MOV ZL, R24
+0000e5 2799                      	CLR R25
+0000e6 2788                      	CLR R24
                                  	
                                  	display_message_loop:
-0000e8 9155                      		LPM R21, Z+
-0000e9 2fae                      		MOV XL, ZL
-0000ea 2fbf                      		MOV XH, ZH
-0000eb 935f                      		push R21
-0000ec 3050                      		cpi R21, 0
-0000ed f051                      		breq end_display
-0000ee dfc5                      		rcall encode_letter
-0000ef 915f                      		pop r21
-0000f0 2fea                      		MOV ZL, XL
-0000f1 2ffb                      		MOV ZH, XH
-0000f2 939f                      		push R25
-0000f3 940e 00a9                 		call leds_with_speed
-0000f5 919f                      		pop R25
-0000f6 d010                      		rcall delay_long
-0000f7 cff0                      		rjmp display_message_loop
+0000e7 9155                      		LPM R21, Z+
+0000e8 2fae                      		MOV XL, ZL
+0000e9 2fbf                      		MOV XH, ZH
+0000ea 935f                      		push R21
+0000eb 3050                      		cpi R21, 0
+0000ec f051                      		breq end_display
+0000ed dfc5                      		rcall encode_letter
+0000ee 915f                      		pop r21
+0000ef 2fea                      		MOV ZL, XL
+0000f0 2ffb                      		MOV ZH, XH
+0000f1 939f                      		push R25
+0000f2 940e 00a8                 		call leds_with_speed
+0000f4 919f                      		pop R25
+0000f5 d010                      		rcall delay_long
+0000f6 cff0                      		rjmp display_message_loop
                                  	end_display: 
-0000f8 2711                      		CLR R17
-0000f9 2755                      		CLR R21
-0000fa 2766                      		CLR R22
-0000fb 2777                      		CLR R23
-0000fc 2799                      		CLR R25
-0000fd 27aa                      		CLR R26
-0000fe 27bb                      		CLR R27
-0000ff 27dd                      		CLR R29
-000100 27ee                      		CLR R30
-000101 27ff                      		CLR R31
-000102 91ff                      		pop r31
-000103 91ef                      		pop r30
-000104 91ff                      		pop r31
-000105 91ef                      		pop r30
-000106 9409                      		ijmp
+0000f7 2711                      		CLR R17
+0000f8 2755                      		CLR R21
+0000f9 2766                      		CLR R22
+0000fa 2777                      		CLR R23
+0000fb 2799                      		CLR R25
+0000fc 27aa                      		CLR R26
+0000fd 27bb                      		CLR R27
+0000fe 27dd                      		CLR R29
+0000ff 27ee                      		CLR R30
+000100 27ff                      		CLR R31
+000101 91ff                      		pop r31
+000102 91ef                      		pop r30
+000103 91ff                      		pop r31
+000104 91ef                      		pop r30
+000105 9409                      		ijmp
                                  
                                  
                                  ; ****************************************************
@@ -2333,37 +2333,37 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-sig
                                  
                                  ; about one second
                                  delay_long:
-000107 930f                      	push r16
+000106 930f                      	push r16
                                  
-000108 e00e                      	ldi r16, 14
+000107 e00e                      	ldi r16, 14
                                  delay_long_loop:
-000109 d00b                      	rcall delay
-00010a 950a                      	dec r16
-00010b f7e9                      	brne delay_long_loop
+000108 d00b                      	rcall delay
+000109 950a                      	dec r16
+00010a f7e9                      	brne delay_long_loop
                                  
-00010c 910f                      	pop r16
-00010d 9508                      	ret
+00010b 910f                      	pop r16
+00010c 9508                      	ret
                                  
                                  
                                  ; about 0.25 of a second
                                  delay_short:
-00010e 930f                      	push r16
+00010d 930f                      	push r16
                                  
-00010f e004                      	ldi r16, 4
+00010e e004                      	ldi r16, 4
                                  delay_short_loop:
-000110 d004                      	rcall delay
-000111 950a                      	dec r16
-000112 f7e9                      	brne delay_short_loop
+00010f d004                      	rcall delay
+000110 950a                      	dec r16
+000111 f7e9                      	brne delay_short_loop
                                  
-000113 910f                      	pop r16
-000114 9508                      	ret
+000112 910f                      	pop r16
+000113 9508                      	ret
                                  
                                  ; When wanting about a 1/5th of a second delay, all other
                                  ; code must call this function
                                  ;
                                  delay:
-000115 d001                      	rcall delay_busywait
-000116 9508                      	ret
+000114 d001                      	rcall delay_busywait
+000115 9508                      	ret
                                  
                                  
                                  ; This function is ONLY called from "delay", and
@@ -2373,31 +2373,31 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A2\A2-proj\A2-proj\a2-sig
                                  ; running on a mega2560 processor.
                                  ;
                                  delay_busywait:
-000117 930f                      	push r16
-000118 931f                      	push r17
-000119 932f                      	push r18
+000116 930f                      	push r16
+000117 931f                      	push r17
+000118 932f                      	push r18
                                  
-00011a e008                      	ldi r16, 0x08
+000119 e008                      	ldi r16, 0x08
                                  delay_busywait_loop1:
-00011b 950a                      	dec r16
-00011c f039                      	breq delay_busywait_exit
+00011a 950a                      	dec r16
+00011b f039                      	breq delay_busywait_exit
                                  
-00011d ef1f                      	ldi r17, 0xff
+00011c ef1f                      	ldi r17, 0xff
                                  delay_busywait_loop2:
-00011e 951a                      	dec r17
-00011f f3d9                      	breq delay_busywait_loop1
+00011d 951a                      	dec r17
+00011e f3d9                      	breq delay_busywait_loop1
                                  
-000120 ef2f                      	ldi r18, 0xff
+00011f ef2f                      	ldi r18, 0xff
                                  delay_busywait_loop3:
-000121 952a                      	dec r18
-000122 f3d9                      	breq delay_busywait_loop2
-000123 cffd                      	rjmp delay_busywait_loop3
+000120 952a                      	dec r18
+000121 f3d9                      	breq delay_busywait_loop2
+000122 cffd                      	rjmp delay_busywait_loop3
                                  
                                  delay_busywait_exit:
-000124 912f                      	pop r18
-000125 911f                      	pop r17
-000126 910f                      	pop r16
-000127 9508                      	ret
+000123 912f                      	pop r18
+000124 911f                      	pop r17
+000125 910f                      	pop r16
+000126 9508                      	ret
                                  
                                  
                                  ; Some tables
@@ -2590,7 +2590,7 @@ in    :   4 inc   :   3 jmp   :   5 ld    :   0 ldd   :   2 ldi   :  40
 lds   :   0 lpm   :   6 lsl   :   6 lsr   :  11 mov   :   6 movw  :   0 
 mul   :   0 muls  :   0 mulsu :   0 neg   :   0 nop   :   0 or    :   0 
 ori   :   0 out   :   4 pop   :  22 push  :  18 rcall :  53 ret   :   9 
-reti  :   0 rjmp  :  15 rol   :   0 ror   :   0 sbc   :   0 sbci  :   0 
+reti  :   0 rjmp  :  14 rol   :   0 ror   :   0 sbc   :   0 sbci  :   0 
 sbi   :   0 sbic  :   0 sbis  :   0 sbiw  :   1 sbr   :   0 sbrc  :   0 
 sbrs  :   0 sec   :   0 seh   :   0 sei   :   0 sen   :   0 ser   :   0 
 ses   :   0 set   :   0 sev   :   0 sez   :   0 sleep :   0 spm   :   0 
@@ -2601,7 +2601,7 @@ Instructions used: 30 out of 116 (25.9%)
 "ATmega2560" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x000d14    592    276    868  262144   0.3%
+[.cseg] 0x000000 0x000d14    590    276    866  262144   0.3%
 [.dseg] 0x000200 0x000200      0      0      0    8192   0.0%
 [.eseg] 0x000000 0x000000      0      0      0    4096   0.0%
 
