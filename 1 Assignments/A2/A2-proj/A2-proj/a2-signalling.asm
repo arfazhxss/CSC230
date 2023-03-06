@@ -33,10 +33,10 @@
 	; initializion code will need to appear in this
     ; section
 
-	ldi R23, high(0x21ff)
-	ldi R24, low(0x21ff)
-	out SPH, R23
-	out SPL, R24
+	ldi R22, high(0x21ff)
+	ldi R23, low(0x21ff)
+	out SPH, R22
+	out SPL, R23
 
 ; ***************************************************
 ; **** END OF FIRST "STUDENT CODE" SECTION **********
@@ -183,15 +183,15 @@ test_part_d:
 
 	rcall delay_long
 
-	ldi r21, '-'
-	push r21
-	rcall encode_letter
-	pop r21
-	push r25
-	rcall leds_with_speed
-	pop r25
+	;ldi r21, '-'
+	;push r21
+	;rcall encode_letter
+	;pop r21
+	;push r25
+	;rcall leds_with_speed
+	;pop r25
 
-	rcall delay_long
+	;rcall delay_long
 
 	rjmp end
 
@@ -288,7 +288,7 @@ slow_leds:
 	clr r16
 	add r16, r17
 	rcall set_leds
-	rcall delay_long
+	;rcall delay_long
 	clr r16
 	rcall set_leds
 	ret
@@ -298,7 +298,7 @@ fast_leds:
 	clr r16
 	add r16, r17
 	rcall set_leds
-	rcall delay_short
+	;rcall delay_short
 	clr r16
 	rcall set_leds
 	ret
@@ -338,7 +338,22 @@ encode_letter:
 	
 	in YH, SPH
 	in YL, SPL
-	ldd r18, Y + PARAM_OFFSET + 0
+	
+	;ldd r18, Y+0
+	;ldd r18, Y+1
+	;ldd r18, Y+2
+	;ldd r18, Y+3
+	ldd r18, Y+4
+	;ldd r18, Y+5
+	;ldd r18, Y+6
+	;ldd r18, Y+7
+	;ldd r18, Y+8
+	;ldd r18, Y+9
+	;ldd r18, Y+10
+	;ldd r18, Y+11
+	;ldd r18, Y+12
+	;ldd r18, Y+13
+	;ldd r18, Y + PARAM_OFFSET + 4
 
 	ldi ZH, high (PATTERNS*2)
 	ldi ZL, low (PATTERNS*2)
@@ -389,8 +404,6 @@ encode_letter:
 		clr r18
 		clr r19
 		clr r20
-		clr ZH
-		clr ZL
 		clr YH
 		clr YL
 		ret
@@ -401,20 +414,24 @@ display_message:
 	CLR ZL
 	MOV ZH, R25
 	MOV ZL, R24
-	CLR R23
 	CLR R25
 	CLR R24
 	
 	display_message_loop:
-		LPM R21, Z
+		LPM R21, Z+
+		MOV XL, ZL
+		MOV XH, ZH
+		push R21
 		cpi R21, 0
 		breq end_display
 		rcall encode_letter
 		pop r21
+		MOV ZL, XL
+		MOV ZH, XH
 		push R25
 		rcall leds_with_speed
 		pop R25
-		rcall delay_long
+		;rcall delay_long
 		rjmp display_message_loop
 	end_display: ret
 
@@ -529,7 +546,7 @@ PATTERNS:
 	.db "U", "o.....", 1
 	.db "V", "o.o.o.", 2
 	.db "W", "o.o...", 2
-	.db "W", "oo....", 2
+	.db "X", "oo....", 2
 	.db "Y", "..oo..", 2
 	.db "Z", "o.....", 2
 	.db "-", "o...oo", 1   ; Just in case!
