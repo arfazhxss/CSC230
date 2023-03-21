@@ -1,20 +1,20 @@
 
-AVRASM ver. 2.2.8  C:\Users\mikez\OneDrive - University of Victoria\csc230-development\a3part-A\a3part-A\a3part-A.asm Sat Nov 05 16:29:36 2022
+AVRASM ver. 2.2.8  C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm Tue Mar 21 16:52:25 2023
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m2560def.inc'
-C:\Users\mikez\OneDrive - University of Victoria\csc230-development\a3part-A\a3part-A\a3part-A.asm(68): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m2560def.inc'
-C:\Users\mikez\OneDrive - University of Victoria\csc230-development\a3part-A\a3part-A\a3part-A.asm(69): Including file 'C:\Users\mikez\OneDrive - University of Victoria\csc230-development\a3part-A\a3part-A\lcd.asm'
-C:\Users\mikez\OneDrive - University of Victoria\csc230-development\a3part-A\a3part-A\lcd.asm(122): LCD_SIZE not set, using default values.
-C:\Users\mikez\OneDrive - University of Victoria\csc230-development\a3part-A\a3part-A\lcd.asm(132): LCD_DISPLAY_SET not set, using default values.
-C:\Users\mikez\OneDrive - University of Victoria\csc230-development\a3part-A\a3part-A\lcd.asm(143): LCD_CURSOR_SET not set, using default values.
-C:\Users\mikez\OneDrive - University of Victoria\csc230-development\a3part-A\a3part-A\lcd.asm(153): LCD_INTERFACE_SET not set, using default values.
-C:\Users\mikez\OneDrive - University of Victoria\csc230-development\a3part-A\a3part-A\lcd.asm(164): LCD_SHIFT_SET not set, using default values.
-C:\Users\mikez\OneDrive - University of Victoria\csc230-development\a3part-A\a3part-A\lcd.asm(206): Including file 'C:\Users\mikez\OneDrive - University of Victoria\csc230-development\a3part-A\a3part-A\LCDdefs.inc'
-C:\Users\mikez\OneDrive - University of Victoria\csc230-development\a3part-A\a3part-A\LCDdefs.inc(23): LCD Driver loaded, LCD_LIBONLY not set. Running default program code.
+C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm(68): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m2560def.inc'
+C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm(69): Including file 'C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\lcd.asm'
+C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\lcd.asm(122): LCD_SIZE not set, using default values.
+C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\lcd.asm(132): LCD_DISPLAY_SET not set, using default values.
+C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\lcd.asm(143): LCD_CURSOR_SET not set, using default values.
+C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\lcd.asm(153): LCD_INTERFACE_SET not set, using default values.
+C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\lcd.asm(164): LCD_SHIFT_SET not set, using default values.
+C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\lcd.asm(206): Including file 'C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\LCDdefs.inc'
+C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\LCDdefs.inc(23): LCD Driver loaded, LCD_LIBONLY not set. Running default program code.
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m2560def.inc'
-C:\Users\mikez\OneDrive - University of Victoria\csc230-development\a3part-A\a3part-A\a3part-A.asm(68): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m2560def.inc'
-C:\Users\mikez\OneDrive - University of Victoria\csc230-development\a3part-A\a3part-A\a3part-A.asm(69): Including file 'C:\Users\mikez\OneDrive - University of Victoria\csc230-development\a3part-A\a3part-A\lcd.asm'
-C:\Users\mikez\OneDrive - University of Victoria\csc230-development\a3part-A\a3part-A\lcd.asm(206): Including file 'C:\Users\mikez\OneDrive - University of Victoria\csc230-development\a3part-A\a3part-A\LCDdefs.inc'
+C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm(68): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m2560def.inc'
+C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm(69): Including file 'C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\lcd.asm'
+C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\lcd.asm(206): Including file 'C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\LCDdefs.inc'
                                  
                                  ;
                                  
@@ -1856,7 +1856,7 @@ C:\Users\mikez\OneDrive - University of Victoria\csc230-development\a3part-A\a3p
                                  
                                  ; a3part-A.asm
                                  ;
-                                 ; Phase A of assignment #3
+                                 ; Part A of assignment #3
                                  ;
                                  ;
                                  ; Student name:
@@ -2144,7 +2144,7 @@ C:\Users\mikez\OneDrive - University of Victoria\csc230-development\a3part-A\a3p
                                  
                                  .ifndef LCD_INTERFACE_PORTS
                                  .set LCD_INTERFACE_PORTS = 1
-C:\Users\mikez\OneDrive - University of Victoria\csc230-development\a3part-A\a3part-A\lcd.asm(181): LCD_INTERFACE_PORTS not set, using default values.
+C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\lcd.asm(181): LCD_INTERFACE_PORTS not set, using default values.
                                  .message "LCD_INTERFACE_PORTS not set, using default values."
                                  
                                  .equ	LCD_PORT_D4  =  PORTG
