@@ -299,7 +299,8 @@ timer1: ; INTURRUPT HANDLER FOR BUTTONS
 	lds DATAH, ADCH_BTN
 	cp DATAL, BOUNDARY_L
 	cpc DATAH, BOUNDARY_H
-	sbrc SREG, 0
+	in r16, SREG
+	sbrc r16, 0
 	sts BUTTON_IS_PRESSED, r23
 	reti
 
@@ -336,7 +337,7 @@ compare_words:
 	breq compare_words_lower_byte
 
 	; since high bytes are different, use these to
-	; determine result
+	; determine result7
 	;
 	; if C is set from previous cp, it means r17 < r19
 	; 
