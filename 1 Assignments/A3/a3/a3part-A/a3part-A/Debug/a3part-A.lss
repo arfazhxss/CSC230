@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm Wed Mar 22 16:49:32 2023
+AVRASM ver. 2.2.8  C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm Wed Mar 22 16:57:11 2023
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m2560def.inc'
 C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm(68): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m2560def.inc'
@@ -3457,29 +3457,31 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\l
                                  
                                  timer1: ; INTURRUPT HANDLER FOR BUTTONS 
 000281 930f                      	push r16
-000282 e001                      	ldi r16, 1
-000283 9300 0223                 	sts BUTTON_IS_PRESSED, r16
-000285 e807                      	ldi r16, 0x87  ;0x87 = 0b10000111
-000286 9300 007a                 	sts ADCSRA_BTN, r16
+                                 	;ldi r16, 1
+                                 	;sts BUTTON_IS_PRESSED, r16
+000282 e807                      	ldi r16, 0x87  ;0x87 = 0b10000111
+000283 9300 007a                 	sts ADCSRA_BTN, r16
                                  
-000288 e000                      	ldi r16, 0x00
-000289 9300 007b                 	sts ADCSRB_BTN, r16
-00028b e400                      	ldi r16, 0x40  ;0x40 = 0b01000000
-00028c 9300 007c                 	sts ADMUX_BTN, r16
+000285 e000                      	ldi r16, 0x00
+000286 9300 007b                 	sts ADCSRB_BTN, r16
+000288 e400                      	ldi r16, 0x40  ;0x40 = 0b01000000
+000289 9300 007c                 	sts ADMUX_BTN, r16
                                  
-00028e e000                      	ldi r16, 0;
-00028f 2e00                      	mov BOUNDARY_L, r16
-000290 e003                      	ldi r16, high(BUTTON_SELECT_ADC)
-000291 2e10                      	mov BOUNDARY_H, r16
-000292 9100 007a                 	lds	r16, ADCSRA_BTN	
-000294 6400                      	ori r16, 0x40
-000295 9300 007a                 	sts	ADCSRA_BTN, r16
-000297 9180 0078                 	lds DATAL, ADCL_BTN
-000299 9190 0079                 	lds DATAH, ADCH_BTN
-00029b 1580                      	cp DATAL, BOUNDARY_L
-00029c 0591                      	cpc DATAH, BOUNDARY_H
-00029d b70f                      	in r16, SREG
-00029e fd00                      	sbrc r16, 0
+00028b e000                      	ldi r16, 0;
+00028c 2e00                      	mov BOUNDARY_L, r16
+00028d e003                      	ldi r16, high(BUTTON_SELECT_ADC)
+00028e 2e10                      	mov BOUNDARY_H, r16
+00028f 9100 007a                 	lds	r16, ADCSRA_BTN	
+000291 6400                      	ori r16, 0x40
+000292 9300 007a                 	sts	ADCSRA_BTN, r16
+000294 9180 0078                 	lds DATAL, ADCL_BTN
+000296 9190 0079                 	lds DATAH, ADCH_BTN
+000298 1580                      	cp DATAL, BOUNDARY_L
+000299 0591                      	cpc DATAH, BOUNDARY_H
+00029a b70f                      	in r16, SREG
+00029b fd00                      	sbrc r16, 0
+00029c 9300 0223                 	sts BUTTON_IS_PRESSED, r16
+00029e e001                      	ldi r16, 1
 00029f 9300 0223                 	sts BUTTON_IS_PRESSED, r16
 0002a1 910f                      	pop r16
 0002a2 9518                      	reti

@@ -343,6 +343,8 @@ timer1: ; INTURRUPT HANDLER FOR BUTTONS
 	in r16, SREG
 	sbrc r16, 0
 	sts BUTTON_IS_PRESSED, r16
+	;ldi r16, 1
+	;sts BUTTON_IS_PRESSED, r16
 	pop r16
 	reti
 
