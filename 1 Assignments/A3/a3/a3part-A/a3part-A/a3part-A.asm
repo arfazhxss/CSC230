@@ -124,7 +124,7 @@ reset:
  
 rcall lcd_init
 
-.def temp=r19
+.def temp=r20
 .def templow=r16
 .def temphigh=r17
 
