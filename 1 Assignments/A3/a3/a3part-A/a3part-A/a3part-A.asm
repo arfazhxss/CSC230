@@ -125,22 +125,6 @@ reset:
 call lcd_init
 call lcd_clr
 
-clr r23
-ldi r23, 0x01
-sts BUTTON_IS_PRESSED, r23
-ldi r16, 0x87  ;0x87 = 0b10000111
-sts ADCSRA_BTN, r16
-
-ldi r16, 0x00
-sts ADCSRB_BTN, r16
-ldi r16, 0x40  ;0x40 = 0b01000000
-sts ADMUX_BTN, r16
-
-ldi r16, 0;
-mov BOUNDARY_L, r16
-ldi r16, high(BUTTON_SELECT_ADC)
-mov BOUNDARY_H, r16
-
 ; .def temp=r26
 ; .def templow=r01
 ; .def temphigh=r02
@@ -257,29 +241,21 @@ start:
 	;
 	;
 	;
-	;lds	r16, ADCSRA_BTN	
-	;ori r16, 0x40
-	;sts	ADCSRA_BTN, r16
-	;lds DATAL, ADCL_BTN
-	;lds DATAH, ADCH_BTN
-	;cp DATAL, BOUNDARY_L
-	;cpc DATAH, BOUNDARY_H
-	;in r16, SREG
-	;sbrc r16, 0
-	;sts BUTTON_IS_PRESSED, r23
 	;
 	;
 	;
 	;
 
 
-	;ldi r16, 1
+	;ldi r16, 4
 	;sts BUTTON_IS_PRESSED, r16
 
 	timer3:
 		in r16, TIFR3
 		sbrs r16, OCF3A
 		rjmp timer3
+		ldi r16, 1<<OCF3A
+		out TIFR3, r16
 		lds r16, BUTTON_IS_PRESSED
 		cpi r16, 0
 		breq setLcdZero
@@ -341,7 +317,22 @@ stop:
 	rjmp stop
 
 
-timer1: ; INTURRUPT HANDLER FOR BUTTONS
+timer1: ; INTURRUPT HANDLER FOR BUTTONS 
+	push r16
+	;ldi r16, 1
+	;sts BUTTON_IS_PRESSED, r16
+	ldi r16, 0x87  ;0x87 = 0b10000111
+	sts ADCSRA_BTN, r16
+
+	ldi r16, 0x00
+	sts ADCSRB_BTN, r16
+	ldi r16, 0x40  ;0x40 = 0b01000000
+	sts ADMUX_BTN, r16
+
+	ldi r16, 0;
+	mov BOUNDARY_L, r16
+	ldi r16, high(BUTTON_SELECT_ADC)
+	mov BOUNDARY_H, r16
 	lds	r16, ADCSRA_BTN	
 	ori r16, 0x40
 	sts	ADCSRA_BTN, r16
@@ -351,7 +342,8 @@ timer1: ; INTURRUPT HANDLER FOR BUTTONS
 	cpc DATAH, BOUNDARY_H
 	in r16, SREG
 	sbrc r16, 0
-	sts BUTTON_IS_PRESSED, r23
+	sts BUTTON_IS_PRESSED, r16
+	pop r16
 	reti
 
 ; timer3:

@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm Wed Mar 22 15:11:33 2023
+AVRASM ver. 2.2.8  C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm Wed Mar 22 16:49:32 2023
 
 
 EQU  SIGNATURE_000 0000001e
@@ -1360,8 +1360,8 @@ EQU  UDRE3addr    0000006e
 EQU  UTXC3addr    00000070
 EQU  INT_VECTORS_SIZE 00000072
 CSEG reset        00000204
-CSEG timer1       0000029f
-CSEG timer4       000002c0
+CSEG timer1       00000281
+CSEG timer4       000002a3
 SET  LCD_INTERFACE_PORTS 00000001
 EQU  LCD_PORT_D4  00000014
 EQU  LCD_PORT_D5  0000000e
@@ -1448,16 +1448,16 @@ EQU  ADCH_BTN     00000079
 CSEG start        00000239
 DSEG CHAR_ONE     00000247
 DSEG CHAR_ZERO    00000246
+CSEG timer3       0000024a
 DSEG BUTTON_IS_PRESSED 00000223
-CSEG timer3       0000026a
-CSEG setLcdZero   00000276
-CSEG setLcdOne    0000028a
-CSEG stop         0000029e
-CSEG compare_words 000002c1
-CSEG compare_words_lower_byte 000002c8
-CSEG compare_words_is_less_than 000002c6
-CSEG compare_words_exit 000002cd
-CSEG AVAILABLE_CHARSET 000002ce
+CSEG setLcdZero   00000258
+CSEG setLcdOne    0000026c
+CSEG stop         00000280
+CSEG compare_words 000002a4
+CSEG compare_words_lower_byte 000002ab
+CSEG compare_words_is_less_than 000002a9
+CSEG compare_words_exit 000002b0
+CSEG AVAILABLE_CHARSET 000002b1
 DSEG LAST_BUTTON_PRESSED 00000224
 DSEG TOP_LINE_CONTENT 00000225
 DSEG CURRENT_CHARSET_INDEX 00000235
