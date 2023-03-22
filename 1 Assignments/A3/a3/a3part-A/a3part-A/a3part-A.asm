@@ -235,23 +235,6 @@ start:
 	ldi r16, ' '
 	sts CHAR_TWO, r16
 
-	blink_loop:
-		;figure out the (row, column) of '!' and make a change
-		ldi r16, 1 ; <- TODO: change the row
-		ldi r17, 10 ; <- TODO: change the column
-		push r16
-		push r17
-		rcall lcd_gotoxy
-		pop r17
-		pop r16
-
-		lds r16, CHAR_ONE
-		push r16
-		rcall lcd_putchar
-		pop r16
-
-		rjmp blink_loop
-
 stop:
 	rjmp stop
 
