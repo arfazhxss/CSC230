@@ -15,7 +15,7 @@
     <Name>lab8</Name>
     <RootNamespace>lab8</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
-    <EntryFile>$(MSBuildProjectDirectory)\Buttons.asm</EntryFile>
+    <EntryFile>$(MSBuildProjectDirectory)\hello_blink.asm</EntryFile>
     <KeepTimersRunning>true</KeepTimersRunning>
     <OverrideVtor>false</OverrideVtor>
     <CacheFlash>true</CacheFlash>

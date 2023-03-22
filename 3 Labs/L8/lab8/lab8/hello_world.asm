@@ -18,7 +18,7 @@
 	
 
 ; The following file *must* be in the same
-; directory as this "hello_world.asm". Writing
+; directory as this "hello_world.asm". Writing7
 ; programs made up of multiple assembly files
 ; is not nearly as easy or straightforward
 ; as writing Java programs with multiple classes.
