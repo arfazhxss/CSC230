@@ -122,7 +122,8 @@ reset:
 ; Anything that needs initialization before interrupts
 ; start must be placed here.
  
-rcall lcd_init
+call lcd_init
+call lcd_clr
 
 .def temp=r20
 .def templow=r16
@@ -137,7 +138,6 @@ out SPH, temphigh
 .def DATAL=r24
 .def BOUNDARY_H=r1  ;hold high byte value of the threshold for button
 .def BOUNDARY_L=r0  ;hold low byte value of the threshold for button, r1:r0
-
 
 .equ ADCSRA_BTN=0x7A
 .equ ADCSRB_BTN=0x7B
