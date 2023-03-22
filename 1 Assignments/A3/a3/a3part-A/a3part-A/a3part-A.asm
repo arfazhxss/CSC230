@@ -229,26 +229,6 @@ start:
 	rcall lcd_putchar
 	pop r16
 
-	ldi r16, ' '
-	push r16
-	rcall lcd_putchar
-	pop r16
-
-	ldi r16, '2'
-	push r16
-	rcall lcd_putchar
-	pop r16
-
-	ldi r16, '3'
-	push r16
-	rcall lcd_putchar
-	pop r16
-
-	ldi r16, '0'
-	push r16
-	rcall lcd_putchar
-	pop r16
-
 	ldi r16, '!'
 	sts CHAR_ONE, r16
 
