@@ -301,7 +301,7 @@ timer1: ; INTURRUPT HANDLER FOR BUTTONS
 	cpc DATAH, BOUNDARY_H
 
 
-
+lls
 
 	reti
 
