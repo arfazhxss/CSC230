@@ -1,0 +1,30 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.8</VERSION>
+ <DEVICE>"ATmega2560"</DEVICE>
+ <WORKING_DIR>C:\Users\arfaz\OneDrive\Documents\CSC230\3 Labs\L8\lab8\lab8\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\3 Labs\L8\lab8\lab8\Buttons.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m2560def.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\3 Labs\L8\lab8\lab8\Debug\lab8.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>lab8.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>lab8.map</FILE>
+  <FILE>lab8.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <loop><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\3 Labs\L8\lab8\lab8\Buttons.asm</FILE><LINE>79</LINE></loop>
+  <check_button><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\3 Labs\L8\lab8\lab8\Buttons.asm</FILE><LINE>124</LINE></check_button>
+  <wait><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\3 Labs\L8\lab8\lab8\Buttons.asm</FILE><LINE>134</LINE></wait>
+  <skip><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\3 Labs\L8\lab8\lab8\Buttons.asm</FILE><LINE>151</LINE></skip>
+ </LABELS>
+</ASSEMBLER_INFO>

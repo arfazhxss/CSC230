@@ -122,6 +122,8 @@ reset:
 ; Anything that needs initialization before interrupts
 ; start must be placed here.
 
+
+
 ; ***************************************************
 ; ******* END OF FIRST "STUDENT CODE" SECTION *******
 ; ***************************************************
