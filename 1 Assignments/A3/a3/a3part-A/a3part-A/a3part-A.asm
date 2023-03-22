@@ -126,8 +126,8 @@ call lcd_init
 call lcd_clr
 
 //.def temp=r26
-.def templow=r24
-.def temphigh=r25
+.def templow=r01
+.def temphigh=r02
 
 ldi templow, low(RAMEND)
 out SPL, templow
