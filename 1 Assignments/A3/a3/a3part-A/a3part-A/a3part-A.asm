@@ -80,8 +80,8 @@
 #define BUTTON_LEFT_MASK  0b00001000
 
 #define BUTTON_RIGHT_ADC  0x032
-#define BUTTON_UP_ADC     0x0b0   ; was 0x0c3
-#define BUTTON_DOWN_ADC   0x160   ; was 0x17c
+#define BUTTON_UP_ADC     0x0b0   
+#define BUTTON_DOWN_ADC   0x160   
 #define BUTTON_LEFT_ADC   0x22b
 #define BUTTON_SELECT_ADC 0x316
 
@@ -123,6 +123,18 @@ reset:
 ; start must be placed here.
  
 rcall lcd_init
+
+.def DATAH=r25  ;DATAH:DATAL  store 10 bits data from ADC
+.def DATAL=r24
+.def BOUNDARY_H=r1  ;hold high byte value of the threshold for button
+.def BOUNDARY_L=r0  ;hold low byte value of the threshold for button, r1:r0
+
+
+.equ ADCSRA_BTN=0x7A
+.equ ADCSRB_BTN=0x7B
+.equ ADMUX_BTN=0x7C
+.equ ADCL_BTN=0x78
+.equ ADCH_BTN=0x79
 
 ; ***************************************************
 ; ******* END OF FIRST "STUDENT CODE" SECTION *******
@@ -194,12 +206,92 @@ rcall lcd_init
 ; ****************************************************
 
 start:
+	ldi r16, 1 ;row
+	ldi r17, 3 ;column
+	push r16
+	push r17
+	rcall lcd_gotoxy
+	pop r17
+	pop r16
+
+	ldi r16, 'C'
+	push r16
+	rcall lcd_putchar
+	pop r16
+
+	ldi r16, 'S'
+	push r16
+	rcall lcd_putchar
+	pop r16
+
+	ldi r16, 'C'
+	push r16
+	rcall lcd_putchar
+	pop r16
+
+	ldi r16, ' '
+	push r16
+	rcall lcd_putchar
+	pop r16
+
+	ldi r16, '2'
+	push r16
+	rcall lcd_putchar
+	pop r16
+
+	ldi r16, '3'
+	push r16
+	rcall lcd_putchar
+	pop r16
+
+	ldi r16, '0'
+	push r16
+	rcall lcd_putchar
+	pop r16
+
+	ldi r16, '!'
+	sts CHAR_ONE, r16
+
+	ldi r16, '$'
+	sts CHAR_TWO, r16
+
+	blink_loop:
+		;figure out the (row, column) of '!' and make a change
+		ldi r16, 1 ; <- TODO: change the row
+		ldi r17, 10 ; <- TODO: change the column
+		push r16
+		push r17
+		rcall lcd_gotoxy
+		pop r17
+		pop r16
+
+		lds r16, CHAR_ONE
+		push r16
+		rcall lcd_putchar
+		pop r16
+
+		rjmp blink_loop
 
 stop:
 	rjmp stop
 
 
-timer1:
+timer1: ; INTURRUPT HANDLER FOR BUTTONS
+	ldi r16, 0x87  ;0x87 = 0b10000111
+	sts ADCSRA_BTN, r16
+
+	ldi r16, 0x00
+	sts ADCSRB_BTN, r16
+	ldi r16, 0x40  ;0x40 = 0b01000000
+	sts ADMUX_BTN, r16
+
+	; detect if "RIGHT" button is pressed r1:r0 <- 0x032
+	ldi r16, low(RIGHT);
+	mov BOUNDARY_L, r16
+	ldi r16, high(RIGHT)
+	mov BOUNDARY_H, r16
+
+
 	reti
 
 ; timer3:
@@ -210,7 +302,7 @@ timer1:
 ; within an interrupt handler).
 
 
-timer4:
+timer4: ; INTURRUPT HANDLER
 	reti
 
 
