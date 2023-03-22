@@ -230,6 +230,8 @@ start:
 
 	ldi r16, '*'
 	sts CHAR_ONE, r16
+	ldi r16, '-'
+	sts CHAR_TWO, r16
 
 	timer3:
 		in r16, TIFR3
@@ -237,10 +239,13 @@ start:
 		rjmp timer3
 		lds r16, BUTTON_IS_PRESSED
 		cpi r16, 1
-		breq setLCD
+		breq setLcdOne
+		lds r16, BUTTON_IS_PRESSED
+		cpi r16, 0
+		breq setLcdTwo
 		rjmp start
 	
-	setLCD:
+	setLcsOne:
 		push r16
 		push r16
 		in r16, SREG
@@ -262,6 +267,32 @@ start:
 		out SREG, r16
 		pop r17
 		pop r16
+		rjmp start
+	
+	setLcsTwo:
+		push r16
+		push r16
+		in r16, SREG
+		push r16
+
+		ldi r16, 1 ;row
+		ldi r17, 15 ;column
+		push r16
+		push r17
+		rcall lcd_gotoxy
+		pop r17
+		pop r16
+	
+		lds r16, CHAR_TWO
+		push r16
+		rcall lcd_putchar
+
+		pop r16
+		out SREG, r16
+		pop r17
+		pop r16
+		rjmp start
+	
 
 stop:
 	rjmp stop
@@ -377,6 +408,7 @@ CURRENT_CHAR_INDEX: .byte 1			; ; updated by timer4 interrupt, used by LCD updat
 
 .dseg
 CHAR_ONE: .byte 1
+CHAR_TWO: .byte 1
 
 ; If you should need additional memory for storage of state,
 ; then place it within the section. However, the items here
