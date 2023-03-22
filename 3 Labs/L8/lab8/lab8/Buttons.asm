@@ -33,10 +33,10 @@
 ; Note: the idea to provide two sets of values in the file is adapted from
 ; Dr. Bill Bird's lab note from Summer 2017.
 ; board v1.0 
- .equ UP     = 0x0FA
- .equ DOWN   = 0x1C2
- .equ LEFT   = 0x28A
-  .equ SELECT = 0x352
+ .equ UP     = 0x0FA ; 250
+ .equ DOWN   = 0x1C2 ; 450
+ .equ LEFT   = 0x28A ; ....
+ .equ SELECT = 0x352 ; ....
 
 ; board v1.1 if the following values don't work properly, uncomment the
 ; values under v1.0 and comment out the following set
