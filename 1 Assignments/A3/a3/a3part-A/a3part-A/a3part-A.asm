@@ -223,7 +223,7 @@ start:
 	pop r17
 	pop r16
 
-	ldi r16, '-'
+	ldi r16, '^'
 	push r16
 	rcall lcd_putchar
 	pop r16
@@ -238,12 +238,12 @@ start:
 		sbrs r16, OCF3A
 		rjmp timer3
 		lds r16, BUTTON_IS_PRESSED
-		cpi r16, 1
-		breq setLcdOne
-		lds r16, BUTTON_IS_PRESSED
-		cpi r16, 0
-		breq setLcdTwo
-		rjmp start
+		;cpi r16, 1
+		;breq setLcdOne
+		;lds r16, BUTTON_IS_PRESSED
+		;cpi r16, 0
+		;breq setLcdTwo
+		rjmp stop
 	
 	setLcdOne:
 		push r16
