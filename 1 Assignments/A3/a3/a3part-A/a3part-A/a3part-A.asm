@@ -125,9 +125,9 @@ reset:
 call lcd_init
 call lcd_clr
 
-.def temp=r20
-.def templow=r16
-.def temphigh=r17
+.def temp=r26
+.def templow=r27
+.def temphigh=r28
 
 ldi templow, low(RAMEND)
 out SPL, templow
@@ -235,7 +235,7 @@ start:
 		in r16, TIFR3
 		sbrs r16, OCF3A
 		rjmp timer3
-		ldi r16, BUTTON_IS_PRESSED
+		lds r16, BUTTON_IS_PRESSED
 		cpi r16, 1
 		breq setLCD
 		rjmp stop
