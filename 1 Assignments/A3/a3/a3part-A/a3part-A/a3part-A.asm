@@ -215,6 +215,31 @@ call lcd_clr
 ; ****************************************************
 
 start:
+	clr r23
+	ldi r23, 0x01
+	sts BUTTON_IS_PRESSED, r23
+	ldi r16, 0x87  ;0x87 = 0b10000111
+	sts ADCSRA_BTN, r16
+
+	ldi r16, 0x00
+	sts ADCSRB_BTN, r16
+	ldi r16, 0x40  ;0x40 = 0b01000000
+	sts ADMUX_BTN, r16
+
+	ldi r16, 0;
+	mov BOUNDARY_L, r16
+	ldi r16, high(BUTTON_SELECT_ADC)
+	mov BOUNDARY_H, r16
+	lds	r16, ADCSRA_BTN	
+	ori r16, 0x40
+	sts	ADCSRA_BTN, r16
+	lds DATAL, ADCL_BTN
+	lds DATAH, ADCH_BTN
+	cp DATAL, BOUNDARY_L
+	cpc DATAH, BOUNDARY_H
+	in r16, SREG
+	sbrc r16, 0
+	sts BUTTON_IS_PRESSED, r23
 	ldi r16, 1 ;row
 	ldi r17, 15 ;column
 	push r16
