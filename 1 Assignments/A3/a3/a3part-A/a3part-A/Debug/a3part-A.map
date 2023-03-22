@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm Wed Mar 22 01:51:01 2023
+AVRASM ver. 2.2.8  C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm Wed Mar 22 01:56:28 2023
 
 
 EQU  SIGNATURE_000 0000001e
@@ -1360,8 +1360,8 @@ EQU  UDRE3addr    0000006e
 EQU  UTXC3addr    00000070
 EQU  INT_VECTORS_SIZE 00000072
 CSEG reset        00000204
-CSEG timer1       0000026d
-CSEG timer4       0000028e
+CSEG timer1       0000025d
+CSEG timer4       0000027e
 SET  LCD_INTERFACE_PORTS 00000001
 EQU  LCD_PORT_D4  00000014
 EQU  LCD_PORT_D5  0000000e
@@ -1448,8 +1448,8 @@ EQU  ADCH_BTN     00000079
 CSEG start        00000236
 DSEG CHAR_ONE     00000246
 DSEG CHAR_TWO     00000247
-CSEG blink_loop   0000025f
-CSEG stop         0000026c
+CSEG blink_loop   0000024f
+CSEG stop         0000025c
 DSEG BUTTON_IS_PRESSED 00000223
 CSEG compare_words 0000028f
 CSEG compare_words_lower_byte 00000296

@@ -232,7 +232,7 @@ start:
 	ldi r16, '!'
 	sts CHAR_ONE, r16
 
-	ldi r16, '$'
+	ldi r16, ' '
 	sts CHAR_TWO, r16
 
 	blink_loop:
