@@ -286,9 +286,9 @@ timer1: ; INTURRUPT HANDLER FOR BUTTONS
 	sts ADMUX_BTN, r16
 
 	; detect if "RIGHT" button is pressed r1:r0 <- 0x032
-	ldi r16, low(RIGHT);
+	ldi r16, low(BUTTON_RIGHT_ADC);
 	mov BOUNDARY_L, r16
-	ldi r16, high(RIGHT)
+	ldi r16, high(BUTTON_RIGHT_ADC)
 	mov BOUNDARY_H, r16
 
 
