@@ -313,6 +313,20 @@ timer1: ; INTURRUPT HANDLER FOR BUTTONS
 
 
 timer4: ; INTURRUPT HANDLER
+	push r16
+	push r16
+	in r16, SREG
+	push r16
+
+	lds r16, CHAR_ONE
+	lds r17, CHAR_TWO
+	sts CHAR_ONE, r17
+	sts CHAR_TWO, r16
+
+	pop r16
+	out SREG, r16
+	pop r17
+	pop r16
 	reti
 
 
