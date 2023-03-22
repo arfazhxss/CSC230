@@ -122,7 +122,7 @@ reset:
 ; Anything that needs initialization before interrupts
 ; start must be placed here.
  
-
+rcall lcd_init
 
 ; ***************************************************
 ; ******* END OF FIRST "STUDENT CODE" SECTION *******

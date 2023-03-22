@@ -47,8 +47,8 @@ start:
 	;Note timer1 is a 16 bit timer, the max is 2^16 = 65,535.
 	;You may set the TOP value for the timer at any number between 1 and 65,535.
 	;In this lab, the TOP value is set at 7800.
-	ldi r17, high(7800)
-	ldi r16, low(7800)
+	ldi r17, high(4800)
+	ldi r16, low(4800)
 	sts OCR1AH, r17
 	sts OCR1AL, r16
 
@@ -76,7 +76,7 @@ start:
 	pop r17
 	pop r16
 
-	;TODO: change the following code so that displays “Hello, world!”
+	;TODO: change the following code so that displays ï¿½Hello, world!ï¿½
 	ldi r16, 'C'
 	push r16
 	rcall lcd_putchar
