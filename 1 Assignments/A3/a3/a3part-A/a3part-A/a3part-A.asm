@@ -278,7 +278,8 @@ stop:
 
 timer1: ; INTURRUPT HANDLER FOR BUTTONS
 	clr r23
-	ldi r23, 0b00001111
+	ldi r23, 0x01
+	sts BUTTON_IS_PRESSED, r23
 	ldi r16, 0x87  ;0x87 = 0b10000111
 	sts ADCSRA_BTN, r16
 
@@ -287,7 +288,6 @@ timer1: ; INTURRUPT HANDLER FOR BUTTONS
 	ldi r16, 0x40  ;0x40 = 0b01000000
 	sts ADMUX_BTN, r16
 
-	; detect if "RIGHT" button is pressed r1:r0 <- 0x032
 	ldi r16, 0;
 	mov BOUNDARY_L, r16
 	ldi r16, high(BUTTON_SELECT_ADC)
@@ -299,10 +299,8 @@ timer1: ; INTURRUPT HANDLER FOR BUTTONS
 	lds DATAH, ADCH_BTN
 	cp DATAL, BOUNDARY_L
 	cpc DATAH, BOUNDARY_H
-
-
-lls
-
+	sbrc SREG, 0
+	sts BUTTON_IS_PRESSED, r23
 	reti
 
 ; timer3:
