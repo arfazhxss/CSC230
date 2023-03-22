@@ -207,24 +207,14 @@ rcall lcd_init
 
 start:
 	ldi r16, 1 ;row
-	ldi r17, 3 ;column
+	ldi r17, 15 ;column
 	push r16
 	push r17
 	rcall lcd_gotoxy
 	pop r17
 	pop r16
 
-	ldi r16, 'C'
-	push r16
-	rcall lcd_putchar
-	pop r16
-
-	ldi r16, 'S'
-	push r16
-	rcall lcd_putchar
-	pop r16
-
-	ldi r16, 'C'
+	ldi r16, '-'
 	push r16
 	rcall lcd_putchar
 	pop r16
