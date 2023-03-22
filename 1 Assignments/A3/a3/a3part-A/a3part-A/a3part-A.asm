@@ -219,11 +219,32 @@ start:
 	rcall lcd_putchar
 	pop r16
 
-	ldi r16, '!'
+	ldi r16, '*'
 	sts CHAR_ONE, r16
 
-	ldi r16, ' '
-	sts CHAR_TWO, r16
+	timer3:
+		in r16, TIFR3
+		sbrs r16, OCF3A
+		rjmp timer3
+		ldi r16, BUTTON_IS_PRESSED
+		cpi r16, 1
+		breq setLCD
+		rjmp stop
+	
+	setLCD:
+		push r16
+		push r16
+		in r16, SREG
+		push r16
+
+		lds r16, CHAR_ONE
+		push r16
+		rcall lcd_putchar
+
+		pop r16
+		out SREG, r16
+		pop r17
+		pop r16
 
 stop:
 	rjmp stop
@@ -266,20 +287,6 @@ timer1: ; INTURRUPT HANDLER FOR BUTTONS
 
 
 timer4: ; INTURRUPT HANDLER
-	push r16
-	push r16
-	in r16, SREG
-	push r16
-
-	lds r16, CHAR_ONE
-	lds r17, CHAR_TWO
-	sts CHAR_ONE, r17
-	sts CHAR_TWO, r16
-
-	pop r16
-	out SREG, r16
-	pop r17
-	pop r16
 	reti
 
 
