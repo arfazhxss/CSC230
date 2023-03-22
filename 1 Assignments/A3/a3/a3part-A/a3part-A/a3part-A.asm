@@ -245,7 +245,7 @@ start:
 		breq setLcdTwo
 		rjmp start
 	
-	setLcsOne:
+	setLcdOne:
 		push r16
 		push r16
 		in r16, SREG
@@ -269,7 +269,7 @@ start:
 		pop r16
 		rjmp start
 	
-	setLcsTwo:
+	setLcdTwo:
 		push r16
 		push r16
 		in r16, SREG
