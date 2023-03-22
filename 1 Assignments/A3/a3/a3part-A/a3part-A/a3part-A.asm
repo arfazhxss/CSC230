@@ -238,7 +238,7 @@ start:
 		lds r16, BUTTON_IS_PRESSED
 		cpi r16, 1
 		breq setLCD
-		rjmp stop
+		rjmp start
 	
 	setLCD:
 		push r16
