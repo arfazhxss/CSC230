@@ -121,7 +121,7 @@ reset:
 
 ; Anything that needs initialization before interrupts
 ; start must be placed here.
-
+ 
 
 
 ; ***************************************************
@@ -283,6 +283,8 @@ CURRENT_CHAR_INDEX: .byte 1			; ; updated by timer4 interrupt, used by LCD updat
 ; ***************************************************
 
 .dseg
+CHAR_ONE: .byte 1
+CHAR_TWO: .byte 1
 
 ; If you should need additional memory for storage of state,
 ; then place it within the section. However, the items here
