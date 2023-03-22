@@ -1,0 +1,33 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.8</VERSION>
+ <DEVICE>"ATmega2560"</DEVICE>
+ <WORKING_DIR>C:\Users\arfaz\OneDrive\Documents\CSC230\3 Labs\L7\lab7\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\3 Labs\L7\lab7\multi_timer.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m2560def.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\3 Labs\L7\lab7\Debug\lab7.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>lab7.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>lab7.map</FILE>
+  <FILE>lab7.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <main_loop><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\3 Labs\L7\lab7\multi_timer.asm</FILE><LINE>186</LINE></main_loop>
+  <check_timer_3><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\3 Labs\L7\lab7\multi_timer.asm</FILE><LINE>187</LINE></check_timer_3>
+  <check_timer_4><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\3 Labs\L7\lab7\multi_timer.asm</FILE><LINE>201</LINE></check_timer_4>
+  <check_timer_5><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\3 Labs\L7\lab7\multi_timer.asm</FILE><LINE>217</LINE></check_timer_5>
+  <set_leds><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\3 Labs\L7\lab7\multi_timer.asm</FILE><LINE>233</LINE></set_leds>
+  <skip_overflow><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\3 Labs\L7\lab7\multi_timer.asm</FILE><LINE>236</LINE></skip_overflow>
+  <stop><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\3 Labs\L7\lab7\multi_timer.asm</FILE><LINE>240</LINE></stop>
+ </LABELS>
+</ASSEMBLER_INFO>
