@@ -215,6 +215,32 @@ call lcd_clr
 ; ****************************************************
 
 start:
+	ldi r16, 1 ;row
+	ldi r17, 13 ;column
+	push r16
+	push r17
+	rcall lcd_gotoxy
+	pop r17
+	pop r16
+
+	ldi r16, ' '
+	push r16
+	rcall lcd_putchar
+	pop r16
+
+	ldi r16, '1'
+	sts CHAR_ONE, r16
+	ldi r16, '0'
+	sts CHAR_ZERO, r16
+
+
+
+
+
+	;
+	;
+	;
+	;
 	clr r23
 	ldi r23, 0x01
 	sts BUTTON_IS_PRESSED, r23
@@ -240,35 +266,50 @@ start:
 	in r16, SREG
 	sbrc r16, 0
 	sts BUTTON_IS_PRESSED, r23
-	ldi r16, 1 ;row
-	ldi r17, 15 ;column
-	push r16
-	push r17
-	rcall lcd_gotoxy
-	pop r17
-	pop r16
+	;
+	;
+	;
+	;
 
-	ldi r16, '^'
-	push r16
-	rcall lcd_putchar
-	pop r16
 
-	ldi r16, '*'
-	sts CHAR_ONE, r16
-	ldi r16, '-'
-	sts CHAR_TWO, r16
+	;ldi r16, 1
+	;sts BUTTON_IS_PRESSED, r16
 
 	timer3:
 		in r16, TIFR3
 		sbrs r16, OCF3A
 		rjmp timer3
 		lds r16, BUTTON_IS_PRESSED
-		;cpi r16, 1
-		;breq setLcdOne
-		;lds r16, BUTTON_IS_PRESSED
-		;cpi r16, 0
-		;breq setLcdTwo
-		rjmp stop
+		cpi r16, 0
+		breq setLcdZero
+		lds r16, BUTTON_IS_PRESSED
+		cpi r16, 1
+		breq setLcdOne
+		rjmp start
+	
+	setLcdZero:
+		push r16
+		push r16
+		in r16, SREG
+		push r16
+
+		ldi r16, 1 ;row
+		ldi r17, 15 ;column
+		push r16
+		push r17
+		rcall lcd_gotoxy
+		pop r17
+		pop r16
+	
+		lds r16, CHAR_Zero
+		push r16
+		rcall lcd_putchar
+
+		pop r16
+		out SREG, r16
+		pop r17
+		pop r16
+		rjmp start
 	
 	setLcdOne:
 		push r16
@@ -284,31 +325,7 @@ start:
 		pop r17
 		pop r16
 	
-		lds r16, CHAR_ONE
-		push r16
-		rcall lcd_putchar
-
-		pop r16
-		out SREG, r16
-		pop r17
-		pop r16
-		rjmp start
-	
-	setLcdTwo:
-		push r16
-		push r16
-		in r16, SREG
-		push r16
-
-		ldi r16, 1 ;row
-		ldi r17, 15 ;column
-		push r16
-		push r17
-		rcall lcd_gotoxy
-		pop r17
-		pop r16
-	
-		lds r16, CHAR_TWO
+		lds r16, CHAR_One
 		push r16
 		rcall lcd_putchar
 
@@ -432,8 +449,8 @@ CURRENT_CHAR_INDEX: .byte 1			; ; updated by timer4 interrupt, used by LCD updat
 ; ***************************************************
 
 .dseg
+CHAR_Zero: .byte 1
 CHAR_ONE: .byte 1
-CHAR_TWO: .byte 1
 
 ; If you should need additional memory for storage of state,
 ; then place it within the section. However, the items here
