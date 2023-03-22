@@ -246,6 +246,14 @@ start:
 		in r16, SREG
 		push r16
 
+		ldi r16, 1 ;row
+		ldi r17, 15 ;column
+		push r16
+		push r17
+		rcall lcd_gotoxy
+		pop r17
+		pop r16
+	
 		lds r16, CHAR_ONE
 		push r16
 		rcall lcd_putchar
