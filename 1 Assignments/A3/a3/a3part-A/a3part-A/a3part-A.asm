@@ -125,7 +125,7 @@ reset:
 call lcd_init
 call lcd_clr
 
-.def temp=r26
+//.def temp=r26
 .def templow=r27
 .def temphigh=r28
 
