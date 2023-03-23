@@ -215,36 +215,11 @@ call lcd_clr
 ; ****************************************************
 
 start:
-	ldi r16, 1 ;row
-	ldi r17, 13 ;column
-	push r16
-	push r17
-	rcall lcd_gotoxy
-	pop r17
-	pop r16
 
-	ldi r16, ' '
-	push r16
-	rcall lcd_putchar
-	pop r16
-
-	ldi r16, '1'
+	ldi r16, '*'
 	sts CHAR_ONE, r16
-	ldi r16, '0'
+	ldi r16, '_'
 	sts CHAR_ZERO, r16
-
-
-
-
-
-	;
-	;
-	;
-	;
-	;
-	;
-	;
-	;
 
 
 	;ldi r16, 4
@@ -256,17 +231,18 @@ start:
 		rjmp timer3
 		ldi r16, 1<<OCF3A
 		out TIFR3, r16
+
 		lds r16, BUTTON_IS_PRESSED
 		cpi r16, 0
 		breq setLcdZero
 		lds r16, BUTTON_IS_PRESSED
 		cpi r16, 1
 		breq setLcdOne
-		rjmp start
+		rjmp timer3
 	
 	setLcdZero:
 		push r16
-		push r16
+		push r17
 		in r16, SREG
 		push r16
 
@@ -278,19 +254,20 @@ start:
 		pop r17
 		pop r16
 	
-		lds r16, CHAR_Zero
+		lds r16, CHAR_ZERO
 		push r16
 		rcall lcd_putchar
+		pop r16
 
 		pop r16
 		out SREG, r16
 		pop r17
 		pop r16
-		rjmp start
+		rjmp timer3
 	
 	setLcdOne:
 		push r16
-		push r16
+		push r17
 		in r16, SREG
 		push r16
 
@@ -302,15 +279,16 @@ start:
 		pop r17
 		pop r16
 	
-		lds r16, CHAR_One
+		lds r16, CHAR_ONE
 		push r16
 		rcall lcd_putchar
+		pop r16
 
 		pop r16
 		out SREG, r16
 		pop r17
 		pop r16
-		rjmp start
+		rjmp timer3
 	
 
 stop:
@@ -323,7 +301,6 @@ timer1: ; INTURRUPT HANDLER FOR BUTTONS
 	;sts BUTTON_IS_PRESSED, r16
 
 
-
 	ldi r16, 0x87  ;0x87 = 0b10000111
 	sts ADCSRA_BTN, r16
 
@@ -333,27 +310,27 @@ timer1: ; INTURRUPT HANDLER FOR BUTTONS
 	sts ADMUX_BTN, r16
 
 	; DETECTING BUTTONS
-	ldi r16, low(BUTTON_SELECT_ADC)
+	ldi r16, low(BUTTON_SELECT_ADC);
 	mov BOUNDARY_L, r16
 	ldi r16, high(BUTTON_SELECT_ADC)
 	mov BOUNDARY_H, r16
-
+	
 	lds	r16, ADCSRA_BTN	
 	ori r16, 0x40
 	sts	ADCSRA_BTN, r16
-	;wait: 
-	;	lds	r16, ADCSRA_BTN	
-	;	ori r16, 0x40
-	;	brne wait
 
-	lds DATAL, ADCL
-	lds DATAH, ADCH
+	wait:
+		lds r16, ADCSRA_BTN
+		andi r16, 0x40
+		brne wait
+		
+	lds DATAL, ADCL_BTN
+	lds DATAH, ADCH_BTN
 
 	cp DATAL, BOUNDARY_L
 	cpc DATAH, BOUNDARY_H
 	brsh skip
-	;in r16, SREG
-	;sbrc r16, 0
+
 	ldi r16, 1
 	sts BUTTON_IS_PRESSED, r16
 	pop r16

@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm Wed Mar 22 17:34:28 2023
+AVRASM ver. 2.2.8  C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm Thu Mar 23 04:09:52 2023
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m2560def.inc'
 C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm(68): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m2560def.inc'
@@ -1907,7 +1907,7 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\l
                                  ; obtained from main ATmega2560 data sheet
                                  ;
                                  .org 0x22
-000022 940c 0281                 	jmp timer1
+000022 940c 0278                 	jmp timer1
                                  
                                  ; This included for completeness. Because timer3 is used to
                                  ; drive updates of the LCD display, and because LCD routines
@@ -1918,7 +1918,7 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\l
                                  ;	jmp timer3
                                  
                                  .org 0x54
-000054 940c 02a5                 	jmp timer4
+000054 940c 02a0                 	jmp timer4
                                  
                                  .include "m2560def.inc"
                                  
@@ -3353,155 +3353,132 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\l
                                  ; ****************************************************
                                  
                                  start:
-000239 e001                      	ldi r16, 1 ;row
-00023a e01d                      	ldi r17, 13 ;column
-00023b 930f                      	push r16
-00023c 931f                      	push r17
-00023d decc                      	rcall lcd_gotoxy
-00023e 911f                      	pop r17
-00023f 910f                      	pop r16
                                  
-000240 e200                      	ldi r16, ' '
-000241 930f                      	push r16
-000242 de94                      	rcall lcd_putchar
-000243 910f                      	pop r16
-                                 
-000244 e301                      	ldi r16, '1'
-000245 9300 0247                 	sts CHAR_ONE, r16
-000247 e300                      	ldi r16, '0'
-000248 9300 0246                 	sts CHAR_ZERO, r16
-                                 
-                                 
-                                 
-                                 
-                                 
-                                 	;
-                                 	;
-                                 	;
-                                 	;
-                                 	;
-                                 	;
-                                 	;
-                                 	;
+000239 e20a                      	ldi r16, '*'
+00023a 9300 0247                 	sts CHAR_ONE, r16
+00023c e50f                      	ldi r16, '_'
+00023d 9300 0246                 	sts CHAR_ZERO, r16
                                  
                                  
                                  	;ldi r16, 4
                                  	;sts BUTTON_IS_PRESSED, r16
                                  
                                  	timer3:
-00024a b308                      		in r16, TIFR3
-00024b ff01                      		sbrs r16, OCF3A
-00024c cffd                      		rjmp timer3
-00024d e002                      		ldi r16, 1<<OCF3A
-00024e bb08                      		out TIFR3, r16
-00024f 9100 0223                 		lds r16, BUTTON_IS_PRESSED
-000251 3000                      		cpi r16, 0
-000252 f029                      		breq setLcdZero
-000253 9100 0223                 		lds r16, BUTTON_IS_PRESSED
-000255 3001                      		cpi r16, 1
-000256 f0a9                      		breq setLcdOne
-000257 cfe1                      		rjmp start
+00023f b308                      		in r16, TIFR3
+000240 ff01                      		sbrs r16, OCF3A
+000241 cffd                      		rjmp timer3
+000242 e002                      		ldi r16, 1<<OCF3A
+000243 bb08                      		out TIFR3, r16
+                                 
+000244 9100 0223                 		lds r16, BUTTON_IS_PRESSED
+000246 3000                      		cpi r16, 0
+000247 f029                      		breq setLcdZero
+000248 9100 0223                 		lds r16, BUTTON_IS_PRESSED
+00024a 3001                      		cpi r16, 1
+00024b f0b1                      		breq setLcdOne
+00024c cff2                      		rjmp timer3
                                  	
                                  	setLcdZero:
-000258 930f                      		push r16
-000259 930f                      		push r16
-00025a b70f                      		in r16, SREG
-00025b 930f                      		push r16
+00024d 930f                      		push r16
+00024e 931f                      		push r17
+00024f b70f                      		in r16, SREG
+000250 930f                      		push r16
                                  
-00025c e001                      		ldi r16, 1 ;row
-00025d e01f                      		ldi r17, 15 ;column
-00025e 930f                      		push r16
-00025f 931f                      		push r17
-000260 dea9                      		rcall lcd_gotoxy
-000261 911f                      		pop r17
-000262 910f                      		pop r16
+000251 e001                      		ldi r16, 1 ;row
+000252 e01f                      		ldi r17, 15 ;column
+000253 930f                      		push r16
+000254 931f                      		push r17
+000255 deb4                      		rcall lcd_gotoxy
+000256 911f                      		pop r17
+000257 910f                      		pop r16
                                  	
-000263 9100 0246                 		lds r16, CHAR_Zero
-000265 930f                      		push r16
-000266 de70                      		rcall lcd_putchar
+000258 9100 0246                 		lds r16, CHAR_ZERO
+00025a 930f                      		push r16
+00025b de7b                      		rcall lcd_putchar
+00025c 910f                      		pop r16
                                  
-000267 910f                      		pop r16
-000268 bf0f                      		out SREG, r16
-000269 911f                      		pop r17
-00026a 910f                      		pop r16
-00026b cfcd                      		rjmp start
+00025d 910f                      		pop r16
+00025e bf0f                      		out SREG, r16
+00025f 911f                      		pop r17
+000260 910f                      		pop r16
+000261 cfdd                      		rjmp timer3
                                  	
                                  	setLcdOne:
-00026c 930f                      		push r16
-00026d 930f                      		push r16
-00026e b70f                      		in r16, SREG
-00026f 930f                      		push r16
+000262 930f                      		push r16
+000263 931f                      		push r17
+000264 b70f                      		in r16, SREG
+000265 930f                      		push r16
                                  
-000270 e001                      		ldi r16, 1 ;row
-000271 e01f                      		ldi r17, 15 ;column
-000272 930f                      		push r16
-000273 931f                      		push r17
-000274 de95                      		rcall lcd_gotoxy
-000275 911f                      		pop r17
-000276 910f                      		pop r16
+000266 e001                      		ldi r16, 1 ;row
+000267 e01f                      		ldi r17, 15 ;column
+000268 930f                      		push r16
+000269 931f                      		push r17
+00026a de9f                      		rcall lcd_gotoxy
+00026b 911f                      		pop r17
+00026c 910f                      		pop r16
                                  	
-000277 9100 0247                 		lds r16, CHAR_One
-000279 930f                      		push r16
-00027a de5c                      		rcall lcd_putchar
+00026d 9100 0247                 		lds r16, CHAR_ONE
+00026f 930f                      		push r16
+000270 de66                      		rcall lcd_putchar
+000271 910f                      		pop r16
                                  
-00027b 910f                      		pop r16
-00027c bf0f                      		out SREG, r16
-00027d 911f                      		pop r17
-00027e 910f                      		pop r16
-00027f cfb9                      		rjmp start
+000272 910f                      		pop r16
+000273 bf0f                      		out SREG, r16
+000274 911f                      		pop r17
+000275 910f                      		pop r16
+000276 cfc8                      		rjmp timer3
                                  	
                                  
                                  stop:
-000280 cfff                      	rjmp stop
+000277 cfff                      	rjmp stop
                                  
                                  
                                  timer1: ; INTURRUPT HANDLER FOR BUTTONS 
-000281 930f                      	push r16
+000278 930f                      	push r16
                                  	;ldi r16, 1
                                  	;sts BUTTON_IS_PRESSED, r16
                                  
                                  
+000279 e807                      	ldi r16, 0x87  ;0x87 = 0b10000111
+00027a 9300 007a                 	sts ADCSRA_BTN, r16
                                  
-000282 e807                      	ldi r16, 0x87  ;0x87 = 0b10000111
-000283 9300 007a                 	sts ADCSRA_BTN, r16
-                                 
-000285 e000                      	ldi r16, 0x00
-000286 9300 007b                 	sts ADCSRB_BTN, r16
-000288 e400                      	ldi r16, 0x40  ;0x40 = 0b01000000
-000289 9300 007c                 	sts ADMUX_BTN, r16
+00027c e000                      	ldi r16, 0x00
+00027d 9300 007b                 	sts ADCSRB_BTN, r16
+00027f e400                      	ldi r16, 0x40  ;0x40 = 0b01000000
+000280 9300 007c                 	sts ADMUX_BTN, r16
                                  
                                  	; DETECTING BUTTONS
-00028b e106                      	ldi r16, low(BUTTON_SELECT_ADC)
-00028c 2e00                      	mov BOUNDARY_L, r16
-00028d e003                      	ldi r16, high(BUTTON_SELECT_ADC)
-00028e 2e10                      	mov BOUNDARY_H, r16
+000282 e106                      	ldi r16, low(BUTTON_SELECT_ADC);
+000283 2e00                      	mov BOUNDARY_L, r16
+000284 e003                      	ldi r16, high(BUTTON_SELECT_ADC)
+000285 2e10                      	mov BOUNDARY_H, r16
+                                 	
+000286 9100 007a                 	lds	r16, ADCSRA_BTN	
+000288 6400                      	ori r16, 0x40
+000289 9300 007a                 	sts	ADCSRA_BTN, r16
                                  
-00028f 9100 007a                 	lds	r16, ADCSRA_BTN	
-000291 6400                      	ori r16, 0x40
-000292 9300 007a                 	sts	ADCSRA_BTN, r16
-                                 	;wait: 
-                                 	;	lds	r16, ADCSRA_BTN	
-                                 	;	ori r16, 0x40
-                                 	;	brne wait
+                                 	wait:
+00028b 9100 007a                 		lds r16, ADCSRA_BTN
+00028d 7400                      		andi r16, 0x40
+00028e f7e1                      		brne wait
+                                 		
+00028f 9180 0078                 	lds DATAL, ADCL_BTN
+000291 9190 0079                 	lds DATAH, ADCH_BTN
                                  
-000294 9180 0078                 	lds DATAL, ADCL
-000296 9190 0079                 	lds DATAH, ADCH
+000293 1580                      	cp DATAL, BOUNDARY_L
+000294 0591                      	cpc DATAH, BOUNDARY_H
+000295 f428                      	brsh skip
                                  
-000298 1580                      	cp DATAL, BOUNDARY_L
-000299 0591                      	cpc DATAH, BOUNDARY_H
-00029a f428                      	brsh skip
-                                 	;in r16, SREG
-                                 	;sbrc r16, 0
-00029b e001                      	ldi r16, 1
-00029c 9300 0223                 	sts BUTTON_IS_PRESSED, r16
-00029e 910f                      	pop r16
-00029f 9518                      	reti
+000296 e001                      	ldi r16, 1
+000297 9300 0223                 	sts BUTTON_IS_PRESSED, r16
+000299 910f                      	pop r16
+00029a 9518                      	reti
                                  
                                  	skip: 
-0002a0 e000                      		ldi r16, 0
-0002a1 9300 0223                 		sts BUTTON_IS_PRESSED, r16
-0002a3 910f                      		pop r16
-0002a4 9518                      		reti
+00029b e000                      		ldi r16, 0
+00029c 9300 0223                 		sts BUTTON_IS_PRESSED, r16
+00029e 910f                      		pop r16
+00029f 9518                      		reti
                                  
                                  ; timer3:
                                  ;
@@ -3512,7 +3489,7 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\l
                                  
                                  
                                  timer4: ; INTURRUPT HANDLER
-0002a5 9518                      	reti
+0002a0 9518                      	reti
                                  
                                  
                                  ; ****************************************************
@@ -3532,8 +3509,8 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\l
                                  ;
                                  compare_words:
                                  	; if high bytes are different, look at lower bytes
-0002a6 1713                      	cp r17, r19
-0002a7 f029                      	breq compare_words_lower_byte
+0002a1 1713                      	cp r17, r19
+0002a2 f029                      	breq compare_words_lower_byte
                                  
                                  	; since high bytes are different, use these to
                                  	; determine result7
@@ -3541,35 +3518,35 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\l
                                  	; if C is set from previous cp, it means r17 < r19
                                  	; 
                                  	; preload r25 with 1 with the assume r17 > r19
-0002a8 e091                      	ldi r25, 1
-0002a9 f008                      	brcs compare_words_is_less_than
-0002aa c007                      	rjmp compare_words_exit
+0002a3 e091                      	ldi r25, 1
+0002a4 f008                      	brcs compare_words_is_less_than
+0002a5 c007                      	rjmp compare_words_exit
                                  
                                  compare_words_is_less_than:
-0002ab ef9f                      	ldi r25, -1
-0002ac c005                      	rjmp compare_words_exit
+0002a6 ef9f                      	ldi r25, -1
+0002a7 c005                      	rjmp compare_words_exit
                                  
                                  compare_words_lower_byte:
-0002ad 2799                      	clr r25
-0002ae 1702                      	cp r16, r18
-0002af f011                      	breq compare_words_exit
+0002a8 2799                      	clr r25
+0002a9 1702                      	cp r16, r18
+0002aa f011                      	breq compare_words_exit
                                  
-0002b0 e091                      	ldi r25, 1
-0002b1 f3c8                      	brcs compare_words_is_less_than  ; re-use what we already wrote...
+0002ab e091                      	ldi r25, 1
+0002ac f3c8                      	brcs compare_words_is_less_than  ; re-use what we already wrote...
                                  
                                  compare_words_exit:
-0002b2 9508                      	ret
+0002ad 9508                      	ret
                                  
                                  .cseg
-0002b3 3130
-0002b4 3332
-0002b5 3534
-0002b6 3736
-0002b7 3938
-0002b8 6261
-0002b9 6463
-0002ba 6665
-0002bb 005f                      AVAILABLE_CHARSET: .db "0123456789abcdef_", 0
+0002ae 3130
+0002af 3332
+0002b0 3534
+0002b1 3736
+0002b2 3938
+0002b3 6261
+0002b4 6463
+0002b5 6665
+0002b6 005f                      AVAILABLE_CHARSET: .db "0123456789abcdef_", 0
                                  
                                  
                                  .dseg
@@ -3623,26 +3600,26 @@ counted separately from r26..r31 here.
 "ATmega2560" register use summary:
 x  :   1 y  :  11 z  :   2 r0 :   3 r1 :   3 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16: 243 r17:  39 r18:  28 r19:  26 r20:   0 
+r13:   0 r14:   0 r15:   0 r16: 239 r17:  38 r18:  28 r19:  26 r20:   0 
 r21:   2 r22:   0 r23:   0 r24:   2 r25:   6 r26:   3 r27:   3 r28:  22 
 r29:  23 r30:   6 r31:   6 
 Registers used: 18 out of 35 (51.4%)
 
 "ATmega2560" instruction use summary:
 .lds  :   0 .sts  :   0 adc   :   0 add   :   1 adiw  :   0 and   :   0 
-andi  :   3 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
+andi  :   4 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
 brcc  :   0 brcs  :   2 break :   0 breq  :   5 brge  :   0 brhc  :   0 
 brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   2 brmi  :   0 
-brne  :   6 brpl  :   0 brsh  :   2 brtc  :   0 brts  :   0 brvc  :   0 
+brne  :   7 brpl  :   0 brsh  :   2 brtc  :   0 brts  :   0 brvc  :   0 
 brvs  :   0 bset  :   0 bst   :   0 call  :  32 cbi   :   0 cbr   :  12 
 clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   6 cls   :   0 
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   3 cpc   :   1 
 cpi   :   8 cpse  :   0 dec   :   3 eicall:   0 eijmp :   0 elpm  :   0 
 eor   :   0 fmul  :   0 fmuls :   0 fmulsu:   0 icall :   0 ijmp  :   0 
-in    :  15 inc   :   1 jmp   :   7 ld    :   1 ldd   :  11 ldi   :  67 
-lds   :  28 lpm   :   1 lsl   :   0 lsr   :   0 mov   :   7 movw  :   0 
+in    :  15 inc   :   1 jmp   :   7 ld    :   1 ldd   :  11 ldi   :  64 
+lds   :  29 lpm   :   1 lsl   :   0 lsr   :   0 mov   :   7 movw  :   0 
 mul   :   1 muls  :   0 mulsu :   0 neg   :   0 nop   :   0 or    :   1 
-ori   :   1 out   :   3 pop   :  76 push  :  77 rcall :   6 ret   :  12 
+ori   :   1 out   :   3 pop   :  75 push  :  74 rcall :   4 ret   :  12 
 reti  :   3 rjmp  :   8 rol   :   0 ror   :   0 sbc   :   0 sbci  :   0 
 sbi   :   0 sbic  :   0 sbis  :   0 sbiw  :   1 sbr   :  12 sbrc  :   4 
 sbrs  :   1 sec   :   0 seh   :   0 sei   :   1 sen   :   0 ser   :   0 
@@ -3654,7 +3631,7 @@ Instructions used: 41 out of 116 (35.3%)
 "ATmega2560" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x000578   1208     32   1240  262144   0.5%
+[.cseg] 0x000000 0x00056e   1198     32   1230  262144   0.5%
 [.dseg] 0x000200 0x000248      0     72     72    8192   0.9%
 [.eseg] 0x000000 0x000000      0      0      0    4096   0.0%
 
