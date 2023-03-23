@@ -26,7 +26,7 @@
  <LABELS>
   <reset><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm</FILE><LINE>117</LINE></reset>
   <timer1><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm</FILE><LINE>320</LINE></timer1>
-  <timer4><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm</FILE><LINE>359</LINE></timer4>
+  <timer4><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm</FILE><LINE>376</LINE></timer4>
   <lcd_init><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\lcd.asm</FILE><LINE>689</LINE></lcd_init>
   <str><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\lcd.asm</FILE><LINE>970</LINE></str>
   <init><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\lcd.asm</FILE><LINE>953</LINE></init>
@@ -58,21 +58,22 @@
   <dlyms><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\lcd.asm</FILE><LINE>879</LINE></dlyms>
   <initloop><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\lcd.asm</FILE><LINE>924</LINE></initloop>
   <start><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm</FILE><LINE>217</LINE></start>
-  <CHAR_ONE><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm</FILE><LINE>433</LINE></CHAR_ONE>
-  <CHAR_ZERO><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm</FILE><LINE>432</LINE></CHAR_ZERO>
+  <CHAR_ONE><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm</FILE><LINE>450</LINE></CHAR_ONE>
+  <CHAR_ZERO><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm</FILE><LINE>449</LINE></CHAR_ZERO>
   <timer3><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm</FILE><LINE>253</LINE></timer3>
-  <BUTTON_IS_PRESSED><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm</FILE><LINE>414</LINE></BUTTON_IS_PRESSED>
+  <BUTTON_IS_PRESSED><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm</FILE><LINE>431</LINE></BUTTON_IS_PRESSED>
   <setLcdZero><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm</FILE><LINE>267</LINE></setLcdZero>
   <setLcdOne><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm</FILE><LINE>291</LINE></setLcdOne>
   <stop><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm</FILE><LINE>316</LINE></stop>
-  <compare_words><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm</FILE><LINE>378</LINE></compare_words>
-  <compare_words_lower_byte><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm</FILE><LINE>397</LINE></compare_words_lower_byte>
-  <compare_words_is_less_than><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm</FILE><LINE>393</LINE></compare_words_is_less_than>
-  <compare_words_exit><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm</FILE><LINE>405</LINE></compare_words_exit>
-  <AVAILABLE_CHARSET><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm</FILE><LINE>409</LINE></AVAILABLE_CHARSET>
-  <LAST_BUTTON_PRESSED><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm</FILE><LINE>415</LINE></LAST_BUTTON_PRESSED>
-  <TOP_LINE_CONTENT><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm</FILE><LINE>417</LINE></TOP_LINE_CONTENT>
-  <CURRENT_CHARSET_INDEX><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm</FILE><LINE>418</LINE></CURRENT_CHARSET_INDEX>
-  <CURRENT_CHAR_INDEX><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm</FILE><LINE>419</LINE></CURRENT_CHAR_INDEX>
+  <skip><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm</FILE><LINE>362</LINE></skip>
+  <compare_words><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm</FILE><LINE>395</LINE></compare_words>
+  <compare_words_lower_byte><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm</FILE><LINE>414</LINE></compare_words_lower_byte>
+  <compare_words_is_less_than><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm</FILE><LINE>410</LINE></compare_words_is_less_than>
+  <compare_words_exit><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm</FILE><LINE>422</LINE></compare_words_exit>
+  <AVAILABLE_CHARSET><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm</FILE><LINE>426</LINE></AVAILABLE_CHARSET>
+  <LAST_BUTTON_PRESSED><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm</FILE><LINE>432</LINE></LAST_BUTTON_PRESSED>
+  <TOP_LINE_CONTENT><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm</FILE><LINE>434</LINE></TOP_LINE_CONTENT>
+  <CURRENT_CHARSET_INDEX><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm</FILE><LINE>435</LINE></CURRENT_CHARSET_INDEX>
+  <CURRENT_CHAR_INDEX><FILE>C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-A\a3part-A\a3part-A.asm</FILE><LINE>436</LINE></CURRENT_CHAR_INDEX>
  </LABELS>
 </ASSEMBLER_INFO>
