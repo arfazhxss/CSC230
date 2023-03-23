@@ -332,20 +332,28 @@ timer1: ; INTURRUPT HANDLER FOR BUTTONS
 	ldi r16, 0x40  ;0x40 = 0b01000000
 	sts ADMUX_BTN, r16
 
-	ldi r16, low(ADCL_BTN);
+	; DETECTING BUTTONS
+	ldi r16, low(BUTTON_SELECT_ADC);
 	mov BOUNDARY_L, r16
-	ldi r16, high(ADCH_BTN)
+	ldi r16, high(BUTTON_SELECT_ADC)
 	mov BOUNDARY_H, r16
+
 	lds	r16, ADCSRA_BTN	
 	ori r16, 0x40
 	sts	ADCSRA_BTN, r16
+
 	lds DATAL, ADCL_BTN
 	lds DATAH, ADCH_BTN
+
 	cp DATAL, BOUNDARY_L
 	cpc DATAH, BOUNDARY_H
-	in r16, SREG
-	sbrc r16, 0
+	brsh skip
+	;in r16, SREG
+	;sbrc r16, 0
 	sts BUTTON_IS_PRESSED, r16
+	reti
+
+	skip: reti
 
 
 
