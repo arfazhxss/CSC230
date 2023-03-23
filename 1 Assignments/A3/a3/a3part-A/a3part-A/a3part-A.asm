@@ -321,6 +321,9 @@ timer1: ; INTURRUPT HANDLER FOR BUTTONS
 	push r16
 	;ldi r16, 1
 	;sts BUTTON_IS_PRESSED, r16
+
+
+
 	ldi r16, 0x87  ;0x87 = 0b10000111
 	sts ADCSRA_BTN, r16
 
@@ -329,9 +332,9 @@ timer1: ; INTURRUPT HANDLER FOR BUTTONS
 	ldi r16, 0x40  ;0x40 = 0b01000000
 	sts ADMUX_BTN, r16
 
-	ldi r16, 0;
+	ldi r16, low(ADCL_BTN);
 	mov BOUNDARY_L, r16
-	ldi r16, high(BUTTON_SELECT_ADC)
+	ldi r16, high(ADCH_BTN)
 	mov BOUNDARY_H, r16
 	lds	r16, ADCSRA_BTN	
 	ori r16, 0x40
@@ -343,6 +346,10 @@ timer1: ; INTURRUPT HANDLER FOR BUTTONS
 	in r16, SREG
 	sbrc r16, 0
 	sts BUTTON_IS_PRESSED, r16
+
+
+
+
 	;ldi r16, 1
 	;sts BUTTON_IS_PRESSED, r16
 	pop r16
