@@ -1,7 +1,7 @@
 ;
-; a3part-D.asm
+; a3part-A.asm
 ;
-; Part D of assignment #3
+; Part A of assignment #3
 ;
 ;
 ; Student name:
@@ -80,8 +80,8 @@
 #define BUTTON_LEFT_MASK  0b00001000
 
 #define BUTTON_RIGHT_ADC  0x032
-#define BUTTON_UP_ADC     0x0b0   ; was 0x0c3
-#define BUTTON_DOWN_ADC   0x160   ; was 0x17c
+#define BUTTON_UP_ADC     0x0b0   
+#define BUTTON_DOWN_ADC   0x160   
 #define BUTTON_LEFT_ADC   0x22b
 #define BUTTON_SELECT_ADC 0x316
 
@@ -121,6 +121,128 @@ reset:
 
 ; Anything that needs initialization before interrupts
 ; start must be placed here.
+ 
+call lcd_init
+call lcd_clr
+
+button_refresh:
+	ldi r16, ' '
+	sts LAST_BUTTON_PRESSED, r16
+	ldi r16, 0
+	sts CURRENT_CHAR_INDEX, r16
+	clr r16
+
+charset_index_initialization:
+	ldi r16, 0 ; content of indexes of chars
+	lds r17, STRING_SIZE ; loop index
+
+	ldi ZH, high(CURRENT_CHARSET_INDEX)
+	ldi ZL, low(CURRENT_CHARSET_INDEX)
+
+	loop_charset_init:
+		st Z+, r16
+		dec r17
+		cpi r17, 0
+		breq end_charset_init
+		rjmp loop_charset_init
+	end_charset_init:
+		clr r30
+		clr r31
+		clr r16
+		clr r17
+
+;charset_index_initialization:
+;	ldi r20, 0
+;	sts CURRENT_CHARSET_INDEX, r20
+
+
+available_string_size:
+	ldi ZH, high (AVAILABLE_CHARSET*2)
+	ldi ZL, low (AVAILABLE_CHARSET*2)
+	ldi r16, 0
+
+	loop1:
+		LPM R20, Z+			; 1 addition after each loop
+		inc r16
+		cpi R20, 0x00
+		breq endEncode1
+		rjmp loop1
+	endEncode1:
+		clr r20
+		dec r16
+		dec r16
+		sts STRING_SIZE, r16
+		clr r16
+		NOP
+
+topLine_initialization:	; setting all top_line values to spaces, initiation
+	ldi r16, ' '
+	lds r17, STRING_SIZE
+
+	ldi ZH, high(TOP_LINE_CONTENT)
+	ldi ZL, low(TOP_LINE_CONTENT)
+
+	loop:
+		st Z+, r16
+		dec r17
+		cpi r17, 0
+		breq a2d_initilization
+		rjmp loop
+
+a2d_initilization:
+		.def templow=r20
+		.def temphigh=r21
+		ldi templow, low(RAMEND)
+		out SPL, templow
+		ldi temphigh, high(RAMEND)
+		out SPH, temphigh
+		clr r20
+		clr r21
+
+		.def DATAH=r25  ;DATAH:DATAL  store 10 bits data from ADC
+		.def DATAL=r24
+
+		.def BOUNDARY_H=r1  ;hold high byte value of the threshold for SELECT button
+		.def BOUNDARY_L=r0  ;hold low byte value of the threshold for SELECT button, r1:r0
+		.def BOUNDARY_RIGHT_H=r3  
+		.def BOUNDARY_RIGHT_L=r2
+		.def BOUNDARY_LEFT_H=r5  
+		.def BOUNDARY_LEFT_L=r4
+		.def BOUNDARY_UP_H=r7  
+		.def BOUNDARY_UP_L=r6
+		.def BOUNDARY_DOWN_H=r9  
+		.def BOUNDARY_DOWN_L=r8
+
+		ldi r16, low(BUTTON_SELECT_ADC);
+		mov BOUNDARY_L, r16
+		ldi r16, high(BUTTON_SELECT_ADC)
+		mov BOUNDARY_H, r16
+
+		ldi r16, low(BUTTON_RIGHT_ADC);
+		mov BOUNDARY_RIGHT_L, r16
+		ldi r16, high(BUTTON_RIGHT_ADC)
+		mov BOUNDARY_RIGHT_H, r16
+
+		ldi r16, low(BUTTON_LEFT_ADC);
+		mov BOUNDARY_LEFT_L, r16
+		ldi r16, high(BUTTON_LEFT_ADC)
+		mov BOUNDARY_LEFT_H, r16
+
+		ldi r16, low(BUTTON_UP_ADC);
+		mov BOUNDARY_UP_L, r16
+		ldi r16, high(BUTTON_UP_ADC)
+		mov BOUNDARY_UP_H, r16
+
+		ldi r16, low(BUTTON_DOWN_ADC);
+		mov BOUNDARY_DOWN_L, r16
+		ldi r16, high(BUTTON_DOWN_ADC)
+		mov BOUNDARY_DOWN_H, r16
+
+		.equ ADCSRA_BTN=0x7A
+		.equ ADCSRB_BTN=0x7B
+		.equ ADMUX_BTN=0x7C
+		.equ ADCL_BTN=0x78
+		.equ ADCH_BTN=0x79
 
 ; ***************************************************
 ; ******* END OF FIRST "STUDENT CODE" SECTION *******
@@ -193,12 +315,322 @@ reset:
 
 start:
 
+	ldi r16, '*'
+	sts CHAR_ONE, r16
+	ldi r16, '_'
+	sts CHAR_ZERO, r16
+
+	timer3: ; LCD TIMER POLLING LOOP
+		in r16, TIFR3
+		sbrs r16, OCF3A
+		rjmp timer3
+		ldi r16, 1<<OCF3A
+		out TIFR3, r16
+
+		lds r16, BUTTON_IS_PRESSED
+		cpi r16, 0
+		breq setLcdZero
+		lds r16, BUTTON_IS_PRESSED
+		cpi r16, 1
+		breq setLcdOne
+		rjmp timer3
+	
+	setLcdZero: ; NO BUTTON PRESSED LCD UPDATE
+		push r16
+		push r17
+		in r16, SREG
+		push r16
+
+		ldi r16, 1 ;row
+		ldi r17, 15 ;column
+		push r16
+		push r17
+		rcall lcd_gotoxy
+		pop r17
+		pop r16
+	
+		lds r16, CHAR_ZERO
+		push r16
+		rcall lcd_putchar
+		pop r16
+
+		rjmp timer3_end
+	
+	setLcdOne:	; BUTTON PRESSED LCD UPDATE
+		rcall topLineLCD
+		ldi r16, 1 ;row
+		ldi r17, 0 ;column
+		push r16
+		push r17
+		rcall lcd_gotoxy
+		pop r17
+		pop r16
+	
+		ldi r16, ' '
+		push r16
+		rcall lcd_putchar
+		pop r16
+
+		ldi r16, 1 ;row
+		ldi r17, 1 ;column
+		push r16
+		push r17
+		rcall lcd_gotoxy
+		pop r17
+		pop r16
+	
+		ldi r16, ' '
+		push r16
+		rcall lcd_putchar
+		pop r16
+
+		ldi r16, 1 ;row
+		ldi r17, 2 ;column
+		push r16
+		push r17
+		rcall lcd_gotoxy
+		pop r17
+		pop r16
+	
+		ldi r16, ' '
+		push r16
+		rcall lcd_putchar
+		pop r16
+
+		ldi r16, 1 ;row
+		ldi r17, 3 ;column
+		push r16
+		push r17
+		rcall lcd_gotoxy
+		pop r17
+		pop r16
+	
+		ldi r16, ' '
+		push r16
+		rcall lcd_putchar
+		pop r16
+		push r16
+		push r17
+		in r16, SREG
+		push r16
+
+		ldi r16, 1 ;row
+		ldi r17, 15 ;column
+		push r16
+		push r17
+		rcall lcd_gotoxy
+		pop r17
+		pop r16
+	
+		lds r16, CHAR_ONE
+		push r16
+		rcall lcd_putchar
+		pop r16
+
+		lds r16, LAST_BUTTON_PRESSED
+
+		cpi r16,'R'
+		breq setLedRight
+
+		cpi r16,'U'
+		breq setLedUp
+
+		cpi r16,'D'
+		breq setLedDown
+
+		cpi r16,'L'
+		breq setLedLeft
+
+		rjmp timer3_end
+
+		setLedDown:
+			ldi r16, 1 ;row
+			ldi r17, 1 ;column
+			push r16
+			push r17
+			rcall lcd_gotoxy
+			pop r17
+			pop r16
+	
+			ldi r16, 'D'
+			push r16
+			rcall lcd_putchar
+			pop r16
+
+			rjmp timer3_end	
+
+		setLedUp:
+			ldi r16, 1 ;row
+			ldi r17, 2 ;column
+			push r16
+			push r17
+			rcall lcd_gotoxy
+			pop r17
+			pop r16
+	
+			ldi r16, 'U'
+			push r16
+			rcall lcd_putchar
+			pop r16
+
+			rjmp timer3_end
+
+		setLedRight:
+			ldi r16, 1 ;row
+			ldi r17, 3 ;column
+			push r16
+			push r17
+			rcall lcd_gotoxy
+			pop r17
+			pop r16
+	
+			ldi r16, 'R'
+			push r16
+			rcall lcd_putchar
+			pop r16
+
+			rjmp timer3_end
+
+		setLedLeft:
+			ldi r16, 1 ;row
+			ldi r17, 0 ;column
+			push r16
+			push r17
+			rcall lcd_gotoxy
+			pop r17
+			pop r16
+	
+			ldi r16, 'L'
+			push r16
+			rcall lcd_putchar
+			pop r16
+
+			rjmp timer3_end
+
+	timer3_end:
+		pop r16
+		out SREG, r16
+		pop r17
+		pop r16
+		rjmp timer3
+
+	///////////////////////////////////////////////////////
+	topLineLCD:
+		ldi r30, low(TOP_LINE_CONTENT)
+		ldi r31, high(TOP_LINE_CONTENT)
+		ldi r16, 0 ;row
+		ldi r17, 0 ;iterated start column
+		lds r18, STRING_SIZE ; end column not to be reached
+
+		topLineLoop:
+			push r16
+			push r17
+			rcall lcd_gotoxy
+			pop r17
+			pop r16
+			inc r17
+			
+			ld r16, Z+
+			push r16
+			rcall lcd_putchar
+			pop r16
+
+			inc r17
+			cp r17, r18
+			brne topLineLoop
+			ret
+
+	///////////////////////////////////////////////////////
+	
+
 stop:
 	rjmp stop
 
 
-timer1:
-	reti
+timer1: ; INTURRUPT HANDLER FOR BUTTONS 
+	push r16
+
+	ldi r16, 0x87  ;0x87 = 0b10000111
+	sts ADCSRA_BTN, r16
+
+	ldi r16, 0x00
+	sts ADCSRB_BTN, r16
+	ldi r16, 0x40  ;0x40 = 0b01000000
+	sts ADMUX_BTN, r16
+	
+	lds	r16, ADCSRA_BTN	
+	ori r16, 0x40
+	sts	ADCSRA_BTN, r16
+
+	wait:
+		lds r16, ADCSRA_BTN
+		andi r16, 0x40
+		brne wait
+		
+	lds DATAL, ADCL_BTN
+	lds DATAH, ADCH_BTN
+
+	cp DATAL, BOUNDARY_L
+	cpc DATAH, BOUNDARY_H
+	brsh nobutton ; branch if higher
+
+	ldi r16, 1
+	sts BUTTON_IS_PRESSED, r16
+	;pop r16
+	
+	cp DATAL, BOUNDARY_RIGHT_L
+	cpc DATAH, BOUNDARY_RIGHT_H
+	brlo rightButton
+
+	cp DATAL, BOUNDARY_UP_L
+	cpc DATAH, BOUNDARY_UP_H
+	brlo upButton
+
+	cp DATAL, BOUNDARY_DOWN_L
+	cpc DATAH, BOUNDARY_DOWN_H
+	brlo downButton
+	
+	cp DATAL, BOUNDARY_LEFT_L
+	cpc DATAH, BOUNDARY_LEFT_H
+	brlo leftButton
+
+	cp DATAL, BOUNDARY_L
+	cpc DATAH, BOUNDARY_H
+	brlo selectButton
+
+	selectButton:
+		ldi r16, ' '
+		sts LAST_BUTTON_PRESSED, r16
+		rjmp end_timer1
+
+	upButton:
+		ldi r16, 'U'
+		sts LAST_BUTTON_PRESSED, r16
+		rjmp end_timer1
+
+	downButton:
+		ldi r16, 'D'
+		sts LAST_BUTTON_PRESSED, r16
+		rjmp end_timer1
+
+	leftButton:
+		ldi r16, 'L'
+		sts LAST_BUTTON_PRESSED, r16
+		rjmp end_timer1
+	
+	rightButton:
+		ldi r16, 'R'
+		sts LAST_BUTTON_PRESSED, r16
+		rjmp end_timer1
+
+	nobutton: 
+		ldi r16, 0
+		sts BUTTON_IS_PRESSED, r16
+		;rjmp end_timer1
+
+	end_timer1:
+		pop r16
+		reti
 
 ; timer3:
 ;
@@ -208,8 +640,133 @@ timer1:
 ; within an interrupt handler).
 
 
-timer4:
-	reti
+timer4: ; INTURRUPT HANDLER FOR EXTRA FUNCTIONALITIES
+	push r30
+	push r31
+	push r16
+	push r17
+	push r18
+	push r19
+
+	;Start at zero, when the right button is pressed we want to increment char index
+	; When the left button is pressed we want to decrement char index
+	; When we press up button we want to go to the charset index and increment it
+	
+	lds r16, BUTTON_IS_PRESSED
+	cpi r16, 1
+	breq timer4cont
+	rjmp end_timer4
+
+	timer4cont:
+		lds r16, LAST_BUTTON_PRESSED
+		cpi r16, 'D'
+		breq downButtonPressed
+		cpi r16, 'U'
+		breq upButtonPressed
+		cpi r16, 'R'
+		breq rightButtonPressed
+		cpi r16, 'L'
+		breq leftButtonPressed
+		rjmp end_timer4
+
+		rightButtonPressed:
+			lds r16, CURRENT_CHAR_INDEX
+			lds r17, STRING_SIZE
+			cp r16, r17
+			breq skip1
+			inc r16
+			skip1:
+				sts CURRENT_CHAR_INDEX, r16
+				rjmp setTopContent
+	
+		leftButtonPressed:
+			lds r16, CURRENT_CHAR_INDEX 
+			cpi r16, 0
+			breq skip2
+			dec r16
+			skip2:
+				sts CURRENT_CHAR_INDEX, r16
+				rjmp setTopContent
+		
+		downButtonPressed:
+			ldi r30, low(CURRENT_CHARSET_INDEX)
+			ldi r31, high(CURRENT_CHARSET_INDEX)
+			lds r18, CURRENT_CHAR_INDEX
+			ldi r19, 0
+			ldi r16, 0
+
+			goToIndexD:
+				ld r16, Z+
+				cp r19, r18
+				breq setDBP
+				inc r19
+				rjmp goToIndexD
+		
+			setDBP:
+				;lds r16, CURRENT_CHARSET_INDEX 
+				cpi r16, 0 ; 16 -> location of the charset index
+				breq skip3
+				dec r16
+				skip3:
+					sts CURRENT_CHARSET_INDEX, r16
+					rjmp setTopContent
+
+		upButtonPressed:
+			ldi r30, low(CURRENT_CHARSET_INDEX)
+			ldi r31, high(CURRENT_CHARSET_INDEX)
+			lds r18, CURRENT_CHAR_INDEX
+			ldi r19, 0
+			ldi r16, 0
+
+			goToIndexU:
+				ld r16, Z+
+				cp r19, r18
+				breq setUBP
+				inc r19
+				rjmp goToIndexU
+
+			setUBP:
+				;lds r16, CURRENT_CHARSET_INDEX 
+				lds r17, STRING_SIZE
+				cp r16, r17
+				breq skip4
+				inc r16
+				skip4:
+					sts CURRENT_CHARSET_INDEX, r16
+					rjmp setTopContent
+	
+		setTopContent:
+			ldi r30, low(AVAILABLE_CHARSET*2)
+			ldi r31, high(AVAILABLE_CHARSET*2)
+			ldi r28, low(TOP_LINE_CONTENT)
+			ldi r29, high(TOP_LINE_CONTENT)
+			lds r18, CURRENT_CHAR_INDEX
+			ldi r19, 0
+			ldi r16, 0
+
+			goToIndexT:		; finds the index of the TOP LINE SCREEN
+				;ld r16, Z+
+				cp r19, r18
+				breq setTC
+				inc r19
+				rjmp goToIndexT
+			
+			setTC:
+				lds r16, CURRENT_CHARSET_INDEX
+				add r30, r16
+				clr r16
+				adc r31, r16
+				lpm r16, Z
+				st Y+, r16
+	
+	end_timer4:
+		pop r19
+		pop r18
+		pop r17
+		pop r16
+		pop r31
+		pop r30 
+		reti
 
 
 ; ****************************************************
@@ -233,7 +790,7 @@ compare_words:
 	breq compare_words_lower_byte
 
 	; since high bytes are different, use these to
-	; determine result
+	; determine result7
 	;
 	; if C is set from previous cp, it means r17 < r19
 	; 
@@ -281,6 +838,9 @@ CURRENT_CHAR_INDEX: .byte 1			; ; updated by timer4 interrupt, used by LCD updat
 ; ***************************************************
 
 .dseg
+CHAR_Zero: .byte 1
+CHAR_ONE: .byte 1
+STRING_SIZE: .byte 1
 
 ; If you should need additional memory for storage of state,
 ; then place it within the section. However, the items here

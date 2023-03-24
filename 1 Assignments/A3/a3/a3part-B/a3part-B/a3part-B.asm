@@ -125,6 +125,10 @@ reset:
 call lcd_init
 call lcd_clr
 
+ldi r16, ' '
+sts LAST_BUTTON_PRESSED, r16
+clr r16
+
 ; .def temp=r26
 ; .def templow=r01
 ; .def temphigh=r02
@@ -341,9 +345,6 @@ start:
 
 		lds r16, LAST_BUTTON_PRESSED
 
-		cpi r16,'L'
-		breq setLedLeft
-
 		cpi r16,'R'
 		breq setLedRight
 
@@ -352,6 +353,11 @@ start:
 
 		cpi r16,'D'
 		breq setLedDown
+
+		cpi r16,'L'
+		breq setLedLeft
+
+		rjmp timer3_end
 
 		setLedDown:
 			ldi r16, 1 ;row
@@ -431,9 +437,6 @@ stop:
 
 timer1: ; INTURRUPT HANDLER FOR BUTTONS 
 	push r16
-	;ldi r16, 1
-	;sts BUTTON_IS_PRESSED, r16
-
 
 	ldi r16, 0x87  ;0x87 = 0b10000111
 	sts ADCSRA_BTN, r16
@@ -455,16 +458,12 @@ timer1: ; INTURRUPT HANDLER FOR BUTTONS
 	lds DATAL, ADCL_BTN
 	lds DATAH, ADCH_BTN
 
-	;
-	;
-
 	cp DATAL, BOUNDARY_L
 	cpc DATAH, BOUNDARY_H
 	brsh nobutton
 
 	ldi r16, 1
 	sts BUTTON_IS_PRESSED, r16
-	;pop r16
 	
 	cp DATAL, BOUNDARY_RIGHT_L
 	cpc DATAH, BOUNDARY_RIGHT_H
@@ -481,6 +480,15 @@ timer1: ; INTURRUPT HANDLER FOR BUTTONS
 	cp DATAL, BOUNDARY_LEFT_L
 	cpc DATAH, BOUNDARY_LEFT_H
 	brlo leftButton
+
+	cp DATAL, BOUNDARY_L
+	cpc DATAH, BOUNDARY_H
+	brlo selectButton
+
+	selectButton:
+		ldi r16, ' '
+		sts LAST_BUTTON_PRESSED, r16
+		rjmp end_timer1
 
 	upButton:
 		ldi r16, 'U'

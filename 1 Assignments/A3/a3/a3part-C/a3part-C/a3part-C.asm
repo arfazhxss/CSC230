@@ -125,45 +125,48 @@ reset:
 call lcd_init
 call lcd_clr
 
-ldi r20, 0
-sts CURRENT_CHARSET_INDEX, r20
-clr r20
-;;//////////////////////////////////////////////////////;;
-ldi ZH, high (AVAILABLE_CHARSET*2)
-ldi ZL, low (AVAILABLE_CHARSET*2)
-ldi r16, 0
-
-loop1:
-	LPM R20, Z+			; 1 addition after each loop
-	inc r16
-	cpi R20, 0x00
-	breq endEncode1
-	rjmp loop1
-endEncode1:
-	clr r20
-	dec r16
-	dec r16
-	sts STRING_SIZE, r16
+charset_index_initialization:
+	ldi r20, 0
+	sts CURRENT_CHARSET_INDEX, r20
+	ldi r16, ' '
+	sts LAST_BUTTON_PRESSED, r16
 	clr r16
-
-;;//////////////////////////////////////////////////////;;
-;;//////////////////////////////////////////////////////;;
-/*ldi ZH, high (TOP_LINE_CONTENT*2)
-ldi ZL, low (TOP_LINE_CONTENT*2)
-ldi r16, ' '
-
-loop2:
-	LPM R20, Z			; 1 addition after each loop
-	ST Z+, r16
-	cpi R20, 0x00
-	breq endEncode2
-	rjmp loop2
-endEncode2:
 	clr r20
-	sts STRING_SIZE, r16
-	clr r16*/
 
-;;//////////////////////////////////////////////////////;;
+charset_initialization:
+	ldi ZH, high (AVAILABLE_CHARSET*2)
+	ldi ZL, low (AVAILABLE_CHARSET*2)
+	ldi r16, 0
+
+	loop1:
+		LPM R20, Z+			; 1 addition after each loop
+		inc r16
+		cpi R20, 0x00
+		breq endEncode1
+		rjmp loop1
+	endEncode1:
+		clr r20
+		dec r16
+		dec r16
+		sts STRING_SIZE, r16
+		clr r16
+
+topLine_initialization:
+	ldi r16, ' '
+	ldi r17, 0
+
+	ldi ZH, high(TOP_LINE_CONTENT)
+	ldi ZL, low(TOP_LINE_CONTENT)
+
+	loop:
+		st Z+, r16
+		inc r17
+		cpi r17, 15
+		breq end_loop
+		rjmp loop
+	end_loop:
+		NOP
+
  .def templow=r20
  .def temphigh=r21
  ldi templow, low(RAMEND)
@@ -331,7 +334,8 @@ start:
 		rjmp timer3_end
 	
 	setLcdOne:
-			ldi r16, 1 ;row
+	
+		ldi r16, 1 ;row
 		ldi r17, 0 ;column
 		push r16
 		push r17
@@ -344,14 +348,38 @@ start:
 		rcall lcd_putchar
 		pop r16
 
-		ldi r16, ' '
+		ldi r16, 1 ;row
+		ldi r17, 1 ;column
 		push r16
-		rcall lcd_putchar
+		push r17
+		rcall lcd_gotoxy
+		pop r17
 		pop r16
 	
 		ldi r16, ' '
 		push r16
 		rcall lcd_putchar
+		pop r16
+
+		ldi r16, 1 ;row
+		ldi r17, 2 ;column
+		push r16
+		push r17
+		rcall lcd_gotoxy
+		pop r17
+		pop r16
+	
+		ldi r16, ' '
+		push r16
+		rcall lcd_putchar
+		pop r16
+
+		ldi r16, 1 ;row
+		ldi r17, 3 ;column
+		push r16
+		push r17
+		rcall lcd_gotoxy
+		pop r17
 		pop r16
 	
 		ldi r16, ' '
@@ -498,9 +526,6 @@ stop:
 
 timer1: ; INTURRUPT HANDLER FOR BUTTONS 
 	push r16
-	;ldi r16, 1
-	;sts BUTTON_IS_PRESSED, r16
-
 
 	ldi r16, 0x87  ;0x87 = 0b10000111
 	sts ADCSRA_BTN, r16
@@ -524,7 +549,7 @@ timer1: ; INTURRUPT HANDLER FOR BUTTONS
 
 	cp DATAL, BOUNDARY_L
 	cpc DATAH, BOUNDARY_H
-	brsh nobutton
+	brsh nobutton ; branch if higher
 
 	ldi r16, 1
 	sts BUTTON_IS_PRESSED, r16
@@ -545,6 +570,15 @@ timer1: ; INTURRUPT HANDLER FOR BUTTONS
 	cp DATAL, BOUNDARY_LEFT_L
 	cpc DATAH, BOUNDARY_LEFT_H
 	brlo leftButton
+
+	cp DATAL, BOUNDARY_L
+	cpc DATAH, BOUNDARY_H
+	brlo selectButton
+
+	selectButton:
+		ldi r16, ' '
+		sts LAST_BUTTON_PRESSED, r16
+		rjmp end_timer1
 
 	upButton:
 		ldi r16, 'U'
@@ -589,10 +623,9 @@ timer4: ; INTURRUPT HANDLER
 	push r16
 	push r17
 
-	;if button_is_pressed and last_button press is up, inc charset index
-	;if button_is_pressed and last_button press is down, dec charset index
-	;get the character from the available_charset + charset index
-	;store this character in top line content
+	;Start at zero, when the right button is pressed we want to increment char index
+	; When the left button is pressed we want to decrement char index
+	; When we press up button we want to go to the charset index and increment it
 	
 	lds r16, BUTTON_IS_PRESSED
 	cpi r16, 0
