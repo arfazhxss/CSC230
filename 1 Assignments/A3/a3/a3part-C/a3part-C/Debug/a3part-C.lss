@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-C\a3part-C\a3part-C.asm Thu Mar 23 22:25:18 2023
+AVRASM ver. 2.2.8  C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-C\a3part-C\a3part-C.asm Sun Mar 26 05:51:00 2023
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m2560def.inc'
 C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-C\a3part-C\a3part-C.asm(68): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m2560def.inc'
@@ -3543,8 +3543,6 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-C\a3part-C\l
 0002d3 910f                      		pop r16
                                  
 0002d4 9100 0224                 		lds r16, LAST_BUTTON_PRESSED
-                                 
-                                 		
                                  
 0002d6 3502                      		cpi r16,'R'
 0002d7 f1b9                      		breq setLedRight
