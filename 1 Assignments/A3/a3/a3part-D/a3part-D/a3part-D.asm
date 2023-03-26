@@ -151,10 +151,24 @@ charset_index_initialization:
 		clr r16
 		clr r17
 
-;charset_index_initialization:
-;	ldi r20, 0
-;	sts CURRENT_CHARSET_INDEX, r20
+index_initialization:
+	ldi r16, 0 ; content of indexes of chars
+	lds r17, STRING_SIZE ; loop index
 
+	ldi ZH, high(INDEX)
+	ldi ZL, low(INDEX)
+
+	loop_init:
+		st Z+, r16
+		dec r17
+		cpi r17, 0
+		breq index_init
+		rjmp loop_init
+	index_init:
+		clr r30
+		clr r31
+		clr r16
+		clr r17
 
 available_string_size:
 	ldi ZH, high (AVAILABLE_CHARSET*2)
@@ -319,6 +333,7 @@ start:
 	sts CHAR_ONE, r16
 	ldi r16, '_'
 	sts CHAR_ZERO, r16
+
 
 	timer3: ; LCD TIMER POLLING LOOP
 		in r16, TIFR3
@@ -514,13 +529,14 @@ start:
 		pop r16
 		rjmp timer3
 
-	///////////////////////////////////////////////////////
 	topLineLCD:
 		ldi r30, low(TOP_LINE_CONTENT)
 		ldi r31, high(TOP_LINE_CONTENT)
 		ldi r16, 0 ;row
 		ldi r17, 0 ;iterated start column
 		lds r18, STRING_SIZE ; end column not to be reached
+		ldi r20, 0
+		ldi r21, 0
 
 		topLineLoop:
 			push r16
@@ -528,19 +544,17 @@ start:
 			rcall lcd_gotoxy
 			pop r17
 			pop r16
-			inc r17
 			
-			ld r16, Z+
-			push r16
+			ld r20, Z+
+			push r20
 			rcall lcd_putchar
-			pop r16
+			pop r20
 
 			inc r17
 			cp r17, r18
 			brne topLineLoop
 			ret
-
-	///////////////////////////////////////////////////////
+			
 	
 
 stop:
@@ -641,6 +655,10 @@ timer1: ; INTURRUPT HANDLER FOR BUTTONS
 
 
 timer4: ; INTURRUPT HANDLER FOR EXTRA FUNCTIONALITIES
+	push r26
+	push r27	
+	push r28
+	push r29
 	push r30
 	push r31
 	push r16
@@ -648,116 +666,131 @@ timer4: ; INTURRUPT HANDLER FOR EXTRA FUNCTIONALITIES
 	push r18
 	push r19
 
-	;Start at zero, when the right button is pressed we want to increment char index
-	; When the left button is pressed we want to decrement char index
-	; When we press up button we want to go to the charset index and increment it
-	
-	lds r16, BUTTON_IS_PRESSED
-	cpi r16, 1
-	breq timer4cont
-	rjmp end_timer4
+	lds r16, CURRENT_CHARSET_INDEX
+	lds r17, CURRENT_CHAR_INDEX
+	lds r30, low(INDEX)
+	lds r31, high(INDEX)
+	ldi r19, 0
 
-	timer4cont:
+	loop4:
+		cp r19, r17
+		breq timer4cont1
+		inc r19
+		adiw Z, 1
+		rjmp loop4
+
+	timer4cont1:
+		st Z, r16
+		lds r16, BUTTON_IS_PRESSED
+		cpi r16, 1
+		breq timer4cont2
+		rjmp end_timer4
+
+	timer4cont2:
 		lds r16, LAST_BUTTON_PRESSED
 		cpi r16, 'D'
 		breq downButtonPressed
 		cpi r16, 'U'
-		breq upButtonPressed
-		cpi r16, 'R'
-		breq rightButtonPressed
-		cpi r16, 'L'
-		breq leftButtonPressed
-		rjmp end_timer4
+		brne timer4contU
+		rjmp upButtonPressed
+		timer4contU:
+			cpi r16, 'R'
+			breq rightButtonPressed
+			cpi r16, 'L'
+			breq leftButtonPressed
+			rjmp end_timer4
 
-		rightButtonPressed:
+		rightButtonPressed:							; Increasing the HORIZONTAL
 			lds r16, CURRENT_CHAR_INDEX
 			lds r17, STRING_SIZE
 			cp r16, r17
 			breq skip1
 			inc r16
-			skip1:
+			ldi r30, 16
+			skip1:									; r16, the HORIZONTAL location
+				sts CURRENT_CHARSET_INDEX, r30
 				sts CURRENT_CHAR_INDEX, r16
+				clr r30
 				rjmp setTopContent
 	
-		leftButtonPressed:
+		leftButtonPressed:							; Decreasing the HORIZONTAL
 			lds r16, CURRENT_CHAR_INDEX 
 			cpi r16, 0
 			breq skip2
 			dec r16
-			skip2:
+			ldi r30, 16
+			skip2:									; r16, the HORIZONTAL location
+				sts CURRENT_CHARSET_INDEX, r30
 				sts CURRENT_CHAR_INDEX, r16
+				clr r30
 				rjmp setTopContent
 		
-		downButtonPressed:
-			ldi r30, low(CURRENT_CHARSET_INDEX)
-			ldi r31, high(CURRENT_CHARSET_INDEX)
-			lds r18, CURRENT_CHAR_INDEX
-			ldi r19, 0
-			ldi r16, 0
+		downButtonPressed:							; Go to Horizontal, then go to Vertical; 
+			lds r18, CURRENT_CHAR_INDEX				; HORIZONTAL
+			lds r16, CURRENT_CHARSET_INDEX
+			cpi r16, 0
+			brne setDBP
+			ldi r19, 17
+			add r16, r19
+			sts CURRENT_CHARSET_INDEX, r16
 
-			goToIndexD:
-				ld r16, Z+
-				cp r19, r18
-				breq setDBP
-				inc r19
-				rjmp goToIndexD
-		
 			setDBP:
-				;lds r16, CURRENT_CHARSET_INDEX 
-				cpi r16, 0 ; 16 -> location of the charset index
+				lds r16, CURRENT_CHARSET_INDEX
+				cpi r16, 0							; 16 -> location of the charset index
 				breq skip3
 				dec r16
 				skip3:
+					;ldi r16, 16
 					sts CURRENT_CHARSET_INDEX, r16
 					rjmp setTopContent
 
 		upButtonPressed:
-			ldi r30, low(CURRENT_CHARSET_INDEX)
-			ldi r31, high(CURRENT_CHARSET_INDEX)
-			lds r18, CURRENT_CHAR_INDEX
-			ldi r19, 0
-			ldi r16, 0
-
-			goToIndexU:
-				ld r16, Z+
-				cp r19, r18
-				breq setUBP
-				inc r19
-				rjmp goToIndexU
+			lds r18, CURRENT_CHAR_INDEX					; HORIZONTAL
+			lds r16, CURRENT_CHARSET_INDEX
+			lds r17, STRING_SIZE
+			cp r16, r17
+			brne setUBP
+			ldi r19, 17
+			sub r16, r19
+			sts CURRENT_CHARSET_INDEX, r16
 
 			setUBP:
-				;lds r16, CURRENT_CHARSET_INDEX 
+				lds r16, CURRENT_CHARSET_INDEX
 				lds r17, STRING_SIZE
 				cp r16, r17
 				breq skip4
 				inc r16
+				
 				skip4:
 					sts CURRENT_CHARSET_INDEX, r16
 					rjmp setTopContent
 	
 		setTopContent:
-			ldi r30, low(AVAILABLE_CHARSET*2)
-			ldi r31, high(AVAILABLE_CHARSET*2)
-			ldi r28, low(TOP_LINE_CONTENT)
-			ldi r29, high(TOP_LINE_CONTENT)
-			lds r18, CURRENT_CHAR_INDEX
-			ldi r19, 0
-			ldi r16, 0
+			ldi r30, low(AVAILABLE_CHARSET*2)		;	Z
+			ldi r31, high(AVAILABLE_CHARSET*2)		;	1, 2, 3, ... d, e, f
+			ldi r28, low(TOP_LINE_CONTENT)			;	Y
+			ldi r29, high(TOP_LINE_CONTENT)			;	X/1/2///d/e/f, X, X, ... X, X, X
+			ldi r26, low(CURRENT_CHARSET_INDEX)		; VERTICAL
+			ldi r27, high(CURRENT_CHARSET_INDEX)	; 
+			lds r18, CURRENT_CHAR_INDEX				;	1, 2, 3, 
+			ldi r19, 0								; COUNTER
+			ldi r16, 0								; storage
 
-			goToIndexT:		; finds the index of the TOP LINE SCREEN
-				;ld r16, Z+
+			goToIndexT:								; finds the index of the TOP LINE SCREEN
 				cp r19, r18
 				breq setTC
 				inc r19
+				adiw Y, 1
 				rjmp goToIndexT
 			
 			setTC:
-				lds r16, CURRENT_CHARSET_INDEX
+				;LDS R16, CURRENT_CHARSET_INDEX
+				ld r16, X+ ; PUTING THE CURRENT CHARSET
 				add r30, r16
 				clr r16
 				adc r31, r16
 				lpm r16, Z
-				st Y+, r16
+				st Y, r16
 	
 	end_timer4:
 		pop r19
@@ -766,6 +799,10 @@ timer4: ; INTURRUPT HANDLER FOR EXTRA FUNCTIONALITIES
 		pop r16
 		pop r31
 		pop r30 
+		pop r29
+		pop r28
+		pop r27
+		pop r26
 		reti
 
 
@@ -841,6 +878,7 @@ CURRENT_CHAR_INDEX: .byte 1			; ; updated by timer4 interrupt, used by LCD updat
 CHAR_Zero: .byte 1
 CHAR_ONE: .byte 1
 STRING_SIZE: .byte 1
+INDEX: .byte 16
 
 ; If you should need additional memory for storage of state,
 ; then place it within the section. However, the items here

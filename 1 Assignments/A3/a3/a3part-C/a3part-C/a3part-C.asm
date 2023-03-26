@@ -406,8 +406,6 @@ start:
 
 		lds r16, LAST_BUTTON_PRESSED
 
-		
-
 		cpi r16,'R'
 		breq setLedRight
 
