@@ -1,11 +1,11 @@
 ;
-; a3part-D.asm
+; a3part-A.asm
 ;
-; Part D of assignment #3
+; Part A of assignment #3
 ;
 ;
-; Student name:
-; Student ID:
+; Student name: Arfaz Hossain
+; Student ID: V00984826
 ; Date of completed work:
 ;
 ; **********************************
@@ -80,8 +80,8 @@
 #define BUTTON_LEFT_MASK  0b00001000
 
 #define BUTTON_RIGHT_ADC  0x032
-#define BUTTON_UP_ADC     0x0b0   ; was 0x0c3
-#define BUTTON_DOWN_ADC   0x160   ; was 0x17c
+#define BUTTON_UP_ADC     0x0b0   
+#define BUTTON_DOWN_ADC   0x160   
 #define BUTTON_LEFT_ADC   0x22b
 #define BUTTON_SELECT_ADC 0x316
 
@@ -121,6 +121,29 @@ reset:
 
 ; Anything that needs initialization before interrupts
 ; start must be placed here.
+ 
+call lcd_init
+call lcd_clr
+
+; .def temp=r26
+; .def templow=r01
+; .def temphigh=r02
+
+; ldi templow, low(RAMEND)
+; out SPL, templow
+; ldi temphigh, high(RAMEND)
+; out SPH, temphigh
+
+.def DATAH=r25  ;DATAH:DATAL  store 10 bits data from ADC
+.def DATAL=r24
+.def BOUNDARY_H=r1  ;hold high byte value of the threshold for button
+.def BOUNDARY_L=r0  ;hold low byte value of the threshold for button, r1:r0
+
+.equ ADCSRA_BTN=0x7A
+.equ ADCSRB_BTN=0x7B
+.equ ADMUX_BTN=0x7C
+.equ ADCL_BTN=0x78
+.equ ADCH_BTN=0x79
 
 ; ***************************************************
 ; ******* END OF FIRST "STUDENT CODE" SECTION *******
@@ -193,12 +216,131 @@ reset:
 
 start:
 
+	ldi r16, '*'
+	sts CHAR_ONE, r16
+	ldi r16, '_'
+	sts CHAR_ZERO, r16
+
+
+	;ldi r16, 4
+	;sts BUTTON_IS_PRESSED, r16
+
+	timer3:
+		in r16, TIFR3
+		sbrs r16, OCF3A
+		rjmp timer3
+		ldi r16, 1<<OCF3A
+		out TIFR3, r16
+
+		lds r16, BUTTON_IS_PRESSED
+		cpi r16, 0
+		breq setLcdZero
+		lds r16, BUTTON_IS_PRESSED
+		cpi r16, 1
+		breq setLcdOne
+		rjmp timer3
+	
+	setLcdZero:
+		push r16
+		push r17
+		in r16, SREG
+		push r16
+
+		ldi r16, 1 ;row
+		ldi r17, 15 ;column
+		push r16
+		push r17
+		rcall lcd_gotoxy
+		pop r17
+		pop r16
+	
+		lds r16, CHAR_ZERO
+		push r16
+		rcall lcd_putchar
+		pop r16
+
+		pop r16
+		out SREG, r16
+		pop r17
+		pop r16
+		rjmp timer3
+	
+	setLcdOne:
+		push r16
+		push r17
+		in r16, SREG
+		push r16
+
+		ldi r16, 1 ;row
+		ldi r17, 15 ;column
+		push r16
+		push r17
+		rcall lcd_gotoxy
+		pop r17
+		pop r16
+	
+		lds r16, CHAR_ONE
+		push r16
+		rcall lcd_putchar
+		pop r16
+
+		pop r16
+		out SREG, r16
+		pop r17
+		pop r16
+		rjmp timer3
+	
+
 stop:
 	rjmp stop
 
 
-timer1:
+timer1: ; INTURRUPT HANDLER FOR BUTTONS 
+	push r16
+	;ldi r16, 1
+	;sts BUTTON_IS_PRESSED, r16
+
+
+	ldi r16, 0x87  ;0x87 = 0b10000111
+	sts ADCSRA_BTN, r16
+
+	ldi r16, 0x00
+	sts ADCSRB_BTN, r16
+	ldi r16, 0x40  ;0x40 = 0b01000000
+	sts ADMUX_BTN, r16
+
+	; DETECTING BUTTONS
+	ldi r16, low(BUTTON_SELECT_ADC);
+	mov BOUNDARY_L, r16
+	ldi r16, high(BUTTON_SELECT_ADC)
+	mov BOUNDARY_H, r16
+	
+	lds	r16, ADCSRA_BTN	
+	ori r16, 0x40
+	sts	ADCSRA_BTN, r16
+
+	wait:
+		lds r16, ADCSRA_BTN
+		andi r16, 0x40
+		brne wait
+		
+	lds DATAL, ADCL_BTN
+	lds DATAH, ADCH_BTN
+
+	cp DATAL, BOUNDARY_L
+	cpc DATAH, BOUNDARY_H
+	brsh skip
+
+	ldi r16, 1
+	sts BUTTON_IS_PRESSED, r16
+	pop r16
 	reti
+
+	skip: 
+		ldi r16, 0
+		sts BUTTON_IS_PRESSED, r16
+		pop r16
+		reti
 
 ; timer3:
 ;
@@ -208,7 +350,7 @@ timer1:
 ; within an interrupt handler).
 
 
-timer4:
+timer4: ; INTURRUPT HANDLER
 	reti
 
 
@@ -233,7 +375,7 @@ compare_words:
 	breq compare_words_lower_byte
 
 	; since high bytes are different, use these to
-	; determine result
+	; determine result7
 	;
 	; if C is set from previous cp, it means r17 < r19
 	; 
@@ -281,6 +423,8 @@ CURRENT_CHAR_INDEX: .byte 1			; ; updated by timer4 interrupt, used by LCD updat
 ; ***************************************************
 
 .dseg
+CHAR_Zero: .byte 1
+CHAR_ONE: .byte 1
 
 ; If you should need additional memory for storage of state,
 ; then place it within the section. However, the items here

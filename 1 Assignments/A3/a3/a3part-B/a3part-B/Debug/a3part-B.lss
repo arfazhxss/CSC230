@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-B\a3part-B\a3part-B.asm Thu Mar 23 04:12:13 2023
+AVRASM ver. 2.2.8  C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-B\a3part-B\a3part-B.asm Sun Mar 26 05:54:21 2023
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m2560def.inc'
 C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-B\a3part-B\a3part-B.asm(68): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m2560def.inc'
@@ -1907,7 +1907,7 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-B\a3part-B\l
                                  ; obtained from main ATmega2560 data sheet
                                  ;
                                  .org 0x22
-000022 940c 02d9                 	jmp timer1
+000022 940c 02de                 	jmp timer1
                                  
                                  ; This included for completeness. Because timer3 is used to
                                  ; drive updates of the LCD display, and because LCD routines
@@ -1918,7 +1918,7 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-B\a3part-B\l
                                  ;	jmp timer3
                                  
                                  .org 0x54
-000054 940c 0317                 	jmp timer4
+000054 940c 0323                 	jmp timer4
                                  
                                  .include "m2560def.inc"
                                  
@@ -3263,6 +3263,10 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-B\a3part-B\l
 000204 940e 013b                 call lcd_init
 000206 940e 012e                 call lcd_clr
                                  
+000208 e200                      ldi r16, ' '
+000209 9300 0224                 sts LAST_BUTTON_PRESSED, r16
+00020b 2700                      clr r16
+                                 
                                  ; .def temp=r26
                                  ; .def templow=r01
                                  ; .def temphigh=r02
@@ -3286,30 +3290,30 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-B\a3part-B\l
                                  .def BOUNDARY_DOWN_H=r9  
                                  .def BOUNDARY_DOWN_L=r8
                                  
-000208 e106                      ldi r16, low(BUTTON_SELECT_ADC);
-000209 2e00                      mov BOUNDARY_L, r16
-00020a e003                      ldi r16, high(BUTTON_SELECT_ADC)
-00020b 2e10                      mov BOUNDARY_H, r16
+00020c e106                      ldi r16, low(BUTTON_SELECT_ADC);
+00020d 2e00                      mov BOUNDARY_L, r16
+00020e e003                      ldi r16, high(BUTTON_SELECT_ADC)
+00020f 2e10                      mov BOUNDARY_H, r16
                                  
-00020c e302                      ldi r16, low(BUTTON_RIGHT_ADC);
-00020d 2e20                      mov BOUNDARY_RIGHT_L, r16
-00020e e000                      ldi r16, high(BUTTON_RIGHT_ADC)
-00020f 2e30                      mov BOUNDARY_RIGHT_H, r16
+000210 e302                      ldi r16, low(BUTTON_RIGHT_ADC);
+000211 2e20                      mov BOUNDARY_RIGHT_L, r16
+000212 e000                      ldi r16, high(BUTTON_RIGHT_ADC)
+000213 2e30                      mov BOUNDARY_RIGHT_H, r16
                                  
-000210 e20b                      ldi r16, low(BUTTON_LEFT_ADC);
-000211 2e40                      mov BOUNDARY_LEFT_L, r16
-000212 e002                      ldi r16, high(BUTTON_LEFT_ADC)
-000213 2e50                      mov BOUNDARY_LEFT_H, r16
+000214 e20b                      ldi r16, low(BUTTON_LEFT_ADC);
+000215 2e40                      mov BOUNDARY_LEFT_L, r16
+000216 e002                      ldi r16, high(BUTTON_LEFT_ADC)
+000217 2e50                      mov BOUNDARY_LEFT_H, r16
                                  
-000214 eb00                      ldi r16, low(BUTTON_UP_ADC);
-000215 2e60                      mov BOUNDARY_UP_L, r16
-000216 e000                      ldi r16, high(BUTTON_UP_ADC)
-000217 2e70                      mov BOUNDARY_UP_H, r16
+000218 eb00                      ldi r16, low(BUTTON_UP_ADC);
+000219 2e60                      mov BOUNDARY_UP_L, r16
+00021a e000                      ldi r16, high(BUTTON_UP_ADC)
+00021b 2e70                      mov BOUNDARY_UP_H, r16
                                  
-000218 e600                      ldi r16, low(BUTTON_DOWN_ADC);
-000219 2e80                      mov BOUNDARY_DOWN_L, r16
-00021a e001                      ldi r16, high(BUTTON_DOWN_ADC)
-00021b 2e90                      mov BOUNDARY_DOWN_H, r16
+00021c e600                      ldi r16, low(BUTTON_DOWN_ADC);
+00021d 2e80                      mov BOUNDARY_DOWN_L, r16
+00021e e001                      ldi r16, high(BUTTON_DOWN_ADC)
+00021f 2e90                      mov BOUNDARY_DOWN_H, r16
                                  
                                  .equ ADCSRA_BTN=0x7A
                                  .equ ADCSRB_BTN=0x7B
@@ -3330,53 +3334,53 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-B\a3part-B\l
                                  	; use the interrupt handler for timer 1 to
                                  	; read the buttons (i.e., every 10 ms)
                                  	;
-00021c e807                      	ldi temp, (1 << ADEN) | (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0)
-00021d 9300 007a                 	sts ADCSRA, temp
-00021f e400                      	ldi temp, (1 << REFS0)
-000220 9300 007c                 	sts ADMUX, r16
+000220 e807                      	ldi temp, (1 << ADEN) | (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0)
+000221 9300 007a                 	sts ADCSRA, temp
+000223 e400                      	ldi temp, (1 << REFS0)
+000224 9300 007c                 	sts ADMUX, r16
                                  
                                  	; Timer 1 is for sampling the buttons at 10 ms intervals.
                                  	; We will use an interrupt handler for this timer.
-000222 e010                      	ldi r17, high(TOP1)
-000223 e90c                      	ldi r16, low(TOP1)
-000224 9310 0089                 	sts OCR1AH, r17
-000226 9300 0088                 	sts OCR1AL, r16
-000228 2700                      	clr r16
-000229 9300 0080                 	sts TCCR1A, r16
-00022b e00d                      	ldi r16, (1 << WGM12) | (1 << CS12) | (1 << CS10)
-00022c 9300 0081                 	sts TCCR1B, r16
-00022e e002                      	ldi r16, (1 << OCIE1A)
-00022f 9300 006f                 	sts TIMSK1, r16
+000226 e010                      	ldi r17, high(TOP1)
+000227 e90c                      	ldi r16, low(TOP1)
+000228 9310 0089                 	sts OCR1AH, r17
+00022a 9300 0088                 	sts OCR1AL, r16
+00022c 2700                      	clr r16
+00022d 9300 0080                 	sts TCCR1A, r16
+00022f e00d                      	ldi r16, (1 << WGM12) | (1 << CS12) | (1 << CS10)
+000230 9300 0081                 	sts TCCR1B, r16
+000232 e002                      	ldi r16, (1 << OCIE1A)
+000233 9300 006f                 	sts TIMSK1, r16
                                  
                                  	; Timer 3 is for updating the LCD display. We are
                                  	; *not* able to call LCD routines from within an 
                                  	; interrupt handler, so this timer must be used
                                  	; in a polling loop.
-000231 e016                      	ldi r17, high(TOP3)
-000232 e10b                      	ldi r16, low(TOP3)
-000233 9310 0099                 	sts OCR3AH, r17
-000235 9300 0098                 	sts OCR3AL, r16
-000237 2700                      	clr r16
-000238 9300 0090                 	sts TCCR3A, r16
-00023a e00d                      	ldi r16, (1 << WGM32) | (1 << CS32) | (1 << CS30)
-00023b 9300 0091                 	sts TCCR3B, r16
+000235 e016                      	ldi r17, high(TOP3)
+000236 e10b                      	ldi r16, low(TOP3)
+000237 9310 0099                 	sts OCR3AH, r17
+000239 9300 0098                 	sts OCR3AL, r16
+00023b 2700                      	clr r16
+00023c 9300 0090                 	sts TCCR3A, r16
+00023e e00d                      	ldi r16, (1 << WGM32) | (1 << CS32) | (1 << CS30)
+00023f 9300 0091                 	sts TCCR3B, r16
                                  	; Notice that the code for enabling the Timer 3
                                  	; interrupt is missing at this point.
                                  
                                  	; Timer 4 is for updating the contents to be displayed
                                  	; on the top line of the LCD.
-00023d e11e                      	ldi r17, high(TOP4)
-00023e e805                      	ldi r16, low(TOP4)
-00023f 9310 00a9                 	sts OCR4AH, r17
-000241 9300 00a8                 	sts OCR4AL, r16
-000243 2700                      	clr r16
-000244 9300 00a0                 	sts TCCR4A, r16
-000246 e00d                      	ldi r16, (1 << WGM42) | (1 << CS42) | (1 << CS40)
-000247 9300 00a1                 	sts TCCR4B, r16
-000249 e002                      	ldi r16, (1 << OCIE4A)
-00024a 9300 0072                 	sts TIMSK4, r16
+000241 e11e                      	ldi r17, high(TOP4)
+000242 e805                      	ldi r16, low(TOP4)
+000243 9310 00a9                 	sts OCR4AH, r17
+000245 9300 00a8                 	sts OCR4AL, r16
+000247 2700                      	clr r16
+000248 9300 00a0                 	sts TCCR4A, r16
+00024a e00d                      	ldi r16, (1 << WGM42) | (1 << CS42) | (1 << CS40)
+00024b 9300 00a1                 	sts TCCR4B, r16
+00024d e002                      	ldi r16, (1 << OCIE4A)
+00024e 9300 0072                 	sts TIMSK4, r16
                                  
-00024c 9478                      	sei
+000250 9478                      	sei
                                  
                                  ; =============================================
                                  ; ====    END OF "DO NOT TOUCH" SECTION    ====
@@ -3388,67 +3392,62 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-B\a3part-B\l
                                  
                                  start:
                                  
-00024d e20a                      	ldi r16, '*'
-00024e 9300 0247                 	sts CHAR_ONE, r16
-000250 e50f                      	ldi r16, '_'
-000251 9300 0246                 	sts CHAR_ZERO, r16
+000251 e20a                      	ldi r16, '*'
+000252 9300 0247                 	sts CHAR_ONE, r16
+000254 e50f                      	ldi r16, '_'
+000255 9300 0246                 	sts CHAR_ZERO, r16
                                  
                                  	timer3:
-000253 b308                      		in r16, TIFR3
-000254 ff01                      		sbrs r16, OCF3A
-000255 cffd                      		rjmp timer3
-000256 e002                      		ldi r16, 1<<OCF3A
-000257 bb08                      		out TIFR3, r16
+000257 b308                      		in r16, TIFR3
+000258 ff01                      		sbrs r16, OCF3A
+000259 cffd                      		rjmp timer3
+00025a e002                      		ldi r16, 1<<OCF3A
+00025b bb08                      		out TIFR3, r16
                                  
-000258 9100 0223                 		lds r16, BUTTON_IS_PRESSED
-00025a 3000                      		cpi r16, 0
-00025b f029                      		breq setLcdZero
 00025c 9100 0223                 		lds r16, BUTTON_IS_PRESSED
-00025e 3001                      		cpi r16, 1
-00025f f091                      		breq setLcdOne
-000260 cff2                      		rjmp timer3
+00025e 3000                      		cpi r16, 0
+00025f f029                      		breq setLcdZero
+000260 9100 0223                 		lds r16, BUTTON_IS_PRESSED
+000262 3001                      		cpi r16, 1
+000263 f091                      		breq setLcdOne
+000264 cff2                      		rjmp timer3
                                  	
                                  	setLcdZero:
-000261 930f                      		push r16
-000262 931f                      		push r17
-000263 b70f                      		in r16, SREG
-000264 930f                      		push r16
+000265 930f                      		push r16
+000266 931f                      		push r17
+000267 b70f                      		in r16, SREG
+000268 930f                      		push r16
                                  
-000265 e001                      		ldi r16, 1 ;row
-000266 e01f                      		ldi r17, 15 ;column
-000267 930f                      		push r16
-000268 931f                      		push r17
-000269 dea0                      		rcall lcd_gotoxy
-00026a 911f                      		pop r17
-00026b 910f                      		pop r16
+000269 e001                      		ldi r16, 1 ;row
+00026a e01f                      		ldi r17, 15 ;column
+00026b 930f                      		push r16
+00026c 931f                      		push r17
+00026d de9c                      		rcall lcd_gotoxy
+00026e 911f                      		pop r17
+00026f 910f                      		pop r16
                                  	
-00026c 9100 0246                 		lds r16, CHAR_ZERO
-00026e 930f                      		push r16
-00026f de67                      		rcall lcd_putchar
-000270 910f                      		pop r16
+000270 9100 0246                 		lds r16, CHAR_ZERO
+000272 930f                      		push r16
+000273 de63                      		rcall lcd_putchar
+000274 910f                      		pop r16
                                  
                                  
-000271 c061                      		rjmp timer3_end
+000275 c062                      		rjmp timer3_end
                                  	
                                  	setLcdOne:
-000272 e001                      		ldi r16, 1 ;row
-000273 e010                      		ldi r17, 0 ;column
-000274 930f                      		push r16
-000275 931f                      		push r17
-000276 de93                      		rcall lcd_gotoxy
-000277 911f                      		pop r17
-000278 910f                      		pop r16
-                                 	
-000279 e200                      		ldi r16, ' '
-00027a 930f                      		push r16
-00027b de5b                      		rcall lcd_putchar
+000276 e001                      		ldi r16, 1 ;row
+000277 e010                      		ldi r17, 0 ;column
+000278 930f                      		push r16
+000279 931f                      		push r17
+00027a de8f                      		rcall lcd_gotoxy
+00027b 911f                      		pop r17
 00027c 910f                      		pop r16
-                                 
+                                 	
 00027d e200                      		ldi r16, ' '
 00027e 930f                      		push r16
 00027f de57                      		rcall lcd_putchar
 000280 910f                      		pop r16
-                                 	
+                                 
 000281 e200                      		ldi r16, ' '
 000282 930f                      		push r16
 000283 de53                      		rcall lcd_putchar
@@ -3458,197 +3457,205 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-B\a3part-B\l
 000286 930f                      		push r16
 000287 de4f                      		rcall lcd_putchar
 000288 910f                      		pop r16
-                                 
-                                 
-000289 930f                      		push r16
-00028a 931f                      		push r17
-00028b b70f                      		in r16, SREG
-00028c 930f                      		push r16
-                                 
-00028d e001                      		ldi r16, 1 ;row
-00028e e01f                      		ldi r17, 15 ;column
-00028f 930f                      		push r16
-000290 931f                      		push r17
-000291 de78                      		rcall lcd_gotoxy
-000292 911f                      		pop r17
-000293 910f                      		pop r16
                                  	
-000294 9100 0247                 		lds r16, CHAR_ONE
-000296 930f                      		push r16
-000297 de3f                      		rcall lcd_putchar
-000298 910f                      		pop r16
+000289 e200                      		ldi r16, ' '
+00028a 930f                      		push r16
+00028b de4b                      		rcall lcd_putchar
+00028c 910f                      		pop r16
                                  
-000299 9100 0224                 		lds r16, LAST_BUTTON_PRESSED
+00028d 930f                      		push r16
+00028e 931f                      		push r17
+00028f b70f                      		in r16, SREG
+000290 930f                      		push r16
                                  
-00029b 340c                      		cpi r16,'L'
-00029c f151                      		breq setLedLeft
+000291 e001                      		ldi r16, 1 ;row
+000292 e01f                      		ldi r17, 15 ;column
+000293 930f                      		push r16
+000294 931f                      		push r17
+000295 de74                      		rcall lcd_gotoxy
+000296 911f                      		pop r17
+000297 910f                      		pop r16
+                                 	
+000298 9100 0247                 		lds r16, CHAR_ONE
+00029a 930f                      		push r16
+00029b de3b                      		rcall lcd_putchar
+00029c 910f                      		pop r16
                                  
-00029d 3502                      		cpi r16,'R'
-00029e f0e1                      		breq setLedRight
+00029d 9100 0224                 		lds r16, LAST_BUTTON_PRESSED
                                  
-00029f 3505                      		cpi r16,'U'
-0002a0 f071                      		breq setLedUp
+00029f 3502                      		cpi r16,'R'
+0002a0 f0f9                      		breq setLedRight
                                  
-0002a1 3404                      		cpi r16,'D'
-0002a2 f001                      		breq setLedDown
+0002a1 3505                      		cpi r16,'U'
+0002a2 f089                      		breq setLedUp
+                                 
+0002a3 3404                      		cpi r16,'D'
+0002a4 f019                      		breq setLedDown
+                                 
+0002a5 340c                      		cpi r16,'L'
+0002a6 f129                      		breq setLedLeft
+                                 
+0002a7 c030                      		rjmp timer3_end
                                  
                                  		setLedDown:
-0002a3 e001                      			ldi r16, 1 ;row
-0002a4 e011                      			ldi r17, 1 ;column
-0002a5 930f                      			push r16
-0002a6 931f                      			push r17
-0002a7 de62                      			rcall lcd_gotoxy
-0002a8 911f                      			pop r17
-0002a9 910f                      			pop r16
+0002a8 e001                      			ldi r16, 1 ;row
+0002a9 e011                      			ldi r17, 1 ;column
+0002aa 930f                      			push r16
+0002ab 931f                      			push r17
+0002ac de5d                      			rcall lcd_gotoxy
+0002ad 911f                      			pop r17
+0002ae 910f                      			pop r16
                                  	
-0002aa e404                      			ldi r16, 'D'
-0002ab 930f                      			push r16
-0002ac de2a                      			rcall lcd_putchar
-0002ad 910f                      			pop r16
+0002af e404                      			ldi r16, 'D'
+0002b0 930f                      			push r16
+0002b1 de25                      			rcall lcd_putchar
+0002b2 910f                      			pop r16
                                  
-0002ae c024                      			rjmp timer3_end	
+0002b3 c024                      			rjmp timer3_end	
                                  
                                  		setLedUp:
-0002af e001                      			ldi r16, 1 ;row
-0002b0 e012                      			ldi r17, 2 ;column
-0002b1 930f                      			push r16
-0002b2 931f                      			push r17
-0002b3 de56                      			rcall lcd_gotoxy
-0002b4 911f                      			pop r17
-0002b5 910f                      			pop r16
+0002b4 e001                      			ldi r16, 1 ;row
+0002b5 e012                      			ldi r17, 2 ;column
+0002b6 930f                      			push r16
+0002b7 931f                      			push r17
+0002b8 de51                      			rcall lcd_gotoxy
+0002b9 911f                      			pop r17
+0002ba 910f                      			pop r16
                                  	
-0002b6 e505                      			ldi r16, 'U'
-0002b7 930f                      			push r16
-0002b8 de1e                      			rcall lcd_putchar
-0002b9 910f                      			pop r16
+0002bb e505                      			ldi r16, 'U'
+0002bc 930f                      			push r16
+0002bd de19                      			rcall lcd_putchar
+0002be 910f                      			pop r16
                                  
-0002ba c018                      			rjmp timer3_end
+0002bf c018                      			rjmp timer3_end
                                  
                                  		setLedRight:
-0002bb e001                      			ldi r16, 1 ;row
-0002bc e013                      			ldi r17, 3 ;column
-0002bd 930f                      			push r16
-0002be 931f                      			push r17
-0002bf de4a                      			rcall lcd_gotoxy
-0002c0 911f                      			pop r17
-0002c1 910f                      			pop r16
+0002c0 e001                      			ldi r16, 1 ;row
+0002c1 e013                      			ldi r17, 3 ;column
+0002c2 930f                      			push r16
+0002c3 931f                      			push r17
+0002c4 de45                      			rcall lcd_gotoxy
+0002c5 911f                      			pop r17
+0002c6 910f                      			pop r16
                                  	
-0002c2 e502                      			ldi r16, 'R'
-0002c3 930f                      			push r16
-0002c4 de12                      			rcall lcd_putchar
-0002c5 910f                      			pop r16
+0002c7 e502                      			ldi r16, 'R'
+0002c8 930f                      			push r16
+0002c9 de0d                      			rcall lcd_putchar
+0002ca 910f                      			pop r16
                                  
-0002c6 c00c                      			rjmp timer3_end
+0002cb c00c                      			rjmp timer3_end
                                  
                                  		setLedLeft:
-0002c7 e001                      			ldi r16, 1 ;row
-0002c8 e010                      			ldi r17, 0 ;column
-0002c9 930f                      			push r16
-0002ca 931f                      			push r17
-0002cb de3e                      			rcall lcd_gotoxy
-0002cc 911f                      			pop r17
-0002cd 910f                      			pop r16
+0002cc e001                      			ldi r16, 1 ;row
+0002cd e010                      			ldi r17, 0 ;column
+0002ce 930f                      			push r16
+0002cf 931f                      			push r17
+0002d0 de39                      			rcall lcd_gotoxy
+0002d1 911f                      			pop r17
+0002d2 910f                      			pop r16
                                  	
-0002ce e40c                      			ldi r16, 'L'
-0002cf 930f                      			push r16
-0002d0 de06                      			rcall lcd_putchar
-0002d1 910f                      			pop r16
+0002d3 e40c                      			ldi r16, 'L'
+0002d4 930f                      			push r16
+0002d5 de01                      			rcall lcd_putchar
+0002d6 910f                      			pop r16
                                  
-0002d2 c000                      			rjmp timer3_end
+0002d7 c000                      			rjmp timer3_end
                                  
                                  	timer3_end:
-0002d3 910f                      		pop r16
-0002d4 bf0f                      		out SREG, r16
-0002d5 911f                      		pop r17
-0002d6 910f                      		pop r16
-0002d7 cf7b                      		rjmp timer3
+0002d8 910f                      		pop r16
+0002d9 bf0f                      		out SREG, r16
+0002da 911f                      		pop r17
+0002db 910f                      		pop r16
+0002dc cf7a                      		rjmp timer3
                                  	
                                  
                                  stop:
-0002d8 cfff                      	rjmp stop
+0002dd cfff                      	rjmp stop
                                  
                                  
                                  timer1: ; INTURRUPT HANDLER FOR BUTTONS 
-0002d9 930f                      	push r16
-                                 	;ldi r16, 1
-                                 	;sts BUTTON_IS_PRESSED, r16
+0002de 930f                      	push r16
                                  
+0002df e807                      	ldi r16, 0x87  ;0x87 = 0b10000111
+0002e0 9300 007a                 	sts ADCSRA_BTN, r16
                                  
-0002da e807                      	ldi r16, 0x87  ;0x87 = 0b10000111
-0002db 9300 007a                 	sts ADCSRA_BTN, r16
-                                 
-0002dd e000                      	ldi r16, 0x00
-0002de 9300 007b                 	sts ADCSRB_BTN, r16
-0002e0 e400                      	ldi r16, 0x40  ;0x40 = 0b01000000
-0002e1 9300 007c                 	sts ADMUX_BTN, r16
+0002e2 e000                      	ldi r16, 0x00
+0002e3 9300 007b                 	sts ADCSRB_BTN, r16
+0002e5 e400                      	ldi r16, 0x40  ;0x40 = 0b01000000
+0002e6 9300 007c                 	sts ADMUX_BTN, r16
                                  	
-0002e3 9100 007a                 	lds	r16, ADCSRA_BTN	
-0002e5 6400                      	ori r16, 0x40
-0002e6 9300 007a                 	sts	ADCSRA_BTN, r16
+0002e8 9100 007a                 	lds	r16, ADCSRA_BTN	
+0002ea 6400                      	ori r16, 0x40
+0002eb 9300 007a                 	sts	ADCSRA_BTN, r16
                                  
                                  	wait:
-0002e8 9100 007a                 		lds r16, ADCSRA_BTN
-0002ea 7400                      		andi r16, 0x40
-0002eb f7e1                      		brne wait
+0002ed 9100 007a                 		lds r16, ADCSRA_BTN
+0002ef 7400                      		andi r16, 0x40
+0002f0 f7e1                      		brne wait
                                  		
-0002ec 9180 0078                 	lds DATAL, ADCL_BTN
-0002ee 9190 0079                 	lds DATAH, ADCH_BTN
+0002f1 9180 0078                 	lds DATAL, ADCL_BTN
+0002f3 9190 0079                 	lds DATAH, ADCH_BTN
                                  
-                                 	;
-                                 	;
+0002f5 1580                      	cp DATAL, BOUNDARY_L
+0002f6 0591                      	cpc DATAH, BOUNDARY_H
+0002f7 f530                      	brsh nobutton
                                  
-0002f0 1580                      	cp DATAL, BOUNDARY_L
-0002f1 0591                      	cpc DATAH, BOUNDARY_H
-0002f2 f4f8                      	brsh nobutton
-                                 
-0002f3 e001                      	ldi r16, 1
-0002f4 9300 0223                 	sts BUTTON_IS_PRESSED, r16
-                                 	;pop r16
+0002f8 e001                      	ldi r16, 1
+0002f9 9300 0223                 	sts BUTTON_IS_PRESSED, r16
                                  	
-0002f6 1582                      	cp DATAL, BOUNDARY_RIGHT_L
-0002f7 0593                      	cpc DATAH, BOUNDARY_RIGHT_H
-0002f8 f0a8                      	brlo rightButton
+0002fb 1582                      	cp DATAL, BOUNDARY_RIGHT_L
+0002fc 0593                      	cpc DATAH, BOUNDARY_RIGHT_H
+0002fd f0e0                      	brlo rightButton
                                  
-0002f9 1586                      	cp DATAL, BOUNDARY_UP_L
-0002fa 0597                      	cpc DATAH, BOUNDARY_UP_H
-0002fb f030                      	brlo upButton
+0002fe 1586                      	cp DATAL, BOUNDARY_UP_L
+0002ff 0597                      	cpc DATAH, BOUNDARY_UP_H
+000300 f068                      	brlo upButton
                                  
-0002fc 1588                      	cp DATAL, BOUNDARY_DOWN_L
-0002fd 0599                      	cpc DATAH, BOUNDARY_DOWN_H
-0002fe f038                      	brlo downButton
+000301 1588                      	cp DATAL, BOUNDARY_DOWN_L
+000302 0599                      	cpc DATAH, BOUNDARY_DOWN_H
+000303 f070                      	brlo downButton
                                  	
-0002ff 1584                      	cp DATAL, BOUNDARY_LEFT_L
-000300 0595                      	cpc DATAH, BOUNDARY_LEFT_H
-000301 f040                      	brlo leftButton
+000304 1584                      	cp DATAL, BOUNDARY_LEFT_L
+000305 0595                      	cpc DATAH, BOUNDARY_LEFT_H
+000306 f078                      	brlo leftButton
+                                 
+000307 1580                      	cp DATAL, BOUNDARY_L
+000308 0591                      	cpc DATAH, BOUNDARY_H
+000309 f000                      	brlo selectButton
+                                 
+                                 	selectButton:
+00030a e200                      		ldi r16, ' '
+00030b 9300 0224                 		sts LAST_BUTTON_PRESSED, r16
+00030d c013                      		rjmp end_timer1
                                  
                                  	upButton:
-000302 e505                      		ldi r16, 'U'
-000303 9300 0224                 		sts LAST_BUTTON_PRESSED, r16
-000305 c00f                      		rjmp end_timer1
+00030e e505                      		ldi r16, 'U'
+00030f 9300 0224                 		sts LAST_BUTTON_PRESSED, r16
+000311 c00f                      		rjmp end_timer1
                                  
                                  	downButton:
-000306 e404                      		ldi r16, 'D'
-000307 9300 0224                 		sts LAST_BUTTON_PRESSED, r16
-000309 c00b                      		rjmp end_timer1
+000312 e404                      		ldi r16, 'D'
+000313 9300 0224                 		sts LAST_BUTTON_PRESSED, r16
+000315 c00b                      		rjmp end_timer1
                                  
                                  	leftButton:
-00030a e40c                      		ldi r16, 'L'
-00030b 9300 0224                 		sts LAST_BUTTON_PRESSED, r16
-00030d c007                      		rjmp end_timer1
+000316 e40c                      		ldi r16, 'L'
+000317 9300 0224                 		sts LAST_BUTTON_PRESSED, r16
+000319 c007                      		rjmp end_timer1
                                  	
                                  	rightButton:
-00030e e502                      		ldi r16, 'R'
-00030f 9300 0224                 		sts LAST_BUTTON_PRESSED, r16
-000311 c003                      		rjmp end_timer1
+00031a e502                      		ldi r16, 'R'
+00031b 9300 0224                 		sts LAST_BUTTON_PRESSED, r16
+00031d c003                      		rjmp end_timer1
                                  
                                  	nobutton: 
-000312 e000                      		ldi r16, 0
-000313 9300 0223                 		sts BUTTON_IS_PRESSED, r16
+00031e e000                      		ldi r16, 0
+00031f 9300 0223                 		sts BUTTON_IS_PRESSED, r16
                                  		;rjmp end_timer1
                                  
                                  	end_timer1:
-000315 910f                      		pop r16
-000316 9518                      		reti
+000321 910f                      		pop r16
+000322 9518                      		reti
                                  
                                  ; timer3:
                                  ;
@@ -3659,7 +3666,7 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-B\a3part-B\l
                                  
                                  
                                  timer4: ; INTURRUPT HANDLER
-000317 9518                      	reti
+000323 9518                      	reti
                                  
                                  
                                  ; ****************************************************
@@ -3679,8 +3686,8 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-B\a3part-B\l
                                  ;
                                  compare_words:
                                  	; if high bytes are different, look at lower bytes
-000318 1713                      	cp r17, r19
-000319 f029                      	breq compare_words_lower_byte
+000324 1713                      	cp r17, r19
+000325 f029                      	breq compare_words_lower_byte
                                  
                                  	; since high bytes are different, use these to
                                  	; determine result7
@@ -3688,35 +3695,35 @@ C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-B\a3part-B\l
                                  	; if C is set from previous cp, it means r17 < r19
                                  	; 
                                  	; preload r25 with 1 with the assume r17 > r19
-00031a e091                      	ldi r25, 1
-00031b f008                      	brcs compare_words_is_less_than
-00031c c007                      	rjmp compare_words_exit
+000326 e091                      	ldi r25, 1
+000327 f008                      	brcs compare_words_is_less_than
+000328 c007                      	rjmp compare_words_exit
                                  
                                  compare_words_is_less_than:
-00031d ef9f                      	ldi r25, -1
-00031e c005                      	rjmp compare_words_exit
+000329 ef9f                      	ldi r25, -1
+00032a c005                      	rjmp compare_words_exit
                                  
                                  compare_words_lower_byte:
-00031f 2799                      	clr r25
-000320 1702                      	cp r16, r18
-000321 f011                      	breq compare_words_exit
+00032b 2799                      	clr r25
+00032c 1702                      	cp r16, r18
+00032d f011                      	breq compare_words_exit
                                  
-000322 e091                      	ldi r25, 1
-000323 f3c8                      	brcs compare_words_is_less_than  ; re-use what we already wrote...
+00032e e091                      	ldi r25, 1
+00032f f3c8                      	brcs compare_words_is_less_than  ; re-use what we already wrote...
                                  
                                  compare_words_exit:
-000324 9508                      	ret
+000330 9508                      	ret
                                  
                                  .cseg
-000325 3130
-000326 3332
-000327 3534
-000328 3736
-000329 3938
-00032a 6261
-00032b 6463
-00032c 6665
-00032d 005f                      AVAILABLE_CHARSET: .db "0123456789abcdef_", 0
+000331 3130
+000332 3332
+000333 3534
+000334 3736
+000335 3938
+000336 6261
+000337 6463
+000338 6665
+000339 005f                      AVAILABLE_CHARSET: .db "0123456789abcdef_", 0
                                  
                                  
                                  .dseg
@@ -3768,10 +3775,10 @@ counted separately from r26..r31 here.
 .dseg memory usage only counts static data declared with .byte
 
 "ATmega2560" register use summary:
-x  :   1 y  :  11 z  :   2 r0 :   3 r1 :   3 r2 :   2 r3 :   2 r4 :   2 
+x  :   1 y  :  11 z  :   2 r0 :   4 r1 :   4 r2 :   2 r3 :   2 r4 :   2 
 r5 :   2 r6 :   2 r7 :   2 r8 :   2 r9 :   2 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16: 303 r17:  52 r18:  28 r19:  26 r20:   0 
-r21:   2 r22:   0 r23:   0 r24:   6 r25:  10 r26:   3 r27:   3 r28:  22 
+r13:   0 r14:   0 r15:   0 r16: 308 r17:  52 r18:  28 r19:  26 r20:   0 
+r21:   2 r22:   0 r23:   0 r24:   7 r25:  11 r26:   3 r27:   3 r28:  22 
 r29:  23 r30:   6 r31:   6 
 Registers used: 26 out of 35 (74.3%)
 
@@ -3779,29 +3786,29 @@ Registers used: 26 out of 35 (74.3%)
 .lds  :   0 .sts  :   0 adc   :   0 add   :   1 adiw  :   0 and   :   0 
 andi  :   4 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
 brcc  :   0 brcs  :   2 break :   0 breq  :   9 brge  :   0 brhc  :   0 
-brhs  :   0 brid  :   0 brie  :   0 brlo  :   4 brlt  :   2 brmi  :   0 
+brhs  :   0 brid  :   0 brie  :   0 brlo  :   5 brlt  :   2 brmi  :   0 
 brne  :   7 brpl  :   0 brsh  :   2 brtc  :   0 brts  :   0 brvc  :   0 
 brvs  :   0 bset  :   0 bst   :   0 call  :  32 cbi   :   0 cbr   :  12 
-clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   6 cls   :   0 
-clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   7 cpc   :   5 
+clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   7 cls   :   0 
+clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   8 cpc   :   6 
 cpi   :  12 cpse  :   0 dec   :   3 eicall:   0 eijmp :   0 elpm  :   0 
 eor   :   0 fmul  :   0 fmuls :   0 fmulsu:   0 icall :   0 ijmp  :   0 
-in    :  15 inc   :   1 jmp   :   7 ld    :   1 ldd   :  11 ldi   :  94 
+in    :  15 inc   :   1 jmp   :   7 ld    :   1 ldd   :  11 ldi   :  96 
 lds   :  30 lpm   :   1 lsl   :   0 lsr   :   0 mov   :  15 movw  :   0 
 mul   :   1 muls  :   0 mulsu :   0 neg   :   0 nop   :   0 or    :   1 
 ori   :   1 out   :   2 pop   :  89 push  :  92 rcall :  17 ret   :  12 
-reti  :   2 rjmp  :  16 rol   :   0 ror   :   0 sbc   :   0 sbci  :   0 
+reti  :   2 rjmp  :  18 rol   :   0 ror   :   0 sbc   :   0 sbci  :   0 
 sbi   :   0 sbic  :   0 sbis  :   0 sbiw  :   1 sbr   :  12 sbrc  :   4 
 sbrs  :   1 sec   :   0 seh   :   0 sei   :   1 sen   :   0 ser   :   0 
 ses   :   0 set   :   0 sev   :   0 sez   :   0 sleep :   0 spm   :   0 
-st    :   1 std   :   0 sts   :  55 sub   :   0 subi  :   0 swap  :   3 
+st    :   1 std   :   0 sts   :  57 sub   :   0 subi  :   0 swap  :   3 
 tst   :   0 wdr   :   0 
 Instructions used: 42 out of 116 (36.2%)
 
 "ATmega2560" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x00065c   1436     32   1468  262144   0.6%
+[.cseg] 0x000000 0x000674   1460     32   1492  262144   0.6%
 [.dseg] 0x000200 0x000248      0     72     72    8192   0.9%
 [.eseg] 0x000000 0x000000      0      0      0    4096   0.0%
 

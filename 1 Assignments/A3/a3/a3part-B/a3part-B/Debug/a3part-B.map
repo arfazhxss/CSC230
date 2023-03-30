@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-B\a3part-B\a3part-B.asm Thu Mar 23 04:12:13 2023
+AVRASM ver. 2.2.8  C:\Users\arfaz\OneDrive\Documents\CSC230\1 Assignments\A3\a3\a3part-B\a3part-B\a3part-B.asm Sun Mar 26 05:54:21 2023
 
 
 EQU  SIGNATURE_000 0000001e
@@ -1360,8 +1360,8 @@ EQU  UDRE3addr    0000006e
 EQU  UTXC3addr    00000070
 EQU  INT_VECTORS_SIZE 00000072
 CSEG reset        00000204
-CSEG timer1       000002d9
-CSEG timer4       00000317
+CSEG timer1       000002de
+CSEG timer4       00000323
 SET  LCD_INTERFACE_PORTS 00000001
 EQU  LCD_PORT_D4  00000014
 EQU  LCD_PORT_D5  0000000e
@@ -1436,6 +1436,7 @@ EQU  PRESCALE_DIV 00000400
 EQU  TOP1         0000009c
 EQU  TOP3         0000061b
 EQU  TOP4         00001e85
+DSEG LAST_BUTTON_PRESSED 00000224
 DEF  DATAH        r25
 DEF  DATAL        r24
 DEF  BOUNDARY_H   r1
@@ -1453,32 +1454,32 @@ EQU  ADCSRB_BTN   0000007b
 EQU  ADMUX_BTN    0000007c
 EQU  ADCL_BTN     00000078
 EQU  ADCH_BTN     00000079
-CSEG start        0000024d
+CSEG start        00000251
 DSEG CHAR_ONE     00000247
 DSEG CHAR_ZERO    00000246
-CSEG timer3       00000253
+CSEG timer3       00000257
 DSEG BUTTON_IS_PRESSED 00000223
-CSEG setLcdZero   00000261
-CSEG setLcdOne    00000272
-CSEG timer3_end   000002d3
-DSEG LAST_BUTTON_PRESSED 00000224
-CSEG setLedLeft   000002c7
-CSEG setLedRight  000002bb
-CSEG setLedUp     000002af
-CSEG setLedDown   000002a3
-CSEG stop         000002d8
-CSEG wait         000002e8
-CSEG nobutton     00000312
-CSEG rightButton  0000030e
-CSEG upButton     00000302
-CSEG downButton   00000306
-CSEG leftButton   0000030a
-CSEG end_timer1   00000315
-CSEG compare_words 00000318
-CSEG compare_words_lower_byte 0000031f
-CSEG compare_words_is_less_than 0000031d
-CSEG compare_words_exit 00000324
-CSEG AVAILABLE_CHARSET 00000325
+CSEG setLcdZero   00000265
+CSEG setLcdOne    00000276
+CSEG timer3_end   000002d8
+CSEG setLedRight  000002c0
+CSEG setLedUp     000002b4
+CSEG setLedDown   000002a8
+CSEG setLedLeft   000002cc
+CSEG stop         000002dd
+CSEG wait         000002ed
+CSEG nobutton     0000031e
+CSEG rightButton  0000031a
+CSEG upButton     0000030e
+CSEG downButton   00000312
+CSEG leftButton   00000316
+CSEG selectButton 0000030a
+CSEG end_timer1   00000321
+CSEG compare_words 00000324
+CSEG compare_words_lower_byte 0000032b
+CSEG compare_words_is_less_than 00000329
+CSEG compare_words_exit 00000330
+CSEG AVAILABLE_CHARSET 00000331
 DSEG TOP_LINE_CONTENT 00000225
 DSEG CURRENT_CHARSET_INDEX 00000235
 DSEG CURRENT_CHAR_INDEX 00000245
