@@ -1,8 +1,8 @@
 /* a4.c
  * CSC Fall 2022
  * 
- * Student name:
- * Student UVic ID:
+ * Student name: Arfaz
+ * Student UVic ID: V00984826
  * Date of completed work:
  *
  *
@@ -75,27 +75,107 @@ ISR(TIMER3_COMPA_vect) {
  */
 
 void led_state(uint8_t LED, uint8_t state) {
-
+	if (state==0) 
+	{
+		switch (LED)
+		{
+			case 0:
+				PORTL &= ~(0b10000000);
+				break;
+			case 1:
+				PORTL &= ~(0b00100000);
+				break;
+			case 2:
+				PORTL &= ~(0b00001000);
+				break;
+			case 3:
+				PORTL &= ~(0b00000010);
+				break;
+			case 4:
+				PORTB &= ~(0b00001000);
+				break;
+			case 5:
+				PORTB &= ~(0b00000010);
+				break;
+		}
+	}
+	else if (state==1) 
+	{
+		switch (LED)
+		{
+			case 0: 
+				PORTL |= 0b10000000;
+				break;
+			case 1:
+				PORTL |= 0b00100000;
+				break;
+			case 2:
+				PORTL |= 0b00001000;
+				break;
+			case 3:
+				PORTL |= 0b00000010;
+				break;
+			case 4:
+				PORTB |= 0b00001000;
+				break;
+			case 5:
+				PORTB |= 0b00000010;
+				break;
+		}
+	}
 }
 
 
 
 void SOS() {
-    uint8_t light[] = {
+    uint8_t light[] = 
+	{
         0x1, 0, 0x1, 0, 0x1, 0,
         0xf, 0, 0xf, 0, 0xf, 0,
         0x1, 0, 0x1, 0, 0x1, 0,
         0x0
     };
 
-    int duration[] = {
+    int duration[] = 
+	{
         100, 250, 100, 250, 100, 500,
         250, 250, 250, 250, 250, 500,
         100, 250, 100, 250, 100, 250,
         250
     };
-
+	
 	int length = 19;
+	
+	for (int i=0; i<length; i++) 
+	{
+		if (light[i])
+		{
+			switch (light[i])
+			{
+				case 0x1 :
+					led_state(0,1);
+					break;
+				case 0xf :
+					led_state(0,1);
+					led_state(1,1);
+					led_state(2,1);
+					led_state(3,1);
+					break;
+			}
+			_delay_ms(duration[i]);
+		}
+		else
+		{
+			led_state(0,0);
+			led_state(1,0);
+			led_state(2,0);
+			led_state(3,0);
+			led_state(4,0);
+			led_state(5,0);
+			_delay_ms(duration[i]);
+		}
+		
+	}
 }
 
 
@@ -165,26 +245,42 @@ int main() {
  * *********************************************
  */
 
-/* This code could be used to test your work for part A.
+// This code could be used to test your work for part A.
 
-	led_state(0, 1);
-	_delay_ms(1000);
-	led_state(2, 1);
-	_delay_ms(1000);
-	led_state(1, 1);
-	_delay_ms(1000);
-	led_state(2, 0);
-	_delay_ms(1000);
-	led_state(0, 0);
-	_delay_ms(1000);
-	led_state(1, 0);
-	_delay_ms(1000);
- */
+	// for (int i=0; i<5; i++) 
+	// {
+	// 	_delay_ms(2000);
+		// led_state(0, 1);
+		// _delay_ms(500);
+		// led_state(1, 1);
+		// _delay_ms(500);
+		// led_state(2, 1);
+		// _delay_ms(500);
+		// led_state(3, 1);
+		// _delay_ms(500);
+		// led_state(4, 1);
+		// _delay_ms(500);
+		// led_state(5, 1);
+		// _delay_ms(500);
+	
+		// led_state(5, 0);
+		// _delay_ms(500);
+		// led_state(4, 0);
+		// _delay_ms(500);
+		// led_state(3, 0);
+		// _delay_ms(500);
+		// led_state(2, 0);
+		// _delay_ms(500);
+		// led_state(1, 0);
+		// _delay_ms(500);
+		// led_state(0, 0);
+		// _delay_ms(500);
+	// }
 
-/* This code could be used to test your work for part B.
+ //This code could be used to test your work for part B.
 
 	SOS();
- */
+ 
 
 /* This code could be used to test your work for part C.
 
