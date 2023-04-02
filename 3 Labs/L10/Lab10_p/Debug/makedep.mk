@@ -2,9 +2,5 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-CSC230_LCD.c
-
-lab10.c
-
 main.c
 

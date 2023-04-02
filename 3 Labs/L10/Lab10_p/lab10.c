@@ -20,18 +20,18 @@ int main (void)
 
   for ( ; ; )
   {
-	  /*
-		write your code here according to the following pseudo-code:
+  /*
+	write your code here according to the following pseudo-code:
 	
-		turn the first led on;
-		1 second delay;
-		for (; ;)
-		{
-			turn the current led off, turn the next led on; //wrap around with around 0.5 second delay;
+	turn the first led on;
+	1 second delay;
+	for (; ;)
+	{
+		turn the current led off, turn the next led on; //wrap around with around 0.5 second delay;
 		
-		}
-	  */
-	
+	}
+  */
+
   }
 
   return 1;
