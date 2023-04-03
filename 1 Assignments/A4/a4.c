@@ -180,16 +180,15 @@ void SOS() {
 
 
 void glow(uint8_t LED, float brightness) {
-	PORTL=0b00000000;
-	PORTB=0b00000000;
+
 	int threshold = PWM_PERIOD * brightness;
 	for(;;)
 	{
-		if ((count<threshold)&&(PORTL!=0b00000000)&&(PORTB!=0b00000000))
+		if ((count<threshold))
 		{
 			led_state(LED,1);
 		}
-		else if ((count<PWM_PERIOD)&&(PORTL==0b00000000)&&(PORTB==0b00000000))
+		else if ((count<PWM_PERIOD))
 		{
 			PORTL=0b00000000;
 			PORTB=0b00000000;
@@ -304,7 +303,7 @@ int main() {
 
 //This code could be used to test your work for part C.
 
-	glow(2, 0.01);
+	glow(2, 1);
 
 
 
