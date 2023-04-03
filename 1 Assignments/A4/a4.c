@@ -190,8 +190,7 @@ void glow(uint8_t LED, float brightness) {
 		}
 		else if ((count<PWM_PERIOD))
 		{
-			PORTL=0b00000000;
-			PORTB=0b00000000;
+			led_state(LED,0);
 		}
 		else
 		{
@@ -303,8 +302,7 @@ int main() {
 
 //This code could be used to test your work for part C.
 
-	glow(2, 1);
-
+	//glow(2, 1);
 
 
 /* This code could be used to test your work for part D.
