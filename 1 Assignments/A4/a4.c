@@ -184,7 +184,7 @@ void glow(uint8_t LED, float brightness) {
 	int threshold = PWM_PERIOD * brightness;
 	for(;;)
 	{
-		if ((count<threshold))
+		if ((count<threshold)) 
 		{
 			led_state(LED,1);
 		}
@@ -204,7 +204,36 @@ void glow(uint8_t LED, float brightness) {
 
 
 void pulse_glow(uint8_t LED) {
-
+	float brightness = 0;
+	float increment = 0.01;
+	int threshold = PWM_PERIOD * brightness;
+	for(;;)
+	{
+		if (brightness<1)
+		{
+			brightness += (0.5);
+			threshold = PWM_PERIOD * brightness;
+		} 
+		else
+		{
+			brightness -= (0.5);
+			threshold = PWM_PERIOD * brightness;
+		}
+		
+		if ((count<threshold))
+		{
+			led_state(LED,1);
+		}
+		else if ((count<PWM_PERIOD))
+		{
+			led_state(LED,0);
+		}
+		else
+		{
+			count=0;
+			led_state(LED,1);
+		}
+	}
 }
 
 
@@ -305,10 +334,9 @@ int main() {
 	//glow(2, 1);
 
 
-/* This code could be used to test your work for part D.
+//This code could be used to test your work for part D.
 
 	pulse_glow(3);
- */
 
 
 /* This code could be used to test your work for the bonus part.
