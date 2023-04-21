@@ -305,10 +305,9 @@ int main() {
 	//glow(2, 1);
 
 
-/* This code could be used to test your work for part D.
+//This code could be used to test your work for part D.
 
 	pulse_glow(3);
- */
 
 
 /* This code could be used to test your work for the bonus part.
